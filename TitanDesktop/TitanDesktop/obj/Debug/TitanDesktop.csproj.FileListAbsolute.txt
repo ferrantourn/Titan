@@ -1,2 +1,0 @@
-C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\TitanDesktop\bin\Debug\TitanDesktop.exe.config
-C:\Users\Core\Documents\GitHub\Titan1\Titan1\TitanDesktop\TitanDesktop\bin\Debug\TitanDesktop.exe.config

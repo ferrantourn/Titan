@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("TitanDesktop")]
+[assembly: AssemblyTitle("Titan")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TitanDesktop")]
+[assembly: AssemblyProduct("Titan")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como identificador de typelib si este proyecto se expone a COM
-[assembly: Guid("01011018-9a6c-4177-85c9-e8eb78b67616")]
+[assembly: Guid("06f52e01-e721-4268-a538-0ba7c181932d")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

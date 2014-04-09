@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TitanDesktop.Properties
+namespace Titan.Properties
 {
 
 
