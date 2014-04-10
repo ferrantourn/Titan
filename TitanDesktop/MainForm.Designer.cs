@@ -33,14 +33,17 @@
             this.FotoBox4 = new System.Windows.Forms.PictureBox();
             this.FotoBox3 = new System.Windows.Forms.PictureBox();
             this.FotoBox2 = new System.Windows.Forms.PictureBox();
-            this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.txtTitulo2 = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtCilindrada = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.FotoBox1 = new System.Windows.Forms.PictureBox();
             this.Previsualizar = new System.Windows.Forms.TabPage();
             this.HtmlPreview = new System.Windows.Forms.WebBrowser();
             this.Publicar = new System.Windows.Forms.TabPage();
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
+            this.txtMotor = new System.Windows.Forms.TextBox();
+            this.btnFondo = new System.Windows.Forms.Button();
+            this.lblFondo = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -58,22 +61,25 @@
             this.tab1.Location = new System.Drawing.Point(13, 13);
             this.tab1.Name = "tab1";
             this.tab1.SelectedIndex = 0;
-            this.tab1.Size = new System.Drawing.Size(579, 552);
+            this.tab1.Size = new System.Drawing.Size(579, 559);
             this.tab1.TabIndex = 0;
             // 
             // Diseño
             // 
+            this.Diseño.Controls.Add(this.lblFondo);
+            this.Diseño.Controls.Add(this.btnFondo);
+            this.Diseño.Controls.Add(this.txtMotor);
             this.Diseño.Controls.Add(this.FotoBox4);
             this.Diseño.Controls.Add(this.FotoBox3);
             this.Diseño.Controls.Add(this.FotoBox2);
-            this.Diseño.Controls.Add(this.txtTitulo);
-            this.Diseño.Controls.Add(this.txtTitulo2);
+            this.Diseño.Controls.Add(this.txtModelo);
+            this.Diseño.Controls.Add(this.txtCilindrada);
             this.Diseño.Controls.Add(this.txtDescripcion);
             this.Diseño.Controls.Add(this.FotoBox1);
             this.Diseño.Location = new System.Drawing.Point(4, 22);
             this.Diseño.Name = "Diseño";
             this.Diseño.Padding = new System.Windows.Forms.Padding(3);
-            this.Diseño.Size = new System.Drawing.Size(571, 526);
+            this.Diseño.Size = new System.Drawing.Size(571, 533);
             this.Diseño.TabIndex = 0;
             this.Diseño.Text = "Diseño";
             this.Diseño.UseVisualStyleBackColor = true;
@@ -83,7 +89,7 @@
             this.FotoBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FotoBox4.Location = new System.Drawing.Point(7, 334);
             this.FotoBox4.Name = "FotoBox4";
-            this.FotoBox4.Size = new System.Drawing.Size(241, 165);
+            this.FotoBox4.Size = new System.Drawing.Size(241, 152);
             this.FotoBox4.TabIndex = 7;
             this.FotoBox4.TabStop = false;
             this.FotoBox4.Click += new System.EventHandler(this.FotoBox4_Click);
@@ -108,27 +114,30 @@
             this.FotoBox2.TabStop = false;
             this.FotoBox2.Click += new System.EventHandler(this.FotoBox2_Click);
             // 
-            // txtTitulo
+            // txtModelo
             // 
-            this.txtTitulo.Location = new System.Drawing.Point(283, 194);
-            this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(282, 20);
-            this.txtTitulo.TabIndex = 4;
+            this.txtModelo.Location = new System.Drawing.Point(283, 194);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(282, 20);
+            this.txtModelo.TabIndex = 4;
+            this.txtModelo.Text = "Modelo";
             // 
-            // txtTitulo2
+            // txtCilindrada
             // 
-            this.txtTitulo2.Location = new System.Drawing.Point(283, 220);
-            this.txtTitulo2.Name = "txtTitulo2";
-            this.txtTitulo2.Size = new System.Drawing.Size(282, 20);
-            this.txtTitulo2.TabIndex = 3;
+            this.txtCilindrada.Location = new System.Drawing.Point(283, 220);
+            this.txtCilindrada.Name = "txtCilindrada";
+            this.txtCilindrada.Size = new System.Drawing.Size(282, 20);
+            this.txtCilindrada.TabIndex = 3;
+            this.txtCilindrada.Text = "Cilindrada";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(283, 246);
+            this.txtDescripcion.Location = new System.Drawing.Point(283, 273);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(282, 253);
+            this.txtDescripcion.Size = new System.Drawing.Size(282, 213);
             this.txtDescripcion.TabIndex = 2;
+            this.txtDescripcion.Text = "Descripcion";
             // 
             // FotoBox1
             // 
@@ -146,7 +155,7 @@
             this.Previsualizar.Location = new System.Drawing.Point(4, 22);
             this.Previsualizar.Name = "Previsualizar";
             this.Previsualizar.Padding = new System.Windows.Forms.Padding(3);
-            this.Previsualizar.Size = new System.Drawing.Size(571, 526);
+            this.Previsualizar.Size = new System.Drawing.Size(571, 533);
             this.Previsualizar.TabIndex = 1;
             this.Previsualizar.Text = "Previsualizar";
             this.Previsualizar.UseVisualStyleBackColor = true;
@@ -157,7 +166,7 @@
             this.HtmlPreview.Location = new System.Drawing.Point(3, 3);
             this.HtmlPreview.MinimumSize = new System.Drawing.Size(20, 20);
             this.HtmlPreview.Name = "HtmlPreview";
-            this.HtmlPreview.Size = new System.Drawing.Size(565, 520);
+            this.HtmlPreview.Size = new System.Drawing.Size(565, 527);
             this.HtmlPreview.TabIndex = 0;
             this.HtmlPreview.Url = new System.Uri("", System.UriKind.Relative);
             // 
@@ -166,20 +175,47 @@
             this.Publicar.Location = new System.Drawing.Point(4, 22);
             this.Publicar.Name = "Publicar";
             this.Publicar.Padding = new System.Windows.Forms.Padding(3);
-            this.Publicar.Size = new System.Drawing.Size(571, 526);
+            this.Publicar.Size = new System.Drawing.Size(571, 533);
             this.Publicar.TabIndex = 2;
             this.Publicar.Text = "Publicar";
             this.Publicar.UseVisualStyleBackColor = true;
             // 
             // AbrirArchivo
             // 
-            this.AbrirArchivo.FileName = "openFileDialog1";
+            this.AbrirArchivo.FileName = "Abrir Imágen";
+            this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
+            // 
+            // txtMotor
+            // 
+            this.txtMotor.Location = new System.Drawing.Point(283, 247);
+            this.txtMotor.Name = "txtMotor";
+            this.txtMotor.Size = new System.Drawing.Size(282, 20);
+            this.txtMotor.TabIndex = 8;
+            this.txtMotor.Text = "Motor";
+            // 
+            // btnFondo
+            // 
+            this.btnFondo.Location = new System.Drawing.Point(7, 493);
+            this.btnFondo.Name = "btnFondo";
+            this.btnFondo.Size = new System.Drawing.Size(124, 23);
+            this.btnFondo.TabIndex = 9;
+            this.btnFondo.Text = "Escoger fondo";
+            this.btnFondo.UseVisualStyleBackColor = true;
+            this.btnFondo.Click += new System.EventHandler(this.btnFondo_Click);
+            // 
+            // lblFondo
+            // 
+            this.lblFondo.AutoSize = true;
+            this.lblFondo.Location = new System.Drawing.Point(137, 498);
+            this.lblFondo.Name = "lblFondo";
+            this.lblFondo.Size = new System.Drawing.Size(0, 13);
+            this.lblFondo.TabIndex = 10;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 577);
+            this.ClientSize = new System.Drawing.Size(604, 584);
             this.Controls.Add(this.tab1);
             this.Name = "MainForm";
             this.Text = "Designer";
@@ -202,14 +238,17 @@
         private System.Windows.Forms.TabPage Previsualizar;
         private System.Windows.Forms.PictureBox FotoBox1;
         private System.Windows.Forms.WebBrowser HtmlPreview;
-        private System.Windows.Forms.TextBox txtTitulo;
-        private System.Windows.Forms.TextBox txtTitulo2;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtCilindrada;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TabPage Publicar;
         private System.Windows.Forms.PictureBox FotoBox4;
         private System.Windows.Forms.PictureBox FotoBox3;
         private System.Windows.Forms.PictureBox FotoBox2;
         private System.Windows.Forms.OpenFileDialog AbrirArchivo;
+        private System.Windows.Forms.TextBox txtMotor;
+        private System.Windows.Forms.Button btnFondo;
+        private System.Windows.Forms.Label lblFondo;
     }
 }
 

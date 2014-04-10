@@ -44,5 +44,14 @@ namespace Titan
             FotoBox4.ImageLocation = AbrirArchivo.FileName;
             FotoBox4.SizeMode = PictureBoxSizeMode.Zoom;
         }
+
+        private void btnFondo_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            lblFondo.Text = AbrirArchivo.FileName;
+
+        }
+
+        
     }
 }
