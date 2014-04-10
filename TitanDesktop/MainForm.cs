@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Titan
 {
@@ -50,6 +51,77 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             lblFondo.Text = AbrirArchivo.FileName;
 
+        }
+        static void GenerateHTML()
+        {
+
+            string text = @"<html>
+
+<head>
+<meta http-equiv=""Content-Language"" content=""es-uy"">
+<meta http-equiv=""Content-Type"" content=""text/html; charset=windows-1252"">
+<title>Test</title>
+</head>
+
+<body>
+
+<div style=""position: absolute; width: 900px; height: 800px; z-index: 2; left: 10px; top: 15px"" id=""capa1"">
+
+<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 400px"" id=""Modelo"">
+<font color=""#FFFFFF"" size=""2"">"
+            
+            +txtModelo.text + @"</font></div>
+<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 420px"" id=""Cilindrada"">
+<font color=""#FFFFFF"" size=""2"">#CILINDRADA#</font></div>
+<div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 439px"" id=""Motor"">
+<font color=""#FFFFFF"" size=""2"">#MOTOR#</font></div>
+<div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 489px"" id=""Descripcion"">
+<font color=""#FFFFFF"" size=""2"">#DESCRIPCION#</font></div>
+
+<div style=""position: absolute; width: 240px; height: 240px; z-index: 3; left: 10px; top: 46px"" id=""foto1"">
+<img border=""0"" src=""img/Modelos/Vespa1.jpg"" width=""240"" height=""240""></div>
+<div style=""position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 46px"" id=""foto2"">
+<img border=""0"" src=""img/Modelos/Vespa2.jpg"" width=""420"" height=""240""></div>
+<div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 305px"" id=""foto3"">
+<img border=""0"" src=""img/Modelos/Vespa3.jpg"" width=""240"" height=""240""></div>
+<div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 565px"" id=""foto4"">
+<img border=""0"" src=""img/Modelos/Vespa4.jpg"" width=""240"" height=""240""></div>
+<p><img border=""0"" src=""img/plantilla_fondo_V7.jpg"" width=""900"" height=""800""></p>
+</div>
+
+</body>
+
+</html>";
+
+            System.IO.File.WriteAllText(@"\index.html", text);
+
+
+        }
+
+        /// <summary>
+        /// Levanta el contenido del archivo que pasamos por parametros, el cual
+        /// deberia estar en la carpeta HTMLTemplates.
+        /// </summary>
+        /// <param name="FileNameTemplate">Nombre del archivo a levantar. Recordar se levantan desde la carpeta TemplatesMails en el raiz.</param>
+        /// <returns>HTML devuelto.</returns>
+        public static String GetTemplate(String FileNameTemplate)
+        {
+            //-----------------------------------------------
+            //- Aquí levanto el archivo de template.         
+            //-----------------------------------------------
+            string fileName = string.Format("{0}\\{1}");
+            //HttpContext.Current.Server.MapPath("~/Admin/HTMLTemplates"), FileNameTemplate);
+
+            string contenido = "";
+
+            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    contenido = reader.ReadToEnd();
+                }
+            }
+            return contenido;
         }
 
         
