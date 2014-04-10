@@ -30,6 +30,9 @@
         {
             this.tab1 = new System.Windows.Forms.TabControl();
             this.Diseño = new System.Windows.Forms.TabPage();
+            this.lblFondo = new System.Windows.Forms.Label();
+            this.btnFondo = new System.Windows.Forms.Button();
+            this.txtMotor = new System.Windows.Forms.TextBox();
             this.FotoBox4 = new System.Windows.Forms.PictureBox();
             this.FotoBox3 = new System.Windows.Forms.PictureBox();
             this.FotoBox2 = new System.Windows.Forms.PictureBox();
@@ -41,9 +44,6 @@
             this.HtmlPreview = new System.Windows.Forms.WebBrowser();
             this.Publicar = new System.Windows.Forms.TabPage();
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
-            this.txtMotor = new System.Windows.Forms.TextBox();
-            this.btnFondo = new System.Windows.Forms.Button();
-            this.lblFondo = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -83,6 +83,32 @@
             this.Diseño.TabIndex = 0;
             this.Diseño.Text = "Diseño";
             this.Diseño.UseVisualStyleBackColor = true;
+            // 
+            // lblFondo
+            // 
+            this.lblFondo.AutoSize = true;
+            this.lblFondo.Location = new System.Drawing.Point(137, 498);
+            this.lblFondo.Name = "lblFondo";
+            this.lblFondo.Size = new System.Drawing.Size(0, 13);
+            this.lblFondo.TabIndex = 10;
+            // 
+            // btnFondo
+            // 
+            this.btnFondo.Location = new System.Drawing.Point(7, 493);
+            this.btnFondo.Name = "btnFondo";
+            this.btnFondo.Size = new System.Drawing.Size(124, 23);
+            this.btnFondo.TabIndex = 9;
+            this.btnFondo.Text = "Escoger fondo";
+            this.btnFondo.UseVisualStyleBackColor = true;
+            this.btnFondo.Click += new System.EventHandler(this.btnFondo_Click);
+            // 
+            // txtMotor
+            // 
+            this.txtMotor.Location = new System.Drawing.Point(283, 247);
+            this.txtMotor.Name = "txtMotor";
+            this.txtMotor.Size = new System.Drawing.Size(282, 20);
+            this.txtMotor.TabIndex = 8;
+            this.txtMotor.Text = "Motor";
             // 
             // FotoBox4
             // 
@@ -184,32 +210,6 @@
             // 
             this.AbrirArchivo.FileName = "Abrir Imágen";
             this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
-            // 
-            // txtMotor
-            // 
-            this.txtMotor.Location = new System.Drawing.Point(283, 247);
-            this.txtMotor.Name = "txtMotor";
-            this.txtMotor.Size = new System.Drawing.Size(282, 20);
-            this.txtMotor.TabIndex = 8;
-            this.txtMotor.Text = "Motor";
-            // 
-            // btnFondo
-            // 
-            this.btnFondo.Location = new System.Drawing.Point(7, 493);
-            this.btnFondo.Name = "btnFondo";
-            this.btnFondo.Size = new System.Drawing.Size(124, 23);
-            this.btnFondo.TabIndex = 9;
-            this.btnFondo.Text = "Escoger fondo";
-            this.btnFondo.UseVisualStyleBackColor = true;
-            this.btnFondo.Click += new System.EventHandler(this.btnFondo_Click);
-            // 
-            // lblFondo
-            // 
-            this.lblFondo.AutoSize = true;
-            this.lblFondo.Location = new System.Drawing.Point(137, 498);
-            this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(0, 13);
-            this.lblFondo.TabIndex = 10;
             // 
             // MainForm
             // 

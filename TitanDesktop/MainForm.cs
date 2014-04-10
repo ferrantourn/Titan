@@ -111,7 +111,7 @@ namespace Titan
 
 </html>";
 
-            System.IO.File.WriteAllText(@"\index.html", text);
+            System.IO.File.WriteAllText(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "index.html"), text);
 
 
         }
