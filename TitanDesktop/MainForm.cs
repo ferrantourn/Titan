@@ -16,5 +16,33 @@ namespace Titan
         {
             InitializeComponent();
         }
+
+        private void FotoBox1_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            FotoBox1.ImageLocation = AbrirArchivo.FileName;
+            FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void FotoBox2_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            FotoBox2.ImageLocation = AbrirArchivo.FileName;
+            FotoBox2.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void FotoBox3_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            FotoBox3.ImageLocation = AbrirArchivo.FileName;
+            FotoBox3.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void FotoBox4_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            FotoBox4.ImageLocation = AbrirArchivo.FileName;
+            FotoBox4.SizeMode = PictureBoxSizeMode.Zoom;
+        }
     }
 }

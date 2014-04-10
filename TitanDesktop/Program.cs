@@ -18,5 +18,10 @@ namespace Titan
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+
+        static void GenerateHTML()
+        {
+ 
+        }
     }
 }
