@@ -23,6 +23,7 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             FotoBox1.ImageLocation = AbrirArchivo.FileName;
             FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            GenerateHTML();
         }
 
         private void FotoBox2_Click(object sender, EventArgs e)
@@ -30,6 +31,7 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             FotoBox2.ImageLocation = AbrirArchivo.FileName;
             FotoBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            GenerateHTML();
         }
 
         private void FotoBox3_Click(object sender, EventArgs e)
@@ -37,6 +39,7 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             FotoBox3.ImageLocation = AbrirArchivo.FileName;
             FotoBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            GenerateHTML();
         }
 
         private void FotoBox4_Click(object sender, EventArgs e)
@@ -44,17 +47,19 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             FotoBox4.ImageLocation = AbrirArchivo.FileName;
             FotoBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            GenerateHTML();
         }
 
         private void btnFondo_Click(object sender, EventArgs e)
         {
             AbrirArchivo.ShowDialog();
             lblFondo.Text = AbrirArchivo.FileName;
+            GenerateHTML();
 
         }
-        static void GenerateHTML()
+        private void GenerateHTML()
         {
-
+            
             string text = @"<html>
 
 <head>
@@ -70,23 +75,36 @@ namespace Titan
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 400px"" id=""Modelo"">
 <font color=""#FFFFFF"" size=""2"">"
             
-            +txtModelo.text + @"</font></div>
+            + txtModelo.Text + @"</font></div>
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 420px"" id=""Cilindrada"">
-<font color=""#FFFFFF"" size=""2"">#CILINDRADA#</font></div>
+<font color=""#FFFFFF"" size=""2"">" 
+            
+            + txtCilindrada.Text + @"</font></div>
 <div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 439px"" id=""Motor"">
-<font color=""#FFFFFF"" size=""2"">#MOTOR#</font></div>
+<font color=""#FFFFFF"" size=""2"">" 
+            
+            + txtMotor.Text + @"</font></div>
 <div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 489px"" id=""Descripcion"">
-<font color=""#FFFFFF"" size=""2"">#DESCRIPCION#</font></div>
-
+<font color=""#FFFFFF"" size=""2"">"
+            
+            + txtDescripcion.Text + @"</font></div>
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 3; left: 10px; top: 46px"" id=""foto1"">
-<img border=""0"" src=""img/Modelos/Vespa1.jpg"" width=""240"" height=""240""></div>
+<img border=""0"" src="""
+
+            + FotoBox1.ImageLocation +@""" width=""240"" height=""240""></div>
 <div style=""position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 46px"" id=""foto2"">
-<img border=""0"" src=""img/Modelos/Vespa2.jpg"" width=""420"" height=""240""></div>
+<img border=""0"" src=""" 
+            
+            + FotoBox2.ImageLocation + @""" width=""420"" height=""240""></div>
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 305px"" id=""foto3"">
-<img border=""0"" src=""img/Modelos/Vespa3.jpg"" width=""240"" height=""240""></div>
+<img border=""0"" src="""
+            + FotoBox3.ImageLocation + @""" width=""240"" height=""240""></div>
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 565px"" id=""foto4"">
-<img border=""0"" src=""img/Modelos/Vespa4.jpg"" width=""240"" height=""240""></div>
-<p><img border=""0"" src=""img/plantilla_fondo_V7.jpg"" width=""900"" height=""800""></p>
+<img border=""0"" src="""
+
+            + FotoBox4.ImageLocation + @"""img/Modelos/Vespa4.jpg"" width=""240"" height=""240""></div>
+<p><img border=""0"" src="""
+            + lblFondo.Text + @""" width=""900"" height=""800""></p>
 </div>
 
 </body>

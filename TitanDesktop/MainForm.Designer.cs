@@ -238,7 +238,7 @@
         private System.Windows.Forms.TabPage Previsualizar;
         private System.Windows.Forms.PictureBox FotoBox1;
         private System.Windows.Forms.WebBrowser HtmlPreview;
-        private System.Windows.Forms.TextBox txtModelo;
+        public System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtCilindrada;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TabPage Publicar;
