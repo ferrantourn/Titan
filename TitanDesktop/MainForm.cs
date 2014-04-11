@@ -59,6 +59,13 @@ namespace Titan
         }
         private void GenerateHTML()
         {
+            try
+            {
+                Uri Foto1 = new Uri(FotoBox1.ImageLocation);
+                Uri Foto2 = new Uri(FotoBox2.ImageLocation);
+                Uri Foto3 = new Uri(FotoBox3.ImageLocation);
+                Uri Foto4 = new Uri(FotoBox4.ImageLocation);
+                Uri Fondo = new Uri(lblFondo.Text);
 
             //copiar las imágenes a la working folder como idea opcional para el preview
             
@@ -93,30 +100,32 @@ namespace Titan
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 3; left: 10px; top: 46px"" id=""foto1"">
 <img border=""0"" src="""
 
-            + FotoBox1.ImageLocation +@""" width=""240"" height=""240""></div>
+            + Foto1 + @""" width=""240"" height=""240""></div>
 <div style=""position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 46px"" id=""foto2"">
 <img border=""0"" src=""" 
             
-            + FotoBox2.ImageLocation + @""" width=""420"" height=""240""></div>
+            + Foto2 + @""" width=""420"" height=""240""></div>
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 305px"" id=""foto3"">
 <img border=""0"" src="""
-            + FotoBox3.ImageLocation + @""" width=""240"" height=""240""></div>
+            + Foto3 + @""" width=""240"" height=""240""></div>
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 565px"" id=""foto4"">
 <img border=""0"" src="""
 
-            + FotoBox4.ImageLocation + @""" width=""240"" height=""240""></div>
+            + Foto4 + @""" width=""240"" height=""240""></div>
 <p><img border=""0"" src="""
-            + lblFondo.Text + @""" width=""900"" height=""800""></p>
+            + Fondo + @""" width=""900"" height=""800""></p>
 </div>
 
 </body>
 
 </html>";
-            string path = @"" + txtCarpetaTrabajo.Text + "index.html";
+            string path = @"" + txtCarpetaTrabajo.Text + "\\index.html";
             //System.IO.File.WriteAllText(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "index.html"), text);
             File.WriteAllText(path, text);
 
-
+            }
+            catch
+            { }
         }
 
         /// <summary>
@@ -150,7 +159,7 @@ namespace Titan
             AbrirCarpeta.ShowDialog();
             txtCarpetaTrabajo.Text = AbrirCarpeta.SelectedPath;
 
-            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
+            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "\\index.html");
             HtmlPreview.Url = WebPath;
         }
 
