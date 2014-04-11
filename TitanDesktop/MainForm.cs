@@ -112,7 +112,7 @@ namespace Titan
 </body>
 
 </html>";
-            string path = @"" + System.IO.Path.GetTempPath() + "index.html";
+            string path = @"" + txtCarpetaTrabajo.Text + "index.html";
             //System.IO.File.WriteAllText(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "index.html"), text);
             File.WriteAllText(path, text);
 
@@ -148,13 +148,16 @@ namespace Titan
         private void btnSeleccionarWorkingFolder_Click(object sender, EventArgs e)
         {
             AbrirCarpeta.ShowDialog();
-            lblCarpeta.Text = AbrirCarpeta.SelectedPath;
+            txtCarpetaTrabajo.Text = AbrirCarpeta.SelectedPath;
+
+            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
+            HtmlPreview.Url = WebPath;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            lblCarpetaTrabajo.Text = System.IO.Path.GetTempPath();
-            Uri WebPath = new Uri(lblCarpetaTrabajo.Text + "index.html");
+            txtCarpetaTrabajo.Text = System.IO.Path.GetTempPath();
+            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
         }
 

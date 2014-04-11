@@ -43,13 +43,13 @@
             this.Previsualizar = new System.Windows.Forms.TabPage();
             this.HtmlPreview = new System.Windows.Forms.WebBrowser();
             this.Publicar = new System.Windows.Forms.TabPage();
-            this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.Config = new System.Windows.Forms.TabPage();
-            this.lblCarpetaTrabajo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSeleccionarWorkingFolder = new System.Windows.Forms.Button();
-            this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
             this.lblCarpeta = new System.Windows.Forms.Label();
+            this.btnSeleccionarWorkingFolder = new System.Windows.Forms.Button();
+            this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
+            this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
+            this.txtCarpetaTrabajo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -214,17 +214,12 @@
             this.Publicar.Text = "Publicar";
             this.Publicar.UseVisualStyleBackColor = true;
             // 
-            // AbrirArchivo
-            // 
-            this.AbrirArchivo.FileName = "Abrir Imágen";
-            this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
-            // 
             // Config
             // 
+            this.Config.Controls.Add(this.label1);
+            this.Config.Controls.Add(this.txtCarpetaTrabajo);
             this.Config.Controls.Add(this.lblCarpeta);
             this.Config.Controls.Add(this.btnSeleccionarWorkingFolder);
-            this.Config.Controls.Add(this.label1);
-            this.Config.Controls.Add(this.lblCarpetaTrabajo);
             this.Config.Location = new System.Drawing.Point(4, 22);
             this.Config.Name = "Config";
             this.Config.Size = new System.Drawing.Size(571, 533);
@@ -232,22 +227,13 @@
             this.Config.Text = "Configuración";
             this.Config.UseVisualStyleBackColor = true;
             // 
-            // lblCarpetaTrabajo
+            // lblCarpeta
             // 
-            this.lblCarpetaTrabajo.AutoSize = true;
-            this.lblCarpetaTrabajo.Location = new System.Drawing.Point(193, 81);
-            this.lblCarpetaTrabajo.Name = "lblCarpetaTrabajo";
-            this.lblCarpetaTrabajo.Size = new System.Drawing.Size(0, 13);
-            this.lblCarpetaTrabajo.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(89, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Carpeta de trabajo:";
+            this.lblCarpeta.AutoSize = true;
+            this.lblCarpeta.Location = new System.Drawing.Point(193, 81);
+            this.lblCarpeta.Name = "lblCarpeta";
+            this.lblCarpeta.Size = new System.Drawing.Size(0, 13);
+            this.lblCarpeta.TabIndex = 3;
             // 
             // btnSeleccionarWorkingFolder
             // 
@@ -259,13 +245,27 @@
             this.btnSeleccionarWorkingFolder.UseVisualStyleBackColor = true;
             this.btnSeleccionarWorkingFolder.Click += new System.EventHandler(this.btnSeleccionarWorkingFolder_Click);
             // 
-            // lblCarpeta
+            // AbrirArchivo
             // 
-            this.lblCarpeta.AutoSize = true;
-            this.lblCarpeta.Location = new System.Drawing.Point(193, 81);
-            this.lblCarpeta.Name = "lblCarpeta";
-            this.lblCarpeta.Size = new System.Drawing.Size(0, 13);
-            this.lblCarpeta.TabIndex = 3;
+            this.AbrirArchivo.FileName = "Abrir Imágen";
+            this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
+            // 
+            // txtCarpetaTrabajo
+            // 
+            this.txtCarpetaTrabajo.Location = new System.Drawing.Point(174, 100);
+            this.txtCarpetaTrabajo.Name = "txtCarpetaTrabajo";
+            this.txtCarpetaTrabajo.ReadOnly = true;
+            this.txtCarpetaTrabajo.Size = new System.Drawing.Size(225, 20);
+            this.txtCarpetaTrabajo.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(171, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Carpeta de trabajo";
             // 
             // MainForm
             // 
@@ -311,11 +311,12 @@
         private System.Windows.Forms.Button btnFondo;
         private System.Windows.Forms.Label lblFondo;
         private System.Windows.Forms.TabPage Config;
+        private System.Windows.Forms.FolderBrowserDialog AbrirCarpeta;
         private System.Windows.Forms.Label lblCarpeta;
         private System.Windows.Forms.Button btnSeleccionarWorkingFolder;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCarpetaTrabajo;
-        private System.Windows.Forms.FolderBrowserDialog AbrirCarpeta;
+        private System.Windows.Forms.TextBox txtCarpetaTrabajo;
+
     }
 }
 
