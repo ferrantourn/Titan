@@ -59,6 +59,8 @@ namespace Titan
         }
         private void GenerateHTML()
         {
+
+            //copiar las imágenes a la working folder como idea opcional para el preview
             
             string text = @"<html>
 
@@ -102,7 +104,7 @@ namespace Titan
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 10px; top: 565px"" id=""foto4"">
 <img border=""0"" src="""
 
-            + FotoBox4.ImageLocation + @"""img/Modelos/Vespa4.jpg"" width=""240"" height=""240""></div>
+            + FotoBox4.ImageLocation + @""" width=""240"" height=""240""></div>
 <p><img border=""0"" src="""
             + lblFondo.Text + @""" width=""900"" height=""800""></p>
 </div>
@@ -110,8 +112,9 @@ namespace Titan
 </body>
 
 </html>";
-
-            System.IO.File.WriteAllText(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "index.html"), text);
+            string path = @"" + System.IO.Path.GetTempPath() + "index.html";
+            //System.IO.File.WriteAllText(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "index.html"), text);
+            File.WriteAllText(path, text);
 
 
         }
@@ -140,6 +143,19 @@ namespace Titan
                 }
             }
             return contenido;
+        }
+
+        private void btnSeleccionarWorkingFolder_Click(object sender, EventArgs e)
+        {
+            AbrirCarpeta.ShowDialog();
+            lblCarpeta.Text = AbrirCarpeta.SelectedPath;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            lblCarpetaTrabajo.Text = System.IO.Path.GetTempPath();
+            Uri WebPath = new Uri(lblCarpetaTrabajo.Text + "index.html");
+            HtmlPreview.Url = WebPath;
         }
 
         
