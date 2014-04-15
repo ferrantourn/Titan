@@ -42,14 +42,16 @@
             this.FotoBox1 = new System.Windows.Forms.PictureBox();
             this.Previsualizar = new System.Windows.Forms.TabPage();
             this.HtmlPreview = new System.Windows.Forms.WebBrowser();
+            this.PrevisualizarJPG = new System.Windows.Forms.TabPage();
+            this.PreviewJPG = new System.Windows.Forms.PictureBox();
             this.Publicar = new System.Windows.Forms.TabPage();
             this.Config = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCarpetaTrabajo = new System.Windows.Forms.TextBox();
             this.lblCarpeta = new System.Windows.Forms.Label();
             this.btnSeleccionarWorkingFolder = new System.Windows.Forms.Button();
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
-            this.txtCarpetaTrabajo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -57,6 +59,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox1)).BeginInit();
             this.Previsualizar.SuspendLayout();
+            this.PrevisualizarJPG.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewJPG)).BeginInit();
             this.Config.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +68,7 @@
             // 
             this.tab1.Controls.Add(this.Diseño);
             this.tab1.Controls.Add(this.Previsualizar);
+            this.tab1.Controls.Add(this.PrevisualizarJPG);
             this.tab1.Controls.Add(this.Publicar);
             this.tab1.Controls.Add(this.Config);
             this.tab1.Location = new System.Drawing.Point(13, 13);
@@ -204,6 +209,24 @@
             this.HtmlPreview.TabIndex = 0;
             this.HtmlPreview.Url = new System.Uri("", System.UriKind.Relative);
             // 
+            // PrevisualizarJPG
+            // 
+            this.PrevisualizarJPG.Controls.Add(this.PreviewJPG);
+            this.PrevisualizarJPG.Location = new System.Drawing.Point(4, 22);
+            this.PrevisualizarJPG.Name = "PrevisualizarJPG";
+            this.PrevisualizarJPG.Size = new System.Drawing.Size(571, 533);
+            this.PrevisualizarJPG.TabIndex = 4;
+            this.PrevisualizarJPG.Text = "Previsualizar JPG";
+            this.PrevisualizarJPG.UseVisualStyleBackColor = true;
+            // 
+            // PreviewJPG
+            // 
+            this.PreviewJPG.Location = new System.Drawing.Point(3, 3);
+            this.PreviewJPG.Name = "PreviewJPG";
+            this.PreviewJPG.Size = new System.Drawing.Size(565, 527);
+            this.PreviewJPG.TabIndex = 0;
+            this.PreviewJPG.TabStop = false;
+            // 
             // Publicar
             // 
             this.Publicar.Location = new System.Drawing.Point(4, 22);
@@ -226,6 +249,23 @@
             this.Config.TabIndex = 3;
             this.Config.Text = "Configuración";
             this.Config.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(171, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Carpeta de trabajo";
+            // 
+            // txtCarpetaTrabajo
+            // 
+            this.txtCarpetaTrabajo.Location = new System.Drawing.Point(174, 100);
+            this.txtCarpetaTrabajo.Name = "txtCarpetaTrabajo";
+            this.txtCarpetaTrabajo.ReadOnly = true;
+            this.txtCarpetaTrabajo.Size = new System.Drawing.Size(225, 20);
+            this.txtCarpetaTrabajo.TabIndex = 4;
             // 
             // lblCarpeta
             // 
@@ -250,23 +290,6 @@
             this.AbrirArchivo.FileName = "Abrir Imágen";
             this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
             // 
-            // txtCarpetaTrabajo
-            // 
-            this.txtCarpetaTrabajo.Location = new System.Drawing.Point(174, 100);
-            this.txtCarpetaTrabajo.Name = "txtCarpetaTrabajo";
-            this.txtCarpetaTrabajo.ReadOnly = true;
-            this.txtCarpetaTrabajo.Size = new System.Drawing.Size(225, 20);
-            this.txtCarpetaTrabajo.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Carpeta de trabajo";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,6 +309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox1)).EndInit();
             this.Previsualizar.ResumeLayout(false);
+            this.PrevisualizarJPG.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PreviewJPG)).EndInit();
             this.Config.ResumeLayout(false);
             this.Config.PerformLayout();
             this.ResumeLayout(false);
@@ -316,6 +341,8 @@
         private System.Windows.Forms.Button btnSeleccionarWorkingFolder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCarpetaTrabajo;
+        private System.Windows.Forms.TabPage PrevisualizarJPG;
+        private System.Windows.Forms.PictureBox PreviewJPG;
 
     }
 }
