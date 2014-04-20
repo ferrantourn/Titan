@@ -30,6 +30,9 @@
         {
             this.tab1 = new System.Windows.Forms.TabControl();
             this.Diseño = new System.Windows.Forms.TabPage();
+            this.btnPlantillaPrecio = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblFondo = new System.Windows.Forms.Label();
             this.btnFondo = new System.Windows.Forms.Button();
             this.txtMotor = new System.Windows.Forms.TextBox();
@@ -52,6 +55,7 @@
             this.btnSeleccionarWorkingFolder = new System.Windows.Forms.Button();
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
+            this.lblPrecio = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -74,11 +78,15 @@
             this.tab1.Location = new System.Drawing.Point(13, 13);
             this.tab1.Name = "tab1";
             this.tab1.SelectedIndex = 0;
-            this.tab1.Size = new System.Drawing.Size(579, 559);
+            this.tab1.Size = new System.Drawing.Size(579, 570);
             this.tab1.TabIndex = 0;
             // 
             // Diseño
             // 
+            this.Diseño.Controls.Add(this.lblPrecio);
+            this.Diseño.Controls.Add(this.btnPlantillaPrecio);
+            this.Diseño.Controls.Add(this.label2);
+            this.Diseño.Controls.Add(this.txtPrecio);
             this.Diseño.Controls.Add(this.lblFondo);
             this.Diseño.Controls.Add(this.btnFondo);
             this.Diseño.Controls.Add(this.txtMotor);
@@ -92,18 +100,47 @@
             this.Diseño.Location = new System.Drawing.Point(4, 22);
             this.Diseño.Name = "Diseño";
             this.Diseño.Padding = new System.Windows.Forms.Padding(3);
-            this.Diseño.Size = new System.Drawing.Size(571, 533);
+            this.Diseño.Size = new System.Drawing.Size(571, 544);
             this.Diseño.TabIndex = 0;
             this.Diseño.Text = "Diseño";
             this.Diseño.UseVisualStyleBackColor = true;
             // 
+            // btnPlantillaPrecio
+            // 
+            this.btnPlantillaPrecio.Location = new System.Drawing.Point(283, 493);
+            this.btnPlantillaPrecio.Name = "btnPlantillaPrecio";
+            this.btnPlantillaPrecio.Size = new System.Drawing.Size(124, 23);
+            this.btnPlantillaPrecio.TabIndex = 13;
+            this.btnPlantillaPrecio.Text = "Escoger plantilla precio";
+            this.btnPlantillaPrecio.UseVisualStyleBackColor = true;
+            this.btnPlantillaPrecio.Click += new System.EventHandler(this.btnPlantillaPrecio_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(283, 468);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Precio:";
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(329, 465);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.TabIndex = 11;
+            this.txtPrecio.Text = "0";
+            this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // lblFondo
             // 
             this.lblFondo.AutoSize = true;
-            this.lblFondo.Location = new System.Drawing.Point(137, 498);
+            this.lblFondo.Location = new System.Drawing.Point(6, 519);
             this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(0, 13);
+            this.lblFondo.Size = new System.Drawing.Size(25, 13);
             this.lblFondo.TabIndex = 10;
+            this.lblFondo.Text = "___";
             // 
             // btnFondo
             // 
@@ -174,7 +211,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(283, 273);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(282, 213);
+            this.txtDescripcion.Size = new System.Drawing.Size(282, 186);
             this.txtDescripcion.TabIndex = 2;
             this.txtDescripcion.Text = "Descripcion";
             // 
@@ -194,7 +231,7 @@
             this.Previsualizar.Location = new System.Drawing.Point(4, 22);
             this.Previsualizar.Name = "Previsualizar";
             this.Previsualizar.Padding = new System.Windows.Forms.Padding(3);
-            this.Previsualizar.Size = new System.Drawing.Size(571, 533);
+            this.Previsualizar.Size = new System.Drawing.Size(571, 553);
             this.Previsualizar.TabIndex = 1;
             this.Previsualizar.Text = "Previsualizar";
             this.Previsualizar.UseVisualStyleBackColor = true;
@@ -205,7 +242,7 @@
             this.HtmlPreview.Location = new System.Drawing.Point(3, 3);
             this.HtmlPreview.MinimumSize = new System.Drawing.Size(20, 20);
             this.HtmlPreview.Name = "HtmlPreview";
-            this.HtmlPreview.Size = new System.Drawing.Size(565, 527);
+            this.HtmlPreview.Size = new System.Drawing.Size(565, 547);
             this.HtmlPreview.TabIndex = 0;
             this.HtmlPreview.Url = new System.Uri("", System.UriKind.Relative);
             // 
@@ -214,7 +251,7 @@
             this.PrevisualizarJPG.Controls.Add(this.PreviewJPG);
             this.PrevisualizarJPG.Location = new System.Drawing.Point(4, 22);
             this.PrevisualizarJPG.Name = "PrevisualizarJPG";
-            this.PrevisualizarJPG.Size = new System.Drawing.Size(571, 533);
+            this.PrevisualizarJPG.Size = new System.Drawing.Size(571, 553);
             this.PrevisualizarJPG.TabIndex = 4;
             this.PrevisualizarJPG.Text = "Previsualizar JPG";
             this.PrevisualizarJPG.UseVisualStyleBackColor = true;
@@ -232,7 +269,7 @@
             this.Publicar.Location = new System.Drawing.Point(4, 22);
             this.Publicar.Name = "Publicar";
             this.Publicar.Padding = new System.Windows.Forms.Padding(3);
-            this.Publicar.Size = new System.Drawing.Size(571, 533);
+            this.Publicar.Size = new System.Drawing.Size(571, 553);
             this.Publicar.TabIndex = 2;
             this.Publicar.Text = "Publicar";
             this.Publicar.UseVisualStyleBackColor = true;
@@ -245,7 +282,7 @@
             this.Config.Controls.Add(this.btnSeleccionarWorkingFolder);
             this.Config.Location = new System.Drawing.Point(4, 22);
             this.Config.Name = "Config";
-            this.Config.Size = new System.Drawing.Size(571, 533);
+            this.Config.Size = new System.Drawing.Size(571, 553);
             this.Config.TabIndex = 3;
             this.Config.Text = "Configuración";
             this.Config.UseVisualStyleBackColor = true;
@@ -290,11 +327,20 @@
             this.AbrirArchivo.FileName = "Abrir Imágen";
             this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
             // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(283, 519);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(25, 13);
+            this.lblPrecio.TabIndex = 14;
+            this.lblPrecio.Text = "___";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 584);
+            this.ClientSize = new System.Drawing.Size(604, 594);
             this.Controls.Add(this.tab1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -343,6 +389,10 @@
         private System.Windows.Forms.TextBox txtCarpetaTrabajo;
         private System.Windows.Forms.TabPage PrevisualizarJPG;
         private System.Windows.Forms.PictureBox PreviewJPG;
+        private System.Windows.Forms.Button btnPlantillaPrecio;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label lblPrecio;
 
     }
 }

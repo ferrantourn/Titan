@@ -61,6 +61,14 @@ namespace Titan
             GenerateHTMLJPG();
 
         }
+
+        private void btnPlantillaPrecio_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            lblPrecio.Text = AbrirArchivo.FileName;
+            GenerateHTMLJPG();
+        }
+
         private void GenerateHTMLJPG()
         {
             Uri Foto1 = null;
@@ -68,7 +76,7 @@ namespace Titan
             Uri Foto3 = null;
             Uri Foto4 = null;
             Uri Fondo = null;
-
+            Uri Precio = null;
             try
             {
                 Foto1 = new Uri(FotoBox1.ImageLocation);
@@ -76,6 +84,7 @@ namespace Titan
                 Foto3 = new Uri(FotoBox3.ImageLocation);
                 Foto4 = new Uri(FotoBox4.ImageLocation);
                 Fondo = new Uri(lblFondo.Text);
+                Precio = new Uri(lblPrecio.Text);
 
             }
             catch
@@ -131,6 +140,9 @@ namespace Titan
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 545px"" id=""foto4"">
 <img border=""0"" src="""
                 + Foto4 + @""" width=""240"" height=""240""></div>
+
+<div style=""position: absolute; width: 584px; height: 95px; z-index: 1; left: 291px; top: 686px"" id=""precio"">
+<img border=""0"" src=""" + Precio + @""" width=""584"" height=""95""></div>
 
 <p><img border=""0"" src="""
                 + Fondo + @""" width=""900"" height=""800""></p>
@@ -204,6 +216,8 @@ namespace Titan
             Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
         }
+
+
 
 
     }
