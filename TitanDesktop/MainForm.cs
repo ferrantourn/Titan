@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 
+
 namespace Titan
 {
     public partial class MainForm : Form
@@ -26,8 +27,11 @@ namespace Titan
         {
             AbrirArchivo.ShowDialog();
             FotoBox1.ImageLocation = AbrirArchivo.FileName;
+            Uri direccion = new Uri(AbrirArchivo.FileName);
+            GenerateCrop(direccion);
+            /*
             FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            GenerateHTMLJPG();
+            GenerateHTMLJPG();*/
         }
 
         private void FotoBox2_Click(object sender, EventArgs e)
@@ -69,22 +73,75 @@ namespace Titan
             GenerateHTMLJPG();
         }
 
+        private void GenerateCrop(Uri direccion)
+        {
+
+
+
+            string text = @"<html>
+
+<head>
+<script src=""js/jquery.min.js""></script>
+<script src=""js/jquery.Jcrop.min.js""></script>
+<link rel=""stylesheet"" href=""css/jquery.Jcrop.css"" type=""text/css"" />
+</head>
+
+<script language=""Javascript"">
+jQuery(function($) {
+$('#target').Jcrop({            bgColor:     'black',
+            bgOpacity:   .4,
+            setSelect:   [ 100, 100, 50, 50 ]});
+});
+</script>
+
+<body>
+<img src=""" + direccion
++ @""" id=""target"" width=""900"" height=""800"" />
+</body>
+</html>";
+
+            File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "\\crop.html", text);
+            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "crop.html");
+            Resizer r = new Resizer();
+            r.Show();
+            r.ResizerBrowser.Url = WebPath;
+        }
+
         private void GenerateHTMLJPG()
         {
-            Uri Foto1 = null;
-            Uri Foto2 = null;
-            Uri Foto3 = null;
-            Uri Foto4 = null;
-            Uri Fondo = null;
-            Uri Precio = null;
+            Uri Foto1 = new Uri("file:///C:/");//nueva dirección vacía
+            Uri Foto2 = new Uri("file:///C:/");
+            Uri Foto3 = new Uri("file:///C:/");
+            Uri Foto4 = new Uri("file:///C:/");
+            Uri Fondo = new Uri("file:///C:/");
+            Uri Precio = new Uri("file:///C:/");
+            String TextoDescripcion = txtDescripcion.Text.Replace(Environment.NewLine, "<br>");
             try
             {
-                Foto1 = new Uri(FotoBox1.ImageLocation);
-                Foto2 = new Uri(FotoBox2.ImageLocation);
-                Foto3 = new Uri(FotoBox3.ImageLocation);
-                Foto4 = new Uri(FotoBox4.ImageLocation);
-                Fondo = new Uri(lblFondo.Text);
-                Precio = new Uri(lblPrecio.Text);
+                if (FotoBox1.ImageLocation!=null)
+                {
+                    Foto1 = new Uri(FotoBox1.ImageLocation);
+                }
+                if(FotoBox2.ImageLocation!=null)
+                {
+                    Foto2 = new Uri(FotoBox2.ImageLocation);
+                }
+                if (FotoBox3.ImageLocation != null)
+                {
+                    Foto3 = new Uri(FotoBox3.ImageLocation);
+                }
+                if (FotoBox4.ImageLocation != null)
+                {
+                    Foto4 = new Uri(FotoBox4.ImageLocation);
+                }
+                if (lblFondo.Text != "")
+                {
+                    Fondo = new Uri(lblFondo.Text);
+                }
+                if (lblPrecio.Text != "")
+                {
+                    Precio = new Uri(lblPrecio.Text);
+                }
 
             }
             catch
@@ -123,7 +180,7 @@ namespace Titan
 <div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 469px"" id=""Descripcion"">
 <font color=""#FFFFFF"" size=""2"">"
 
-                + txtDescripcion.Text + @"</font></div>
+                + TextoDescripcion + @"</font></div>
 
 <div style=""position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px"" id=""foto1"">
 <img border=""0"" src="""
