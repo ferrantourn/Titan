@@ -63,7 +63,13 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             lblFondo.Text = AbrirArchivo.FileName;
             GenerateHTMLJPG();
+        }
 
+        private void btnLogo_Click(object sender, EventArgs e)
+        {
+            AbrirArchivo.ShowDialog();
+            lblLogo.Text = AbrirArchivo.FileName;
+            GenerateHTMLJPG();
         }
 
         private void btnPlantillaPrecio_Click(object sender, EventArgs e)
@@ -114,7 +120,9 @@ $('#target').Jcrop({            bgColor:     'black',
             Uri Foto3 = new Uri("file:///C:/");
             Uri Foto4 = new Uri("file:///C:/");
             Uri Fondo = new Uri("file:///C:/");
-            Uri Precio = new Uri("file:///C:/");
+            Uri PrecioFondo = new Uri("file:///C:/");
+            Uri Logo = new Uri("file:///C:/");
+
             String TextoDescripcion = txtDescripcion.Text.Replace(Environment.NewLine, "<br>");
             try
             {
@@ -140,7 +148,11 @@ $('#target').Jcrop({            bgColor:     'black',
                 }
                 if (lblPrecio.Text != "")
                 {
-                    Precio = new Uri(lblPrecio.Text);
+                    PrecioFondo = new Uri(lblPrecio.Text);
+                }
+                if (lblLogo.Text != "")
+                {
+                    Logo = new Uri(lblLogo.Text);
                 }
 
             }
@@ -198,8 +210,15 @@ $('#target').Jcrop({            bgColor:     'black',
 <img border=""0"" src="""
                 + Foto4 + @""" width=""240"" height=""240""></div>
 
-<div style=""position: absolute; width: 584px; height: 95px; z-index: 1; left: 291px; top: 686px"" id=""precio"">
-<img border=""0"" src=""" + Precio + @""" width=""584"" height=""95""></div>
+<div style=""position: absolute; width: 584px; height: 95px; z-index: 1; left: 291px; top: 686px"" id=""precioFondo"">
+<img border=""0"" src=""" + PrecioFondo + @""" width=""584"" height=""95""></div>
+
+<div style=""position: absolute; width: 80px; height: 50px; z-index: 4; left: 298px; top: 724px"" align=""center"" id=""precio"">
+<font color=""#FFFFFF"" size=""4"">" + txtPrecio.Text
++ @"</font></div>
+
+<div style=""position: absolute; width: 584px; height: 95px; z-index: 1; left: 300px; top: 290px"" id=""Logo"">
+<img border=""0"" src=""" + Logo + @""" width=""185"" height=""76""></div>
 
 <p><img border=""0"" src="""
                 + Fondo + @""" width=""900"" height=""800""></p>
@@ -273,8 +292,6 @@ $('#target').Jcrop({            bgColor:     'black',
             Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
         }
-
-
 
 
     }
