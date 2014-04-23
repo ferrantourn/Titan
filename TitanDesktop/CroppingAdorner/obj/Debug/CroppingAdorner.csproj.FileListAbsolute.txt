@@ -1,0 +1,7 @@
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\bin\Debug\CroppingAdorner.dll
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\bin\Debug\CroppingAdorner.pdb
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\obj\Debug\CroppingAdorner.csprojResolveAssemblyReference.cache
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\obj\Debug\DAP.Adorners.Properties.Resources.resources
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\obj\Debug\CroppingAdorner.csproj.GenerateResource.Cache
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\obj\Debug\CroppingAdorner.dll
+C:\Users\FitoServer\Desktop\CroppingAdorner\CroppingAdorner\obj\Debug\CroppingAdorner.pdb

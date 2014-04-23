@@ -16,6 +16,17 @@ namespace Titan
     public partial class MainForm : Form
     {
 
+        public int numeroFoto;
+        private static MainForm instance;
+
+        public static MainForm Instance
+        {
+            get 
+            {
+                return instance;
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -28,10 +39,16 @@ namespace Titan
             AbrirArchivo.ShowDialog();
             FotoBox1.ImageLocation = AbrirArchivo.FileName;
             Uri direccion = new Uri(AbrirArchivo.FileName);
+            numeroFoto = 1; //indica que se va a cargar una foto en el Fotobox 1
+            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\temp1.jpg"))
+            {
+                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\temp1.jpg");
+            }
+
             GenerateCrop(direccion);
-            /*
+            
             FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            GenerateHTMLJPG();*/
+            GenerateHTMLJPG();
         }
 
         private void FotoBox2_Click(object sender, EventArgs e)
@@ -81,39 +98,12 @@ namespace Titan
 
         private void GenerateCrop(Uri direccion)
         {
-
-
-
-            string text = @"<html>
-
-<head>
-<script src=""js/jquery.min.js""></script>
-<script src=""js/jquery.Jcrop.min.js""></script>
-<link rel=""stylesheet"" href=""css/jquery.Jcrop.css"" type=""text/css"" />
-</head>
-
-<script language=""Javascript"">
-jQuery(function($) {
-$('#target').Jcrop({            bgColor:     'black',
-            bgOpacity:   .4,
-            setSelect:   [ 100, 100, 50, 50 ]});
-});
-</script>
-
-<body>
-<img src=""" + direccion
-+ @""" id=""target"" width=""900"" height=""800"" />
-</body>
-</html>";
-
-            File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "\\crop.html", text);
-            Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "crop.html");
             Resizer r = new Resizer();
             r.Show();
-            r.ResizerBrowser.Url = WebPath;
+            r.SrcPicBox.ImageLocation = direccion.ToString();
         }
 
-        private void GenerateHTMLJPG()
+        public void GenerateHTMLJPG()
         {
             Uri Foto1 = new Uri("file:///C:/");//nueva dirección vacía
             Uri Foto2 = new Uri("file:///C:/");
@@ -126,33 +116,68 @@ $('#target').Jcrop({            bgColor:     'black',
             String TextoDescripcion = txtDescripcion.Text.Replace(Environment.NewLine, "<br>");
             try
             {
-                if (FotoBox1.ImageLocation!=null)
+                if (FotoBox1.ImageLocation != null)
                 {
                     Foto1 = new Uri(FotoBox1.ImageLocation);
                 }
+                else
+                {
+                    Foto1 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
                 if(FotoBox2.ImageLocation!=null)
                 {
                     Foto2 = new Uri(FotoBox2.ImageLocation);
                 }
+                else
+                {
+                    Foto2 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
                 if (FotoBox3.ImageLocation != null)
                 {
                     Foto3 = new Uri(FotoBox3.ImageLocation);
                 }
+                else
+                {
+                    Foto3 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
                 if (FotoBox4.ImageLocation != null)
                 {
                     Foto4 = new Uri(FotoBox4.ImageLocation);
                 }
+                else
+                {
+                    Foto4 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
+
                 if (lblFondo.Text != "")
                 {
                     Fondo = new Uri(lblFondo.Text);
                 }
+                else
+                {
+                    Fondo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
                 if (lblPrecio.Text != "")
                 {
                     PrecioFondo = new Uri(lblPrecio.Text);
                 }
+                else
+                {
+                    PrecioFondo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                }
+
                 if (lblLogo.Text != "")
                 {
                     Logo = new Uri(lblLogo.Text);
+                }
+                else
+                {
+                    Logo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
                 }
 
             }
@@ -289,8 +314,21 @@ $('#target').Jcrop({            bgColor:     'black',
         private void MainForm_Load(object sender, EventArgs e)
         {
             txtCarpetaTrabajo.Text = System.IO.Path.GetTempPath();
+            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\index.html"))
+            {
+                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\index.html");
+            }
             Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
+            instance = this;
+            lblFondo.Text = "";
+            lblLogo.Text = "";
+            lblPrecio.Text = "";
+        }
+
+        private void btnGuardarJPG_Click(object sender, EventArgs e)
+        {
+
         }
 
 
