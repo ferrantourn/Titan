@@ -317,6 +317,10 @@ namespace Titan
             {
                 File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\index.html");
             }
+            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\index.jpg"))
+            {
+                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\index.jpg");
+            }
             Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
             instance = this;
@@ -331,7 +335,7 @@ namespace Titan
             GuardarJPG = new SaveFileDialog();
 
             GuardarJPG.Filter = "arhivos JPG (*.jpg)|*.jpg|Todos los archivos (*.*)|*.*";
-            GuardarJPG.FilterIndex = 2;
+            GuardarJPG.FilterIndex = 1;
             GuardarJPG.RestoreDirectory = true;
             try
             {
@@ -340,7 +344,7 @@ namespace Titan
                 {
                     if ((GuardarJPG.OpenFile()) != null)
                     {
-                        System.IO.File.Copy(@"" + txtCarpetaTrabajo.Text + "index.jpg", @"" + GuardarJPG.FileName, false);
+                        File.Copy(@"" + txtCarpetaTrabajo.Text + "index.jpg", @"" + GuardarJPG.FileName, false);
                     }
                 }
             }
@@ -348,6 +352,11 @@ namespace Titan
             {
                 MessageBox.Show("Error, archivo en uso por otro proceso");            
             }
+        }
+
+        private void btnAbrirProyecto_Click(object sender, EventArgs e)
+        {
+
         }
 
 
