@@ -49,6 +49,12 @@
             this.Previsualizar = new System.Windows.Forms.TabPage();
             this.HtmlPreview = new System.Windows.Forms.WebBrowser();
             this.AbrirGuardar = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAbrirProyecto = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGuardarJPG = new System.Windows.Forms.Button();
             this.Config = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCarpetaTrabajo = new System.Windows.Forms.TextBox();
@@ -56,13 +62,7 @@
             this.btnSeleccionarWorkingFolder = new System.Windows.Forms.Button();
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnGuardarJPG = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.GuardarJPG = new System.Windows.Forms.SaveFileDialog();
-            this.btnAbrirProyecto = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -297,6 +297,63 @@
             this.AbrirGuardar.Text = "Abrir/Guardar";
             this.AbrirGuardar.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(141, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Abre un proyecto formato TITAN";
+            // 
+            // btnAbrirProyecto
+            // 
+            this.btnAbrirProyecto.Location = new System.Drawing.Point(27, 19);
+            this.btnAbrirProyecto.Name = "btnAbrirProyecto";
+            this.btnAbrirProyecto.Size = new System.Drawing.Size(108, 23);
+            this.btnAbrirProyecto.TabIndex = 4;
+            this.btnAbrirProyecto.Text = "Abrir proyecto";
+            this.btnAbrirProyecto.UseVisualStyleBackColor = true;
+            this.btnAbrirProyecto.Click += new System.EventHandler(this.btnAbrirProyecto_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(141, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(292, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Guarda proyecto en formato TITAN para su posterior edición";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(141, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(264, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Guardar la imágen en formato JPG para su publicación";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(27, 125);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Guardar Proyecto";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnGuardarProyecto_Click);
+            // 
+            // btnGuardarJPG
+            // 
+            this.btnGuardarJPG.Location = new System.Drawing.Point(27, 95);
+            this.btnGuardarJPG.Name = "btnGuardarJPG";
+            this.btnGuardarJPG.Size = new System.Drawing.Size(108, 23);
+            this.btnGuardarJPG.TabIndex = 0;
+            this.btnGuardarJPG.Text = "Exportar JPG";
+            this.btnGuardarJPG.UseVisualStyleBackColor = true;
+            this.btnGuardarJPG.Click += new System.EventHandler(this.btnGuardarJPG_Click);
+            // 
             // Config
             // 
             this.Config.Controls.Add(this.label1);
@@ -350,62 +407,6 @@
             this.AbrirArchivo.FileName = "Abrir Imágen";
             this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
             // 
-            // btnGuardarJPG
-            // 
-            this.btnGuardarJPG.Location = new System.Drawing.Point(27, 95);
-            this.btnGuardarJPG.Name = "btnGuardarJPG";
-            this.btnGuardarJPG.Size = new System.Drawing.Size(108, 23);
-            this.btnGuardarJPG.TabIndex = 0;
-            this.btnGuardarJPG.Text = "Exportar JPG";
-            this.btnGuardarJPG.UseVisualStyleBackColor = true;
-            this.btnGuardarJPG.Click += new System.EventHandler(this.btnGuardarJPG_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(27, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Guardar Proyecto";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(141, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(264, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Guardar la imágen en formato JPG para su publicación";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(141, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(292, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Guarda proyecto en formato TITAN para su posterior edición";
-            // 
-            // btnAbrirProyecto
-            // 
-            this.btnAbrirProyecto.Location = new System.Drawing.Point(27, 19);
-            this.btnAbrirProyecto.Name = "btnAbrirProyecto";
-            this.btnAbrirProyecto.Size = new System.Drawing.Size(108, 23);
-            this.btnAbrirProyecto.TabIndex = 4;
-            this.btnAbrirProyecto.Text = "Abrir proyecto";
-            this.btnAbrirProyecto.UseVisualStyleBackColor = true;
-            this.btnAbrirProyecto.Click += new System.EventHandler(this.btnAbrirProyecto_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(141, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Abre un proyecto formato TITAN";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,16 +442,16 @@
         public System.Windows.Forms.PictureBox FotoBox1;
         private System.Windows.Forms.WebBrowser HtmlPreview;
         public System.Windows.Forms.TextBox txtModelo;
-        private System.Windows.Forms.TextBox txtCilindrada;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        public System.Windows.Forms.TextBox txtCilindrada;
+        public System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TabPage AbrirGuardar;
         public System.Windows.Forms.PictureBox FotoBox4;
         public System.Windows.Forms.PictureBox FotoBox3;
         public System.Windows.Forms.PictureBox FotoBox2;
         private System.Windows.Forms.OpenFileDialog AbrirArchivo;
-        private System.Windows.Forms.TextBox txtMotor;
+        public System.Windows.Forms.TextBox txtMotor;
         private System.Windows.Forms.Button btnFondo;
-        private System.Windows.Forms.Label lblFondo;
+        public System.Windows.Forms.Label lblFondo;
         private System.Windows.Forms.TabPage Config;
         private System.Windows.Forms.FolderBrowserDialog AbrirCarpeta;
         private System.Windows.Forms.Label lblCarpeta;
@@ -459,10 +460,10 @@
         public System.Windows.Forms.TextBox txtCarpetaTrabajo;
         private System.Windows.Forms.Button btnPlantillaPrecio;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPrecio;
+        public System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnLogo;
-        private System.Windows.Forms.Label lblLogo;
+        public System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Button btnGuardarJPG;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

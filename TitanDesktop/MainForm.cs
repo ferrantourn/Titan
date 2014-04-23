@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Xml;
 
 
 namespace Titan
@@ -116,7 +117,7 @@ namespace Titan
             String TextoDescripcion = txtDescripcion.Text.Replace(Environment.NewLine, "<br>");
             try
             {
-                if (FotoBox1.ImageLocation != null)
+                if (FotoBox1.ImageLocation != null && FotoBox1.ImageLocation.ToString().Length != 0)
                 {
                     Foto1 = new Uri(FotoBox1.ImageLocation);
                 }
@@ -125,7 +126,7 @@ namespace Titan
                     Foto1 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
                 }
 
-                if(FotoBox2.ImageLocation!=null)
+                if (FotoBox2.ImageLocation != null && FotoBox2.ImageLocation.ToString().Length != 0)
                 {
                     Foto2 = new Uri(FotoBox2.ImageLocation);
                 }
@@ -134,7 +135,7 @@ namespace Titan
                     Foto2 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
                 }
 
-                if (FotoBox3.ImageLocation != null)
+                if (FotoBox3.ImageLocation != null && FotoBox3.ImageLocation.ToString().Length != 0)
                 {
                     Foto3 = new Uri(FotoBox3.ImageLocation);
                 }
@@ -143,7 +144,7 @@ namespace Titan
                     Foto3 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
                 }
 
-                if (FotoBox4.ImageLocation != null)
+                if (FotoBox4.ImageLocation != null && FotoBox4.ImageLocation.ToString().Length != 0)
                 {
                     Foto4 = new Uri(FotoBox4.ImageLocation);
                 }
@@ -151,7 +152,6 @@ namespace Titan
                 {
                     Foto4 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
                 }
-
 
                 if (lblFondo.Text != "")
                 {
@@ -356,9 +356,63 @@ namespace Titan
 
         private void btnAbrirProyecto_Click(object sender, EventArgs e)
         {
+            XmlReader reader = XmlReader.Create(@"" + txtCarpetaTrabajo.Text + "\\proyecto.xml");
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element
+                && reader.Name == "Producto")
+                {
+
+                    FotoBox1.ImageLocation = reader.GetAttribute(0);
+                    FotoBox2.ImageLocation = reader.GetAttribute(1);
+                    FotoBox3.ImageLocation = reader.GetAttribute(2);
+                    FotoBox4.ImageLocation = reader.GetAttribute(3);
+                    lblLogo.Text = reader.GetAttribute(4);
+                    lblPrecio.Text = reader.GetAttribute(5);
+                    lblFondo.Text = reader.GetAttribute(6);
+                    txtCilindrada.Text = reader.GetAttribute(7);
+                    txtModelo.Text = reader.GetAttribute(8);
+                    txtMotor.Text = reader.GetAttribute(9);
+                    txtDescripcion.Text = reader.GetAttribute(10);
+                    txtPrecio.Text = reader.GetAttribute(11);
+
+                } //end if
+
+            } //end while
+            GenerateHTMLJPG();
 
         }
 
+        private void btnGuardarProyecto_Click(object sender, EventArgs e)
+        //guarda un XML con todo lo necesario para levantar el proyecto
+        {
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            XmlWriter writer = XmlWriter.Create(@""+txtCarpetaTrabajo.Text + "\\proyecto.xml", settings);
+            writer.WriteStartDocument();
+            writer.WriteComment("Generado por Titan.");
+            writer.WriteStartElement("Producto");
+            writer.WriteAttributeString("Foto1", FotoBox1.ImageLocation);
+            writer.WriteAttributeString("Foto2", FotoBox2.ImageLocation);
+            writer.WriteAttributeString("Foto3", FotoBox3.ImageLocation);
+            writer.WriteAttributeString("Foto4", FotoBox4.ImageLocation);
+            writer.WriteAttributeString("Logo", lblLogo.Text);
+            writer.WriteAttributeString("FondoPrecio", lblPrecio.Text);
+            writer.WriteAttributeString("Fondo", lblFondo.Text);
+            writer.WriteAttributeString("Cilindrada", txtCilindrada.Text);
+            writer.WriteAttributeString("Modelo", txtModelo.Text);
+            writer.WriteAttributeString("Motor", txtMotor.Text);
+            writer.WriteAttributeString("Descripcion", txtDescripcion.Text);
+            writer.WriteAttributeString("Precio", txtPrecio.Text);
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+
+            writer.Flush();
+            writer.Close();
+        }
 
     }
 }
