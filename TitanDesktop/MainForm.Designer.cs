@@ -60,6 +60,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.GuardarJPG = new System.Windows.Forms.SaveFileDialog();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -443,6 +444,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog GuardarJPG;
 
     }
 }

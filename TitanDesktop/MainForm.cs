@@ -261,7 +261,6 @@ namespace Titan
                 //creación de JPG:
                 WebJPG websiteToImage = new WebJPG(txtCarpetaTrabajo.Text + "index.html", @"" + txtCarpetaTrabajo.Text + "\\index.jpg");
                 websiteToImage.Generate();
-                PreviewJPG.ImageLocation = txtCarpetaTrabajo.Text + "\\index.jpg";
                 
 
             }
@@ -329,6 +328,26 @@ namespace Titan
         private void btnGuardarJPG_Click(object sender, EventArgs e)
         {
 
+            GuardarJPG = new SaveFileDialog();
+
+            GuardarJPG.Filter = "arhivos JPG (*.jpg)|*.jpg|Todos los archivos (*.*)|*.*";
+            GuardarJPG.FilterIndex = 2;
+            GuardarJPG.RestoreDirectory = true;
+            try
+            {
+
+                if (GuardarJPG.ShowDialog() == DialogResult.OK)
+                {
+                    if ((GuardarJPG.OpenFile()) != null)
+                    {
+                        System.IO.File.Copy(@"" + txtCarpetaTrabajo.Text + "index.jpg", @"" + GuardarJPG.FileName, false);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error, archivo en uso por otro proceso");            
+            }
         }
 
 
