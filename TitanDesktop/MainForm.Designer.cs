@@ -63,6 +63,7 @@
             this.AbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
             this.GuardarJPG = new System.Windows.Forms.SaveFileDialog();
+            this.GuardarProyecto = new System.Windows.Forms.SaveFileDialog();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -471,6 +472,7 @@
         private System.Windows.Forms.SaveFileDialog GuardarJPG;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAbrirProyecto;
+        private System.Windows.Forms.SaveFileDialog GuardarProyecto;
 
     }
 }

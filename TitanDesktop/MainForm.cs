@@ -37,19 +37,26 @@ namespace Titan
 
         private void FotoBox1_Click(object sender, EventArgs e)
         {
-            AbrirArchivo.ShowDialog();
-            FotoBox1.ImageLocation = AbrirArchivo.FileName;
-            Uri direccion = new Uri(AbrirArchivo.FileName);
-            numeroFoto = 1; //indica que se va a cargar una foto en el Fotobox 1
-            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\temp1.jpg"))
+            try
             {
-                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\temp1.jpg");
-            }
+                AbrirArchivo.ShowDialog();
+                FotoBox1.ImageLocation = AbrirArchivo.FileName;
+                Uri direccion = new Uri(AbrirArchivo.FileName);
+                numeroFoto = 1; //indica que se va a cargar una foto en el Fotobox 1
+                if (File.Exists(@"" + txtCarpetaTrabajo.Text + "temp1.jpg"))
+                {
+                    File.Delete(@"" + txtCarpetaTrabajo.Text + "temp1.jpg");
+                }
 
-            GenerateCrop(direccion);
-            
-            FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            GenerateHTMLJPG();
+                GenerateCrop(direccion);
+
+                FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                GenerateHTMLJPG();
+            }
+            catch
+            {
+                
+            }
         }
 
         private void FotoBox2_Click(object sender, EventArgs e)
@@ -104,6 +111,13 @@ namespace Titan
             r.SrcPicBox.ImageLocation = direccion.ToString();
         }
 
+
+        //el núcleo del programa
+        //genera un HTML con las fotos seleccionadas 
+        //y genera un JPG a partir de ese HTML generado
+        //el archivo trans.png es un archivo imágen transparente, que sirve para poner
+        //en aquellos lugares donde el usuario no escogió foto.
+        //dicho archivo debe estar presente en la working folder (carpetaTrabajo)
         public void GenerateHTMLJPG()
         {
             Uri Foto1 = new Uri("file:///C:/");//nueva dirección vacía
@@ -123,7 +137,7 @@ namespace Titan
                 }
                 else
                 {
-                    Foto1 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Foto1 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (FotoBox2.ImageLocation != null && FotoBox2.ImageLocation.ToString().Length != 0)
@@ -132,7 +146,7 @@ namespace Titan
                 }
                 else
                 {
-                    Foto2 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Foto2 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (FotoBox3.ImageLocation != null && FotoBox3.ImageLocation.ToString().Length != 0)
@@ -141,7 +155,7 @@ namespace Titan
                 }
                 else
                 {
-                    Foto3 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Foto3 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (FotoBox4.ImageLocation != null && FotoBox4.ImageLocation.ToString().Length != 0)
@@ -150,7 +164,7 @@ namespace Titan
                 }
                 else
                 {
-                    Foto4 = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Foto4 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (lblFondo.Text != "")
@@ -159,7 +173,7 @@ namespace Titan
                 }
                 else
                 {
-                    Fondo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Fondo = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (lblPrecio.Text != "")
@@ -168,7 +182,7 @@ namespace Titan
                 }
                 else
                 {
-                    PrecioFondo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    PrecioFondo = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
                 if (lblLogo.Text != "")
@@ -177,7 +191,7 @@ namespace Titan
                 }
                 else
                 {
-                    Logo = new Uri(@"" + txtCarpetaTrabajo.Text + "\\trans.png");
+                    Logo = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
             }
@@ -254,12 +268,13 @@ namespace Titan
 </html>";
 
                 //creación del HTML
-                File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "\\index.html", text);
+                
+                File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "index.html", text);
                 Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
                 HtmlPreview.Url = WebPath;
 
                 //creación de JPG:
-                WebJPG websiteToImage = new WebJPG(txtCarpetaTrabajo.Text + "index.html", @"" + txtCarpetaTrabajo.Text + "\\index.jpg");
+                WebJPG websiteToImage = new WebJPG(txtCarpetaTrabajo.Text + "index.html", @"" + txtCarpetaTrabajo.Text + "index.jpg");
                 websiteToImage.Generate();
                 
 
@@ -267,7 +282,7 @@ namespace Titan
             catch
             {
                 //MessageBox.Show("Error");
-                File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "\\index.html", "");
+                File.WriteAllText(@"" + txtCarpetaTrabajo.Text + "index.html", "");
             }
             finally
             {
@@ -275,31 +290,6 @@ namespace Titan
             }
         }
 
-        /// <summary>
-        /// Levanta el contenido del archivo que pasamos por parametros, el cual
-        /// deberia estar en la carpeta HTMLTemplates.
-        /// </summary>
-        /// <param name="FileNameTemplate">Nombre del archivo a levantar. Recordar se levantan desde la carpeta TemplatesMails en el raiz.</param>
-        /// <returns>HTML devuelto.</returns>
-        public static String GetTemplate(String FileNameTemplate)
-        {
-            //-----------------------------------------------
-            //- Aquí levanto el archivo de template.         
-            //-----------------------------------------------
-            string fileName = string.Format("{0}\\{1}");
-            //HttpContext.Current.Server.MapPath("~/Admin/HTMLTemplates"), FileNameTemplate);
-
-            string contenido = "";
-
-            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    contenido = reader.ReadToEnd();
-                }
-            }
-            return contenido;
-        }
 
         private void btnSeleccionarWorkingFolder_Click(object sender, EventArgs e)
         {
@@ -313,13 +303,13 @@ namespace Titan
         private void MainForm_Load(object sender, EventArgs e)
         {
             txtCarpetaTrabajo.Text = System.IO.Path.GetTempPath();
-            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\index.html"))
+            if (File.Exists(@"" + txtCarpetaTrabajo.Text + "index.html"))
             {
-                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\index.html");
+                File.Delete(@"" + txtCarpetaTrabajo.Text + "index.html");
             }
-            if (File.Exists(@"" + txtCarpetaTrabajo.Text + @"\\index.jpg"))
+            if (File.Exists(@"" + txtCarpetaTrabajo.Text + "index.jpg"))
             {
-                File.Delete(@"" + txtCarpetaTrabajo.Text + @"\\index.jpg");
+                File.Delete(@"" + txtCarpetaTrabajo.Text + "index.jpg");
             }
             Uri WebPath = new Uri(txtCarpetaTrabajo.Text + "index.html");
             HtmlPreview.Url = WebPath;
@@ -344,7 +334,17 @@ namespace Titan
                 {
                     if ((GuardarJPG.OpenFile()) != null)
                     {
-                        File.Copy(@"" + txtCarpetaTrabajo.Text + "index.jpg", @"" + GuardarJPG.FileName, false);
+
+                        FileStream fOrigen = new FileStream(txtCarpetaTrabajo.Text.Replace("\\",@"\") + "index.jpg", FileMode.Open);
+                        FileStream fDestino = new FileStream(GuardarJPG.FileName.Replace("\\",@"\"), FileMode.CreateNew);
+
+                        fOrigen.CopyTo(fDestino);
+ 
+                       /*FileInfo inf = new FileInfo(@"" + txtCarpetaTrabajo.Text + "index.jpg");
+                       inf.CopyTo(GuardarJPG.FileName,true);*/
+                        
+                       /*WebJPG websiteToImage = new WebJPG(@"" + txtCarpetaTrabajo.Text + "index.html", GuardarJPG..FileName);
+                       websiteToImage.Generate();*/
                     }
                 }
             }
@@ -356,7 +356,7 @@ namespace Titan
 
         private void btnAbrirProyecto_Click(object sender, EventArgs e)
         {
-            XmlReader reader = XmlReader.Create(@"" + txtCarpetaTrabajo.Text + "\\proyecto.xml");
+            XmlReader reader = XmlReader.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml");
 
             while (reader.Read())
             {
@@ -381,17 +381,16 @@ namespace Titan
 
             } //end while
             GenerateHTMLJPG();
-
         }
 
         private void btnGuardarProyecto_Click(object sender, EventArgs e)
-        //guarda un XML con todo lo necesario para levantar el proyecto
+        //guarda un XML con todo lo necesario para que luego se pueda levantar el proyecto
         {
-
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
 
-            XmlWriter writer = XmlWriter.Create(@""+txtCarpetaTrabajo.Text + "\\proyecto.xml", settings);
+            XmlWriter writer = XmlWriter.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml", settings);
+                        
             writer.WriteStartDocument();
             writer.WriteComment("Generado por Titan.");
             writer.WriteStartElement("Producto");
@@ -409,10 +408,8 @@ namespace Titan
             writer.WriteAttributeString("Precio", txtPrecio.Text);
             writer.WriteEndElement();
             writer.WriteEndDocument();
-
             writer.Flush();
             writer.Close();
         }
-
     }
 }

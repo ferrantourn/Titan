@@ -141,9 +141,9 @@ namespace Titan
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             MainForm form = MainForm.Instance;
-            tempBitmap.Save(@"" + form.txtCarpetaTrabajo.Text + @"\\temp" + form.numeroFoto + @".jpg", ImageFormat.Jpeg);
+            tempBitmap.Save(@"" + form.txtCarpetaTrabajo.Text + "temp" + form.numeroFoto + ".jpg", ImageFormat.Jpeg);
 
-            form.FotoBox1.ImageLocation = @"" + form.txtCarpetaTrabajo.Text + @"\\temp" + form.numeroFoto + @".jpg";
+            form.FotoBox1.ImageLocation = @"" + form.txtCarpetaTrabajo.Text + "temp" + form.numeroFoto + ".jpg";
 
             form.GenerateHTMLJPG();
             tempBitmap.Dispose();
