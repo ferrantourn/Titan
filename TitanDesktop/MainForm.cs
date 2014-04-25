@@ -39,23 +39,25 @@ namespace Titan
         {
             try
             {
-                AbrirArchivo.ShowDialog();
-                FotoBox1.ImageLocation = AbrirArchivo.FileName;
-                Uri direccion = new Uri(AbrirArchivo.FileName);
-                numeroFoto = 1; //indica que se va a cargar una foto en el Fotobox 1
-                if (File.Exists(@"" + txtCarpetaTrabajo.Text + "temp1.jpg"))
+                if (AbrirArchivo.ShowDialog() == DialogResult.OK)
                 {
-                    File.Delete(@"" + txtCarpetaTrabajo.Text + "temp1.jpg");
+                    FotoBox1.ImageLocation = AbrirArchivo.FileName;
+                    Uri direccion = new Uri(AbrirArchivo.FileName);
+                    numeroFoto = 1; //indica que se va a cargar una foto en el Fotobox 1
+                    if (File.Exists(@"" + txtCarpetaTrabajo.Text + "temp1.jpg"))
+                    {
+                        File.Delete(@"" + txtCarpetaTrabajo.Text + "temp1.jpg");
+                    }
+
+                    GenerateCrop(direccion);
+
                 }
-
-                GenerateCrop(direccion);
-
-                GenerateHTMLJPG();
             }
             catch
             {
                 
             }
+            GenerateHTMLJPG();
         }
 
         private void FotoBox2_Click(object sender, EventArgs e)

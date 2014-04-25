@@ -68,36 +68,61 @@ namespace Titan
         private void PlantillaFondo1_MouseEnter(object sender, EventArgs e)
         {
             PlantillaFondo1.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
+
         }
         private void PlantillaFondo1_MouseLeave(object sender, EventArgs e)
         {
             PlantillaFondo1.BorderStyle = BorderStyle.None;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
 
         private void PlantillaFondo2_MouseEnter(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
             PlantillaFondo2.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
         private void PlantillaFondo2_MouseLeave(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
             PlantillaFondo2.BorderStyle = BorderStyle.None;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
 
         private void PlantillaFondo3_MouseEnter(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
             PlantillaFondo3.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
         private void PlantillaFondo3_MouseLeave(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
             PlantillaFondo3.BorderStyle = BorderStyle.None;
+            PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
 
         private void PlantillaFondo4_MouseEnter(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
             PlantillaFondo4.BorderStyle = BorderStyle.Fixed3D;
         }
         private void PlantillaFondo4_MouseLeave(object sender, EventArgs e)
         {
+            PlantillaFondo1.BorderStyle = BorderStyle.None;
+            PlantillaFondo2.BorderStyle = BorderStyle.None;
+            PlantillaFondo3.BorderStyle = BorderStyle.None;
             PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
     }
