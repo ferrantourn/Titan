@@ -8,10 +8,6 @@ C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.Properties.Res
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.csproj.GenerateResource.Cache
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.exe
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.pdb
-C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\bin\Debug\HtmlRenderer.dll
-C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\bin\Debug\HtmlRenderer.pdb
-C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\bin\Debug\WatiN.Core.dll
-C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\bin\Debug\WatiN.Core.xml
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.Resizer.resources
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.PlantillaPrecio.resources
 C:\Users\Core\Documents\GitHub\Titan\TitanDesktop\obj\Debug\Titan.PlantillaFondo.resources
