@@ -64,6 +64,7 @@
             this.AbrirCarpeta = new System.Windows.Forms.FolderBrowserDialog();
             this.GuardarJPG = new System.Windows.Forms.SaveFileDialog();
             this.GuardarProyecto = new System.Windows.Forms.SaveFileDialog();
+            this.AbrirProyecto = new System.Windows.Forms.OpenFileDialog();
             this.tab1.SuspendLayout();
             this.Diseño.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FotoBox4)).BeginInit();
@@ -209,7 +210,7 @@
             // FotoBox3
             // 
             this.FotoBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FotoBox3.Location = new System.Drawing.Point(7, 201);
+            this.FotoBox3.Location = new System.Drawing.Point(7, 198);
             this.FotoBox3.Name = "FotoBox3";
             this.FotoBox3.Size = new System.Drawing.Size(241, 126);
             this.FotoBox3.TabIndex = 6;
@@ -406,7 +407,7 @@
             // AbrirArchivo
             // 
             this.AbrirArchivo.FileName = "Abrir Imágen";
-            this.AbrirArchivo.Filter = "Archivos JPG (*.JPG)|*.jpg|Todos los archivos (*.*)|*.*";
+            this.AbrirArchivo.Filter = "Imágenes (*.JPG, *.PNG)|*.jpg;*.png|Todos los archivos (*.*)|*.*";
             // 
             // MainForm
             // 
@@ -449,7 +450,7 @@
         public System.Windows.Forms.PictureBox FotoBox4;
         public System.Windows.Forms.PictureBox FotoBox3;
         public System.Windows.Forms.PictureBox FotoBox2;
-        private System.Windows.Forms.OpenFileDialog AbrirArchivo;
+        public System.Windows.Forms.OpenFileDialog AbrirArchivo;
         public System.Windows.Forms.TextBox txtMotor;
         private System.Windows.Forms.Button btnFondo;
         public System.Windows.Forms.Label lblFondo;
@@ -462,7 +463,7 @@
         private System.Windows.Forms.Button btnPlantillaPrecio;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.Label lblPrecio;
+        public System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnLogo;
         public System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Button btnGuardarJPG;
@@ -473,6 +474,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAbrirProyecto;
         private System.Windows.Forms.SaveFileDialog GuardarProyecto;
+        private System.Windows.Forms.OpenFileDialog AbrirProyecto;
 
     }
 }

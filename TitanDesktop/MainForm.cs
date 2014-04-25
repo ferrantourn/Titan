@@ -50,7 +50,6 @@ namespace Titan
 
                 GenerateCrop(direccion);
 
-                FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
                 GenerateHTMLJPG();
             }
             catch
@@ -63,7 +62,6 @@ namespace Titan
         {
             AbrirArchivo.ShowDialog();
             FotoBox2.ImageLocation = AbrirArchivo.FileName;
-            FotoBox2.SizeMode = PictureBoxSizeMode.Zoom;
             GenerateHTMLJPG();
         }
 
@@ -71,7 +69,6 @@ namespace Titan
         {
             AbrirArchivo.ShowDialog();
             FotoBox3.ImageLocation = AbrirArchivo.FileName;
-            FotoBox3.SizeMode = PictureBoxSizeMode.Zoom;
             GenerateHTMLJPG();
         }
 
@@ -79,7 +76,6 @@ namespace Titan
         {
             AbrirArchivo.ShowDialog();
             FotoBox4.ImageLocation = AbrirArchivo.FileName;
-            FotoBox4.SizeMode = PictureBoxSizeMode.Zoom;
             GenerateHTMLJPG();
         }
 
@@ -92,16 +88,27 @@ namespace Titan
 
         private void btnLogo_Click(object sender, EventArgs e)
         {
-            AbrirArchivo.ShowDialog();
-            lblLogo.Text = AbrirArchivo.FileName;
-            GenerateHTMLJPG();
+            if (AbrirArchivo.ShowDialog() == DialogResult.OK)
+            {
+                lblLogo.Text = AbrirArchivo.FileName;
+                GenerateHTMLJPG();
+            }
         }
 
         private void btnPlantillaPrecio_Click(object sender, EventArgs e)
         {
-            AbrirArchivo.ShowDialog();
-            lblPrecio.Text = AbrirArchivo.FileName;
+            PlantillaPrecio p = new PlantillaPrecio();
+            p.Show();
+            p.PlantillaFondo1.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasPrecio\precio_azul.png";
+            p.PlantillaFondo2.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasPrecio\precio_cyan.png";
+            p.PlantillaFondo3.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasPrecio\precio_dorado.png";
+            p.PlantillaFondo4.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasPrecio\precio_rojo.png";
+
+            //AbrirArchivo.ShowDialog();
+            //lblPrecio.Text = AbrirArchivo.FileName;
             GenerateHTMLJPG();
+
+
         }
 
         private void GenerateCrop(Uri direccion)
@@ -131,7 +138,7 @@ namespace Titan
             String TextoDescripcion = txtDescripcion.Text.Replace(Environment.NewLine, "<br>");
             try
             {
-                if (FotoBox1.ImageLocation != null && FotoBox1.ImageLocation.ToString().Length != 0)
+                if (FotoBox1.ImageLocation != null && FotoBox1.ImageLocation.ToString().Length != 0 && File.Exists(FotoBox1.ImageLocation))
                 {
                     Foto1 = new Uri(FotoBox1.ImageLocation);
                 }
@@ -140,7 +147,7 @@ namespace Titan
                     Foto1 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
-                if (FotoBox2.ImageLocation != null && FotoBox2.ImageLocation.ToString().Length != 0)
+                if (FotoBox2.ImageLocation != null && FotoBox2.ImageLocation.ToString().Length != 0 && File.Exists(FotoBox1.ImageLocation))
                 {
                     Foto2 = new Uri(FotoBox2.ImageLocation);
                 }
@@ -149,7 +156,7 @@ namespace Titan
                     Foto2 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
-                if (FotoBox3.ImageLocation != null && FotoBox3.ImageLocation.ToString().Length != 0)
+                if (FotoBox3.ImageLocation != null && FotoBox3.ImageLocation.ToString().Length != 0 && File.Exists(FotoBox1.ImageLocation))
                 {
                     Foto3 = new Uri(FotoBox3.ImageLocation);
                 }
@@ -158,7 +165,7 @@ namespace Titan
                     Foto3 = new Uri(@"" + txtCarpetaTrabajo.Text + "trans.png");
                 }
 
-                if (FotoBox4.ImageLocation != null && FotoBox4.ImageLocation.ToString().Length != 0)
+                if (FotoBox4.ImageLocation != null && FotoBox4.ImageLocation.ToString().Length != 0 && File.Exists(FotoBox1.ImageLocation))
                 {
                     Foto4 = new Uri(FotoBox4.ImageLocation);
                 }
@@ -216,20 +223,21 @@ namespace Titan
 
 <div style=""position: absolute; width: 900px; height: 800px; z-index: 2; left: 0px; top: 0px"" id=""capa1"">
 
-<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 380px"" id=""Modelo"">
-<font color=""#FFFFFF"" size=""2"">"
+<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 382px"" id=""Modelo"">
+<font color=""#FFFFFF"">"
 
                 + txtModelo.Text + @"</font></div>
-<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 400px"" id=""Cilindrada"">
-<font color=""#FFFFFF"" size=""2"">"
+<div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 399px"" id=""Cilindrada"">
+<font color=""#FFFFFF"">"
 
                 + txtCilindrada.Text + @"</font></div>
-<div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 419px"" id=""Motor"">
-<font color=""#FFFFFF"" size=""2"">"
+
+<div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 417px"" id=""Motor"">
+<font color=""#FFFFFF"">"
 
                 + txtMotor.Text + @"</font></div>
-<div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 469px"" id=""Descripcion"">
-<font color=""#FFFFFF"" size=""2"">"
+<div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 468px"" id=""Descripcion"">
+<font color=""#FFFFFF"">"
 
                 + TextoDescripcion + @"</font></div>
 
@@ -317,6 +325,11 @@ namespace Titan
             lblFondo.Text = "";
             lblLogo.Text = "";
             lblPrecio.Text = "";
+            FotoBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            FotoBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            FotoBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            FotoBox4.SizeMode = PictureBoxSizeMode.Zoom;
+
         }
 
         private void btnGuardarJPG_Click(object sender, EventArgs e)
@@ -332,31 +345,26 @@ namespace Titan
 
                 if (GuardarJPG.ShowDialog() == DialogResult.OK)
                 {
-                    if ((GuardarJPG.OpenFile()) != null)
-                    {
-
-                        FileStream fOrigen = new FileStream(txtCarpetaTrabajo.Text.Replace("\\",@"\") + "index.jpg", FileMode.Open);
-                        FileStream fDestino = new FileStream(GuardarJPG.FileName.Replace("\\",@"\"), FileMode.CreateNew);
-
-                        fOrigen.CopyTo(fDestino);
- 
-                       /*FileInfo inf = new FileInfo(@"" + txtCarpetaTrabajo.Text + "index.jpg");
-                       inf.CopyTo(GuardarJPG.FileName,true);*/
-                        
-                       /*WebJPG websiteToImage = new WebJPG(@"" + txtCarpetaTrabajo.Text + "index.html", GuardarJPG..FileName);
-                       websiteToImage.Generate();*/
-                    }
+                    string origen = txtCarpetaTrabajo.Text + "index.jpg";
+                    string destino = GuardarJPG.FileName.ToString();
+                    File.Copy(origen, destino ,true);
                 }
+
             }
+            
             catch
             {
-                MessageBox.Show("Error, archivo en uso por otro proceso");            
+                MessageBox.Show("Error");            
             }
         }
 
         private void btnAbrirProyecto_Click(object sender, EventArgs e)
         {
-            XmlReader reader = XmlReader.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml");
+            AbrirProyecto.ShowDialog();
+            
+
+            //XmlReader reader = XmlReader.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml");
+            XmlReader reader = XmlReader.Create(AbrirProyecto.FileName);
 
             while (reader.Read())
             {
@@ -386,30 +394,57 @@ namespace Titan
         private void btnGuardarProyecto_Click(object sender, EventArgs e)
         //guarda un XML con todo lo necesario para que luego se pueda levantar el proyecto
         {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
+            try
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
 
-            XmlWriter writer = XmlWriter.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml", settings);
+                XmlWriter writer = XmlWriter.Create(@"" + txtCarpetaTrabajo.Text + "proyecto.xml", settings);
                         
-            writer.WriteStartDocument();
-            writer.WriteComment("Generado por Titan.");
-            writer.WriteStartElement("Producto");
-            writer.WriteAttributeString("Foto1", FotoBox1.ImageLocation);
-            writer.WriteAttributeString("Foto2", FotoBox2.ImageLocation);
-            writer.WriteAttributeString("Foto3", FotoBox3.ImageLocation);
-            writer.WriteAttributeString("Foto4", FotoBox4.ImageLocation);
-            writer.WriteAttributeString("Logo", lblLogo.Text);
-            writer.WriteAttributeString("FondoPrecio", lblPrecio.Text);
-            writer.WriteAttributeString("Fondo", lblFondo.Text);
-            writer.WriteAttributeString("Cilindrada", txtCilindrada.Text);
-            writer.WriteAttributeString("Modelo", txtModelo.Text);
-            writer.WriteAttributeString("Motor", txtMotor.Text);
-            writer.WriteAttributeString("Descripcion", txtDescripcion.Text);
-            writer.WriteAttributeString("Precio", txtPrecio.Text);
-            writer.WriteEndElement();
-            writer.WriteEndDocument();
-            writer.Flush();
-            writer.Close();
+                writer.WriteStartDocument();
+                writer.WriteComment("Generado por Titan.");
+                writer.WriteStartElement("Producto");
+                writer.WriteAttributeString("Foto1", FotoBox1.ImageLocation);
+                writer.WriteAttributeString("Foto2", FotoBox2.ImageLocation);
+                writer.WriteAttributeString("Foto3", FotoBox3.ImageLocation);
+                writer.WriteAttributeString("Foto4", FotoBox4.ImageLocation);
+                writer.WriteAttributeString("Logo", lblLogo.Text);
+                writer.WriteAttributeString("FondoPrecio", lblPrecio.Text);
+                writer.WriteAttributeString("Fondo", lblFondo.Text);
+                writer.WriteAttributeString("Cilindrada", txtCilindrada.Text);
+                writer.WriteAttributeString("Modelo", txtModelo.Text);
+                writer.WriteAttributeString("Motor", txtMotor.Text);
+                writer.WriteAttributeString("Descripcion", txtDescripcion.Text);
+                writer.WriteAttributeString("Precio", txtPrecio.Text);
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Flush();
+                writer.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Error al generar XML"); 
+            }
+
+            try
+            {
+                GuardarProyecto = new SaveFileDialog();
+                GuardarProyecto.Filter = "arhivos XML (*.xml)|*.xml|Todos los archivos (*.*)|*.*";
+                GuardarProyecto.FilterIndex = 1;
+                GuardarProyecto.RestoreDirectory = true;
+
+                if (GuardarProyecto.ShowDialog() == DialogResult.OK)
+                {
+                    string origen = txtCarpetaTrabajo.Text + "proyecto.xml";
+                    string destino = GuardarProyecto.FileName.ToString();
+                    File.Copy(origen, destino, true);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error al guardar el archivo al destino"); 
+            }
+
         }
     }
 }
