@@ -65,6 +65,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlantillaFondo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlantillaFondo.Designer.cs">
+      <DependentUpon>PlantillaFondo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlantillaPrecio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <Compile Include="WebJPG.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantillaFondo.resx">
+      <DependentUpon>PlantillaFondo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlantillaPrecio.resx">
       <DependentUpon>PlantillaPrecio.cs</DependentUpon>

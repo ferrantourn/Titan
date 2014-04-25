@@ -83,8 +83,18 @@ namespace Titan
 
         private void btnFondo_Click(object sender, EventArgs e)
         {
-            AbrirArchivo.ShowDialog();
-            lblFondo.Text = AbrirArchivo.FileName;
+
+            PlantillaFondo p = new PlantillaFondo();
+            p.Show();
+            p.Plantilla1.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V1.jpg";
+            p.Plantilla2.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V2.jpg";
+            p.Plantilla3.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V3.jpg";
+            p.Plantilla4.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V4.jpg";
+            p.Plantilla5.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V5.jpg";
+            p.Plantilla6.ImageLocation = txtCarpetaTrabajo.Text + @"PlantillasFondo\plantilla_fondo_V7.jpg";
+
+            /*AbrirArchivo.ShowDialog();
+            lblFondo.Text = AbrirArchivo.FileName;*/
             GenerateHTMLJPG();
         }
 

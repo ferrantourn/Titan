@@ -67,7 +67,7 @@ namespace Titan
 
         private void PlantillaFondo1_MouseEnter(object sender, EventArgs e)
         {
-            PlantillaFondo1.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo1.BorderStyle = BorderStyle.FixedSingle;
             PlantillaFondo2.BorderStyle = BorderStyle.None;
             PlantillaFondo3.BorderStyle = BorderStyle.None;
             PlantillaFondo4.BorderStyle = BorderStyle.None;
@@ -84,7 +84,7 @@ namespace Titan
         private void PlantillaFondo2_MouseEnter(object sender, EventArgs e)
         {
             PlantillaFondo1.BorderStyle = BorderStyle.None;
-            PlantillaFondo2.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo2.BorderStyle = BorderStyle.FixedSingle;
             PlantillaFondo3.BorderStyle = BorderStyle.None;
             PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
@@ -100,7 +100,7 @@ namespace Titan
         {
             PlantillaFondo1.BorderStyle = BorderStyle.None;
             PlantillaFondo2.BorderStyle = BorderStyle.None;
-            PlantillaFondo3.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo3.BorderStyle = BorderStyle.FixedSingle;
             PlantillaFondo4.BorderStyle = BorderStyle.None;
         }
         private void PlantillaFondo3_MouseLeave(object sender, EventArgs e)
@@ -116,7 +116,7 @@ namespace Titan
             PlantillaFondo1.BorderStyle = BorderStyle.None;
             PlantillaFondo2.BorderStyle = BorderStyle.None;
             PlantillaFondo3.BorderStyle = BorderStyle.None;
-            PlantillaFondo4.BorderStyle = BorderStyle.Fixed3D;
+            PlantillaFondo4.BorderStyle = BorderStyle.FixedSingle;
         }
         private void PlantillaFondo4_MouseLeave(object sender, EventArgs e)
         {

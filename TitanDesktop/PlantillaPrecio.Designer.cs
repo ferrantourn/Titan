@@ -54,7 +54,7 @@
             // 
             // PlantillaFondo3
             // 
-            this.PlantillaFondo3.Location = new System.Drawing.Point(311, 49);
+            this.PlantillaFondo3.Location = new System.Drawing.Point(325, 49);
             this.PlantillaFondo3.Name = "PlantillaFondo3";
             this.PlantillaFondo3.Size = new System.Drawing.Size(292, 47);
             this.PlantillaFondo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -66,7 +66,7 @@
             // 
             // PlantillaFondo2
             // 
-            this.PlantillaFondo2.Location = new System.Drawing.Point(13, 102);
+            this.PlantillaFondo2.Location = new System.Drawing.Point(13, 113);
             this.PlantillaFondo2.Name = "PlantillaFondo2";
             this.PlantillaFondo2.Size = new System.Drawing.Size(292, 47);
             this.PlantillaFondo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -78,7 +78,7 @@
             // 
             // PlantillaFondo4
             // 
-            this.PlantillaFondo4.Location = new System.Drawing.Point(311, 102);
+            this.PlantillaFondo4.Location = new System.Drawing.Point(325, 113);
             this.PlantillaFondo4.Name = "PlantillaFondo4";
             this.PlantillaFondo4.Size = new System.Drawing.Size(292, 47);
             this.PlantillaFondo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -90,7 +90,7 @@
             // 
             // btnElegirFondoPrecio
             // 
-            this.btnElegirFondoPrecio.Location = new System.Drawing.Point(13, 156);
+            this.btnElegirFondoPrecio.Location = new System.Drawing.Point(13, 190);
             this.btnElegirFondoPrecio.Name = "btnElegirFondoPrecio";
             this.btnElegirFondoPrecio.Size = new System.Drawing.Size(145, 23);
             this.btnElegirFondoPrecio.TabIndex = 4;
@@ -111,7 +111,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 198);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(655, 225);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnElegirFondoPrecio);
             this.Controls.Add(this.PlantillaFondo4);
