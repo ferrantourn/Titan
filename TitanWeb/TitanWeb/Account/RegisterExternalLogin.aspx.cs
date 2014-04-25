@@ -61,7 +61,7 @@ namespace TitanWeb.Account
             }
 
             // Crear la dirección URL de redirección para la comprobación de OpenAuth
-            var redirectUrl = "~/Account/RegisterExternalLogin.aspx";
+            var redirectUrl = "~/Account/RegisterExternalLogin";
             var returnUrl = Request.QueryString["ReturnUrl"];
             if (!String.IsNullOrEmpty(returnUrl))
             {

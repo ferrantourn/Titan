@@ -13,9 +13,10 @@ namespace TitanWeb
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciarse la aplicación
+            // Código que se ejecuta al iniciar la aplicación
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace TitanWeb
 
         void Application_Error(object sender, EventArgs e)
         {
-            // Código que se ejecuta cuando se produce un error sin procesar
+            // Código que se ejecuta cuando se produce un error no controlado
 
         }
     }

@@ -24,7 +24,7 @@ namespace TitanWeb.Account
         {
             if (!IsPostBack)
             {
-                // Determinar las secciones que se van a presentar
+                // Determine las secciones que se van a presentar
                 var hasLocalPassword = OpenAuth.HasLocalPassword(User.Identity.Name);
                 setPassword.Visible = !hasLocalPassword;
                 changePassword.Visible = hasLocalPassword;
@@ -36,11 +36,11 @@ namespace TitanWeb.Account
                 if (message != null)
                 {
                     // Seccionar la cadena de consulta desde la acción
-                    Form.Action = ResolveUrl("~/Account/Manage.aspx");
+                    Form.Action = ResolveUrl("~/Account/Manage");
 
                     SuccessMessage =
-                        message == "ChangePwdSuccess" ? "Su contraseña se ha cambiado."
-                        : message == "SetPwdSuccess" ? "Su contraseña se ha establecido."
+                        message == "ChangePwdSuccess" ? "Se cambió la contraseña."
+                        : message == "SetPwdSuccess" ? "Se estableció la contraseña."
                         : message == "RemoveLoginSuccess" ? "El inicio de sesión externo se ha quitado."
                         : String.Empty;
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
@@ -56,7 +56,7 @@ namespace TitanWeb.Account
                 var result = OpenAuth.AddLocalPassword(User.Identity.Name, password.Text);
                 if (result.IsSuccessful)
                 {
-                    Response.Redirect("~/Account/Manage.aspx?m=SetPwdSuccess");
+                    Response.Redirect("~/Account/Manage?m=SetPwdSuccess");
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace TitanWeb.Account
             var m = OpenAuth.DeleteAccount(User.Identity.Name, providerName, providerUserId)
                 ? "?m=RemoveLoginSuccess"
                 : String.Empty;
-            Response.Redirect("~/Account/Manage.aspx" + m);
+            Response.Redirect("~/Account/Manage" + m);
         }
 
 
