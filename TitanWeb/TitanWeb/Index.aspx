@@ -44,7 +44,7 @@
     </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px" id="foto1">
-    <asp:ImageButton ID="btnFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
+    <asp:ImageButton ID="btnFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" OnClick="btnFoto1_Click" />
     </div>
 
 <div style="position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 26px" id="foto2">
@@ -52,10 +52,12 @@
     </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 285px" id="foto3">
-<img src="Images/cargarimagen1.jpg" border="0" width="240" height="240"/></div>
+    <asp:ImageButton ID="btnFoto3" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
+    </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 545px" id="foto4">
-<img src="Images/cargarimagen1.jpg" border="0" width="240" height="240"/></div>
+    <asp:ImageButton ID="btnFoto4" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
+    </div>
 
 <div style="position: absolute; width: 153px; height: 150px; z-index: 1; left: 743px; top: 71px" id="Fondo">
     <asp:ImageButton ID="btnCargarFondo" runat="server" Height="150px" ImageUrl="~/Images/cargarfondo.jpg" Width="153px" />
@@ -68,8 +70,9 @@
 <div style="position: absolute; width: 80px; height: 24px; z-index: 4; left: 301px; top: 751px" id="precio">
 <asp:TextBox ID="txtPrecio" runat="server" Width="63px" BackColor="#585858" ForeColor="White">0</asp:TextBox></div>
 
-<div style="position: absolute; width: 185px; height: 76px; z-index: 1; left: 300px; top: 290px" id="Logo">
-<img src="Images/cargarlogo.jpg" border="0" width="185" height="76"/></div>
+<div style="position: absolute; width: 121px; height: 80px; z-index: 1; left: 292px; top: 286px" id="Logo">
+    <asp:ImageButton ID="btnCargarLogo" runat="server" ImageUrl="~/Images/cargarlogo.jpg" />
+    </div>
 
 
 </div>
