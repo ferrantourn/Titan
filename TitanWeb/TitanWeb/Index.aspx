@@ -44,10 +44,12 @@
     </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px" id="foto1">
-<img src="Images/cargarimagen1.jpg" border="0" width="240" height="240"/></div>
+    <asp:ImageButton ID="btnFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
+    </div>
 
 <div style="position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 26px" id="foto2">
-<img src="Images/cargarimagen2.jpg" border="0" width="420" height="240"/></div>
+    <asp:ImageButton ID="btnFoto2" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen2.jpg" Width="422px" />
+    </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 285px" id="foto3">
 <img src="Images/cargarimagen1.jpg" border="0" width="240" height="240"/></div>
@@ -55,11 +57,13 @@
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 545px" id="foto4">
 <img src="Images/cargarimagen1.jpg" border="0" width="240" height="240"/></div>
 
-<div style="position: absolute; width: 150px; height: 150px; z-index: 1; left: 743px; top: 71px" id="Fondo">
-<img src="Images/cargarfondo.jpg" border="0" width="150" height="150"/></div>
+<div style="position: absolute; width: 153px; height: 150px; z-index: 1; left: 743px; top: 71px" id="Fondo">
+    <asp:ImageButton ID="btnCargarFondo" runat="server" Height="150px" ImageUrl="~/Images/cargarfondo.jpg" Width="153px" />
+    </div>
 
-<div style="position: absolute; width: 150px; height: 150px; z-index: 1; left: 743px; top: 600px" id="FondoPrecio">
-<img src="Images/cargarfondo.jpg" border="0" width="150" height="150"/></div>
+<div style="position: absolute; width: 153px; height: 150px; z-index: 1; left: 743px; top: 600px" id="FondoPrecio">
+    <asp:ImageButton ID="btnCargarFondoPrecio" runat="server" ImageUrl="~/Images/cargarfondo.jpg" />
+    </div>
 
 <div style="position: absolute; width: 80px; height: 24px; z-index: 4; left: 301px; top: 751px" id="precio">
 <asp:TextBox ID="txtPrecio" runat="server" Width="63px" BackColor="#585858" ForeColor="White">0</asp:TextBox></div>
