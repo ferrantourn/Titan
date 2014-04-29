@@ -29,7 +29,7 @@
         //IMAGEN 1
         //----------------------------------------------------------------------------
         function validate(sender, args) {
-            var filename = document.getElementById("MainContent_AsyncFileUploadLogo1_ctl00").value;
+            var filename = document.getElementById("MainContent_AsyncFileUpload1_ctl00").value;
             var ext = getExt(filename);
             if (ext == "jpg" || ext == "jpeg" || ext == "png")
                 return true;
@@ -75,7 +75,8 @@
     </div>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px" id="foto1">
-    <asp:Image ID="imgFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px"/>
+            <asp:Image ID="imgFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
+
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate" OnClientUploadComplete="AsignarImagen1" OnUploadedComplete="AsyncFileUpload1_UploadedComplete" ID="AsyncFileUpload1" runat="server" ThrobberID="uploaderGif"/>
 <%--     <div style="display: inline-block; float: right" runat="server" id="uploaderGif">
                                 <img src="../Images/001.gif" alt="Uploading" id="imgUploader" />

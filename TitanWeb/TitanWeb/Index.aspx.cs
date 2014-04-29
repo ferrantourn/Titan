@@ -38,8 +38,7 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload1.SaveAs(SaveFileTo);
-
-                            imgFoto1.ImageUrl = SaveFileTo;
+                            imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
                         }
                     }
                 }

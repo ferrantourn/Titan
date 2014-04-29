@@ -85,15 +85,6 @@ namespace TitanWeb {
         protected global::AjaxControlToolkit.AsyncFileUpload AsyncFileUpload1;
         
         /// <summary>
-        /// Control uploaderGif.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploaderGif;
-        
-        /// <summary>
         /// Control btnFoto2.
         /// </summary>
         /// <remarks>
