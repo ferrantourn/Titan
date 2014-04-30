@@ -28,7 +28,7 @@ namespace TitanWeb {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::AjaxControlToolkit.ToolkitScriptManager ScriptManager1;
         
         /// <summary>
         /// Control txtModelo.
@@ -76,6 +76,15 @@ namespace TitanWeb {
         protected global::System.Web.UI.WebControls.Image imgFoto1;
         
         /// <summary>
+        /// Control uploaderGif.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploaderGif;
+        
+        /// <summary>
         /// Control AsyncFileUpload1.
         /// </summary>
         /// <remarks>
@@ -85,31 +94,85 @@ namespace TitanWeb {
         protected global::AjaxControlToolkit.AsyncFileUpload AsyncFileUpload1;
         
         /// <summary>
-        /// Control btnFoto2.
+        /// Control imgFoto2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnFoto2;
+        protected global::System.Web.UI.WebControls.Image imgFoto2;
         
         /// <summary>
-        /// Control btnFoto3.
+        /// Control uploaderGif2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnFoto3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploaderGif2;
         
         /// <summary>
-        /// Control btnFoto4.
+        /// Control AsyncFileUpload2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnFoto4;
+        protected global::AjaxControlToolkit.AsyncFileUpload AsyncFileUpload2;
+        
+        /// <summary>
+        /// Control imgFoto3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgFoto3;
+        
+        /// <summary>
+        /// Control uploaderGif3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploaderGif3;
+        
+        /// <summary>
+        /// Control AsyncFileUpload3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AsyncFileUpload AsyncFileUpload3;
+        
+        /// <summary>
+        /// Control imgFoto4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgFoto4;
+        
+        /// <summary>
+        /// Control uploaderGif4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uploaderGif4;
+        
+        /// <summary>
+        /// Control AsyncFileUpload4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AsyncFileUpload AsyncFileUpload4;
         
         /// <summary>
         /// Control btnCargarFondo.
@@ -118,7 +181,7 @@ namespace TitanWeb {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCargarFondo;
+        protected global::System.Web.UI.WebControls.Image btnCargarFondo;
         
         /// <summary>
         /// Control btnCargarFondoPrecio.
@@ -127,7 +190,25 @@ namespace TitanWeb {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCargarFondoPrecio;
+        protected global::System.Web.UI.WebControls.Image btnCargarFondoPrecio;
+        
+        /// <summary>
+        /// Control GuardarJPG.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button GuardarJPG;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// Control txtPrecio.
@@ -145,6 +226,6 @@ namespace TitanWeb {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnCargarLogo;
+        protected global::System.Web.UI.WebControls.Image btnCargarLogo;
     }
 }
