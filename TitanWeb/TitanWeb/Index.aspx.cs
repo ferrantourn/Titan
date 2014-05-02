@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace TitanWeb
@@ -13,7 +14,10 @@ namespace TitanWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["PlantillaActual"] = "0";
+            if File.Exists()
+            {
+
+            }
         }
 
 
