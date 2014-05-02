@@ -144,6 +144,101 @@ namespace TitanWeb
                 txtModelo.Text = "Error";
             }
         }
+        protected void AsyncFileUploadFondo_UploadedComplete(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
+        {
+            try
+            {
+                if (AsyncFileUploadFondo.HasFile)
+                {
+                    //EL ARCHIVO NO PUEDE SER MAYOR A 1MB.
+                    //----------------------------------------
+                    if (Convert.ToInt32(e.FileSize) <= 1000000)
+                    {
+                        string filename = AsyncFileUploadFondo.FileName;
+
+                        //SI ES UNA EXTENSION VALIDA.
+                        //---------------------------
+                        if ((filename.EndsWith(".jpg")) || (filename.EndsWith(".JPG")) || (filename.EndsWith(".PNG")) || (filename.EndsWith(".png"))
+                             || (filename.EndsWith(".jpeg")) || (filename.EndsWith(".JPEG")))
+                        {
+                            //SALVAMOS LA IMAGEN A UNA CARPETA
+                            //-------------------------------
+                            string SaveFileTo = Server.MapPath("~/UploadedImages/Fondo" + filename.Substring(filename.LastIndexOf('.')));
+                            AsyncFileUploadFondo.SaveAs(SaveFileTo);
+                            //imgFotoFondo.ImageUrl = "~/UploadedImages/Fondo" + filename.Substring(filename.LastIndexOf('.'));
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                txtModelo.Text = "Error";
+            }
+        }
+
+        protected void AsyncFileUploadLogo_UploadedComplete(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
+        {
+            try
+            {
+                if (AsyncFileUploadLogo.HasFile)
+                {
+                    //EL ARCHIVO NO PUEDE SER MAYOR A 1MB.
+                    //----------------------------------------
+                    if (Convert.ToInt32(e.FileSize) <= 1000000)
+                    {
+                        string filename = AsyncFileUploadLogo.FileName;
+
+                        //SI ES UNA EXTENSION VALIDA.
+                        //---------------------------
+                        if ((filename.EndsWith(".jpg")) || (filename.EndsWith(".JPG")) || (filename.EndsWith(".PNG")) || (filename.EndsWith(".png"))
+                             || (filename.EndsWith(".jpeg")) || (filename.EndsWith(".JPEG")))
+                        {
+                            //SALVAMOS LA IMAGEN A UNA CARPETA
+                            //-------------------------------
+                            string SaveFileTo = Server.MapPath("~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.')));
+                            AsyncFileUploadLogo.SaveAs(SaveFileTo);
+                            //imgFotoLogo.ImageUrl = "~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'));
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                txtModelo.Text = "Error";
+            }
+        }
+
+        protected void AsyncFileUploadFondoPrecio_UploadedComplete(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
+        {
+            try
+            {
+                if (AsyncFileUploadFondoPrecio.HasFile)
+                {
+                    //EL ARCHIVO NO PUEDE SER MAYOR A 1MB.
+                    //----------------------------------------
+                    if (Convert.ToInt32(e.FileSize) <= 1000000)
+                    {
+                        string filename = AsyncFileUploadFondoPrecio.FileName;
+
+                        //SI ES UNA EXTENSION VALIDA.
+                        //---------------------------
+                        if ((filename.EndsWith(".jpg")) || (filename.EndsWith(".JPG")) || (filename.EndsWith(".PNG")) || (filename.EndsWith(".png"))
+                             || (filename.EndsWith(".jpeg")) || (filename.EndsWith(".JPEG")))
+                        {
+                            //SALVAMOS LA IMAGEN A UNA CARPETA
+                            //-------------------------------
+                            string SaveFileTo = Server.MapPath("~/UploadedImages/FondoPrecio" + filename.Substring(filename.LastIndexOf('.')));
+                            AsyncFileUploadFondoPrecio.SaveAs(SaveFileTo);
+                            //imgFotoFondoPrecio.ImageUrl = "~/UploadedImages/FondoPrecio" + filename.Substring(filename.LastIndexOf('.'));
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                txtModelo.Text = "Error";
+            }
+        }
 
         protected void GuardarJPG_Click(object sender, EventArgs e)
         {
