@@ -104,7 +104,7 @@ namespace TitanWeb
         {
  
         }
-        public AutoliderContainer(string sMarca, string sModelo, string sCilindrada, string sMotor,
+        public AutoliderContainer(string sModelo, string sCilindrada, string sMotor,
                                       string sPrecio, string sDescripcionMultiLine,
                                       Uri Foto1, Uri Foto2, Uri Foto3, Uri Foto4, Uri FondoPrecio,
                                       Uri FondoPlantilla,
@@ -114,7 +114,6 @@ namespace TitanWeb
             this.Foto2 = Foto2;
             this.Foto3 = Foto3;
             this.Foto4 = Foto4;
-            this.sMarca = sMarca;
             this.sModelo = sModelo;
             this.sMotor = sMotor;
             this.sPrecio = sPrecio;

@@ -14,9 +14,15 @@ namespace TitanWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if File.Exists()
+            try
             {
-
+                foreach (FileInfo f in new DirectoryInfo(Server.MapPath("UploadedImages/")).GetFiles("*.*"))
+                {
+                    f.Delete();
+                }
+            }
+            catch
+            {
             }
         }
 
@@ -246,18 +252,27 @@ namespace TitanWeb
 
         protected void GuardarJPG_Click(object sender, EventArgs e)
         {
-            AutoliderContainer c = new AutoliderContainer();
-            c.SCilindrada = txtCilindrada.Text;
-            c.SDescripcionMultiLine = txtDescripcion.Text;
-            //c.SMarca
-            c.SModelo = txtModelo.Text;
-            c.SMotor = txtMotor.Text;
-            c.SPrecio = txtPrecio.Text;
-            c.SFoto1 = new Uri(imgFoto1.ImageUrl);
-            //c.SFoto2 = new Uri(imgFoto2.ImageUrl);
-            //c.SFoto3 = new Uri(imgFoto3.ImageUrl);
-            //c.SFoto4 = new Uri(imgFoto4.ImageUrl);
-            //c.SLogo = new Uri(imgFoto4.ImageUrl);
+            try
+            {
+                AutoliderContainer c = new AutoliderContainer();
+                c.SCilindrada = txtCilindrada.Text;
+                c.SDescripcionMultiLine = txtDescripcion.Text;
+                c.SModelo = txtModelo.Text;
+                c.SMotor = txtMotor.Text;
+                c.SPrecio = txtPrecio.Text;
+                c.SFoto1 = new Uri(imgFoto1.ImageUrl);
+                c.SFoto2 = new Uri(imgFoto2.ImageUrl);
+                c.SFoto3 = new Uri(imgFoto3.ImageUrl);
+                c.SFoto4 = new Uri(imgFoto4.ImageUrl);
+                c.SLogo = new Uri(Server.MapPath("~/UploadedImages/Logo.jpg"));
+                c.SFondoPrecio = new Uri(Server.MapPath("~/UploadedImages/Logo.jpg"));
+                c.SFondoPlantilla = new Uri(Server.MapPath("~/UploadedImages/Fondo.jpg"));
+
+            }
+            catch
+            {
+ 
+            }
         }
     }
 }
