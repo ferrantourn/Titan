@@ -313,14 +313,14 @@ namespace TitanWeb
         {
             Persistencia P = new Persistencia();
             AutoliderContainer c = (AutoliderContainer)Session["Container"];
-            P.GuardarProyectoAutolider("proyecto.xml", c);
+            P.GuardarProyectoAutolider("proyecto", c);
         }
 
         protected void btnAbrirProyecto_Click(object sender, EventArgs e)
         {
             Persistencia P = new Persistencia();
             AutoliderContainer c = (AutoliderContainer)Session["Container"];
-            P.AbrirProyectoAutolider("proyecto.xml", c);
+            P.AbrirProyectoAutolider("proyecto", c);
 
         }
 

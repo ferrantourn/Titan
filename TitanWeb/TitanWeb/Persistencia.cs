@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using System.Xml;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace TitanWeb
 {
@@ -20,30 +23,34 @@ namespace TitanWeb
             websiteToImage.Generate();
         }
 
-        public void GuardarProyectoAutolider(string ArchivoDestino, AutoliderContainer c)
+        public void GuardarProyectoAutolider(string nombre, AutoliderContainer c)
         {
             try
             {
-                string directorio = Path.GetFileNameWithoutExtension(ArchivoDestino);
-                Directory.CreateDirectory
+                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/") + nombre);
+                foreach (var file in HttpContext.Current.Server.MapPath("~/UploadedImages"))
+                {
+                    File.Copy(file, Path.Combine(HttpContext.Current.Server.MapPath("~/").ToString() + nombre.ToString(), Path.GetFileName(file)));
+                }
+
                 string sMarca = c.SMarca;
                 string sModelo = c.SModelo;
                 string sCilindrada = c.SCilindrada;
                 string sMotor = c.SMarca;
                 string sPrecio = c.SPrecio;
                 string sDescripcionMultiLine = c.SDescripcionMultiLine;
-                Uri Foto1 = c.SFoto1;
-                Uri Foto2 = c.SFoto2;
-                Uri Foto3 = c.SFoto3;
-                Uri Foto4 = c.SFoto4;
-                Uri FondoPrecio = c.SFondoPrecio;
-                Uri FondoPlantilla = c.SFondoPlantilla;
-                Uri Logo = c.SLogo;
+                Uri Foto1 = new Uri("~/" + nombre + c.SFoto1.ToString());
+                Uri Foto2 = new Uri("~/" + nombre + c.SFoto2.ToString());
+                Uri Foto3 = new Uri("~/" + nombre + c.SFoto3.ToString());
+                Uri Foto4 = new Uri("~/" + nombre + c.SFoto4.ToString());
+                Uri FondoPrecio = new Uri("~/" + nombre + c.SFondoPrecio.ToString());
+                Uri FondoPlantilla = new Uri("~/" + nombre + c.SFondoPlantilla.ToString());
+                Uri Logo = new Uri("~/" + nombre + c.SLogo.ToString());
                 
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
 
-                XmlWriter writer = XmlWriter.Create(ArchivoDestino, settings);
+                XmlWriter writer = XmlWriter.Create(nombre + ".titan", settings);
 
                 writer.WriteStartDocument();
                 writer.WriteComment("Generado por Titan.");
@@ -72,11 +79,11 @@ namespace TitanWeb
             }
         }
 
-        public void AbrirProyectoAutolider(string ArchivoOrigen, AutoliderContainer c)
+        public void AbrirProyectoAutolider(string nombre, AutoliderContainer c)
         {
             c = new AutoliderContainer();
             
-            XmlReader reader = XmlReader.Create(ArchivoOrigen);
+            XmlReader reader = XmlReader.Create("~/" + nombre + ".titan");
 
             while (reader.Read())
             {
