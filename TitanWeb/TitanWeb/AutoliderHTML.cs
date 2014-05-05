@@ -17,47 +17,13 @@ namespace TitanWeb
 
             try
             {
-                if (c.SFoto1 == null || c.SFoto1.ToString().Length == 0 || !File.Exists(c.SFoto1.ToString()))
-                {
-                    c.SFoto1 = new Uri("trans.png");
-                }
-
-                if (c.SFoto2 == null || c.SFoto2.ToString().Length == 0 || !File.Exists(c.SFoto2.ToString()))
-                {
-                    c.SFoto2 = new Uri("trans.png");
-                }
-
-                if (c.SFoto3 == null || c.SFoto3.ToString().Length == 0 || !File.Exists(c.SFoto3.ToString()))
-                {
-                    c.SFoto3 = new Uri("trans.png");
-                }
-
-                if (c.SFoto4 == null || c.SFoto4.ToString().Length == 0 || !File.Exists(c.SFoto4.ToString()))
-                {
-                    c.SFoto4 = new Uri("trans.png");
-                }
                 
 
-                if (c.SFondoPlantilla.ToString() == "")
-                {
-                    c.SFondoPlantilla = new Uri("trans.png");
-                }
-
-                if (c.SFondoPrecio.ToString() == "")
-                {
-                    c.SFondoPrecio = new Uri("trans.png");
-                }
-
-                if (c.SLogo.ToString() == "")
-                {
-                    c.SLogo = new Uri("trans.png");
-                }
-                //copiar las imágenes a la working folder como idea opcional para el preview
                 text = @"<html>
 
 <head>
 <meta http-equiv=""Content-Language"" content=""es-uy"">
-<meta http-equiv=""Content-Type"" content=""text/html; charset=windows-1252"">
+<meta http-equiv=""Content-Type"" content=""text/html; charset=UTF-8"">
 <title>Test</title>
 </head>
 

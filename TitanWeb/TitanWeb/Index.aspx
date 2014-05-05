@@ -12,6 +12,7 @@
         .success { background-color: #dddddd;}
     </style>
 
+
     <style type="text/css"> 
         #capa1
         {
@@ -24,8 +25,12 @@
             text-align: center;
         }
     </style>
-
+    
+    
     <script type="text/javascript" >
+
+
+
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
         function validate(sender, args) {
@@ -171,6 +176,8 @@
            // image.src = "../UploadedImages/FotoLogo" + "." + getExt(filename);
         }
 
+
+
         function uploadError() {
             alert("error!");
          }
@@ -206,7 +213,7 @@
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen1" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload1_UploadedComplete" ID="AsyncFileUpload1" runat="server" ThrobberID="uploaderGif" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
 </div>
-       <%-----------------------------------Foto2 ------------------------------------%>
+    <%-----------------------------------Foto2 ------------------------------------%>
 <div style="position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 26px" id="foto2">
     <asp:Image  ID="imgFoto2" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen2.jpg" Width="422px" />
         <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 147px; top: 204px" runat="server" id="uploaderGif2">
@@ -214,7 +221,7 @@
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate2" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen2" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload2_UploadedComplete" ID="AsyncFileUpload2" runat="server" ThrobberID="uploaderGif2" Width="420" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD"/>
     </div>
-       <%-----------------------------------Foto3 ------------------------------------%>
+    <%-----------------------------------Foto3 ------------------------------------%>
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 298px; margin-left: 0px;" id="foto3">
     <asp:Image ID="imgFoto3" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif3">
@@ -222,7 +229,7 @@
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate3" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen3" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload3_UploadedComplete" ID="AsyncFileUpload3" runat="server" ThrobberID="uploaderGif3" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD"/>
 </div>
-       <%-----------------------------------Foto4 ------------------------------------%>
+    <%-----------------------------------Foto4 ------------------------------------%>
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 573px" id="foto4">
     <asp:Image ID="imgFoto4" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif4">
@@ -259,8 +266,20 @@
 </div>
 
      <%-----------------------------------Otros-----------------------------------%>
-<div style="position: absolute; width: 153px; height: 29px; z-index: 1; left: 743px; top: 800px" id="Div1">
-    <asp:Button ID="GuardarJPG" runat="server" Text="Guardar JPG" OnClick="GuardarJPG_Click" />
+<div style="position: absolute; width: 160px; height: 119px; z-index: 1; left: 743px; top: 800px" id="Div1">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar JPG" />
+            <br />
+            <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg">___</asp:HyperLink>
+            <br />
+            <br />
+            <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="121px" OnClick="btnGuardarProyecto_Click" />
+            <br />
+            
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" />
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>

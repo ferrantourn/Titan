@@ -20,14 +20,26 @@ namespace TitanWeb
             websiteToImage.Generate();
         }
 
-        public void GuardarProyecto(string ArchivoDestino, string sMarca, string sModelo, string sCilindrada, string sMotor,
-                                      string sPrecio, string sDescripcionMultiLine,
-                                      Uri Foto1, Uri Foto2, Uri Foto3, Uri Foto4, Uri FondoPrecio,
-                                      Uri FondoPlantilla,
-                                      Uri Logo)
+        public void GuardarProyectoAutolider(string ArchivoDestino, AutoliderContainer c)
         {
             try
             {
+                string directorio = Path.GetFileNameWithoutExtension(ArchivoDestino);
+                Directory.CreateDirectory
+                string sMarca = c.SMarca;
+                string sModelo = c.SModelo;
+                string sCilindrada = c.SCilindrada;
+                string sMotor = c.SMarca;
+                string sPrecio = c.SPrecio;
+                string sDescripcionMultiLine = c.SDescripcionMultiLine;
+                Uri Foto1 = c.SFoto1;
+                Uri Foto2 = c.SFoto2;
+                Uri Foto3 = c.SFoto3;
+                Uri Foto4 = c.SFoto4;
+                Uri FondoPrecio = c.SFondoPrecio;
+                Uri FondoPlantilla = c.SFondoPlantilla;
+                Uri Logo = c.SLogo;
+                
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
 
@@ -60,34 +72,30 @@ namespace TitanWeb
             }
         }
 
-        public void AbrirProyecto(string ArchivoOrigen, ref string sMarca, ref string sModelo, ref string sCilindrada, ref string sMotor,
-                                      ref string sPrecio, ref string sDescripcionMultiLine,
-                                      ref Uri Foto1, ref Uri Foto2, ref Uri Foto3, ref Uri Foto4, ref Uri FondoPrecio,
-                                      ref Uri FondoPlantilla,
-                                      ref Uri Logo)
+        public void AbrirProyectoAutolider(string ArchivoOrigen, AutoliderContainer c)
         {
-           XmlReader reader = XmlReader.Create(ArchivoOrigen);
+            c = new AutoliderContainer();
+            
+            XmlReader reader = XmlReader.Create(ArchivoOrigen);
 
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Element
                 && reader.Name == "Producto")
                 {
-
-                    Foto1 = new Uri(reader.GetAttribute(0));
-                    Foto2 = new Uri(reader.GetAttribute(1));
-                    Foto3 = new Uri(reader.GetAttribute(2));
-                    Foto4 = new Uri(reader.GetAttribute(3));
-                    Logo = new Uri(reader.GetAttribute(4));
-                    FondoPrecio = new Uri(reader.GetAttribute(5));
-                    FondoPlantilla = new Uri(reader.GetAttribute(6));
-                    sCilindrada = reader.GetAttribute(7);
-                    sModelo = reader.GetAttribute(8);
-                    sMotor = reader.GetAttribute(9);
-                    sDescripcionMultiLine = reader.GetAttribute(10);
-                    sPrecio = reader.GetAttribute(11);
-                    sMarca = reader.GetAttribute(12);
-
+                    c.SFoto1 = new Uri(reader.GetAttribute(0));
+                    c.SFoto2 = new Uri(reader.GetAttribute(1));
+                    c.SFoto3 = new Uri(reader.GetAttribute(2));
+                    c.SFoto4 = new Uri(reader.GetAttribute(3));
+                    c.SLogo = new Uri(reader.GetAttribute(4));
+                    c.SFondoPrecio = new Uri(reader.GetAttribute(5));
+                    c.SFondoPlantilla = new Uri(reader.GetAttribute(6));
+                    c.SCilindrada = reader.GetAttribute(7);
+                    c.SModelo = reader.GetAttribute(8);
+                    c.SMotor = reader.GetAttribute(9);
+                    c.SDescripcionMultiLine = reader.GetAttribute(10);
+                    c.SPrecio = reader.GetAttribute(11);
+                    c.SMarca = reader.GetAttribute(12);
                 } //end if
 
             } //end while
