@@ -23,72 +23,36 @@ namespace TitanWeb
             websiteToImage.Generate();
         }
 
-        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
-        {
-            // Get the subdirectories for the specified directory.
-            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-
-            if (!dir.Exists)
-            {
-                throw new DirectoryNotFoundException(
-                    "Source directory does not exist or could not be found: "
-                    + sourceDirName);
-            }
-
-            // If the destination directory doesn't exist, create it. 
-            if (!Directory.Exists(destDirName))
-            {
-                Directory.CreateDirectory(destDirName);
-            }
-
-            // Get the files in the directory and copy them to the new location.
-            FileInfo[] files = dir.GetFiles();
-            foreach (FileInfo file in files)
-            {
-                string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, false);
-            }
-
-            // If copying subdirectories, copy them and their contents to new location. 
-            if (copySubDirs)
-            {
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    string temppath = Path.Combine(destDirName, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
-                }
-            }
-        }
-
         public void GuardarProyectoAutolider(string nombre, AutoliderContainer c)
         {
             try
             {
-                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/") + nombre);
-                //foreach (var file in HttpContext.Current.Server.MapPath("~/UploadedImages"))
-                //{
-                //    File.Copy(file, Path.Combine(HttpContext.Current.Server.MapPath("~/").ToString() + nombre.ToString(), Path.GetFileName(file)));
-                //}
+                string origen = HttpContext.Current.Server.MapPath("~/UploadedImages");
+                string destino = HttpContext.Current.Server.MapPath("~/") + nombre;
+                Directory.CreateDirectory(destino);
+                foreach (var file in new DirectoryInfo(origen).GetFiles())
+                {
+                    file.CopyTo(Path.Combine(destino, file.Name));
+                }
 
                 string sMarca = c.SMarca;
                 string sModelo = c.SModelo;
                 string sCilindrada = c.SCilindrada;
-                string sMotor = c.SMarca;
+                string sMotor = c.SMotor;
                 string sPrecio = c.SPrecio;
                 string sDescripcionMultiLine = c.SDescripcionMultiLine;
-                Uri Foto1 = new Uri("~/" + nombre + c.SFoto1.ToString());
-                Uri Foto2 = new Uri("~/" + nombre + c.SFoto2.ToString());
-                Uri Foto3 = new Uri("~/" + nombre + c.SFoto3.ToString());
-                Uri Foto4 = new Uri("~/" + nombre + c.SFoto4.ToString());
-                Uri FondoPrecio = new Uri("~/" + nombre + c.SFondoPrecio.ToString());
-                Uri FondoPlantilla = new Uri("~/" + nombre + c.SFondoPlantilla.ToString());
-                Uri Logo = new Uri("~/" + nombre + c.SLogo.ToString());
+                Uri Foto1 = new Uri(destino + "/" + Path.GetFileName(c.SFoto1.ToString()));
+                Uri Foto2 = new Uri(destino + "/" + Path.GetFileName(c.SFoto2.ToString()));
+                Uri Foto3 = new Uri(destino + "/" + Path.GetFileName(c.SFoto3.ToString()));
+                Uri Foto4 = new Uri(destino + "/" + Path.GetFileName(c.SFoto4.ToString()));
+                Uri FondoPrecio = new Uri(destino + "/" + Path.GetFileName(c.SFondoPrecio.ToString()));
+                Uri FondoPlantilla = new Uri(destino + "/" + Path.GetFileName(c.SFondoPlantilla.ToString()));
+                Uri Logo = new Uri(destino + "/" + Path.GetFileName(c.SLogo.ToString()));
                 
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
 
-                XmlWriter writer = XmlWriter.Create(nombre + ".titan", settings);
+                XmlWriter writer = XmlWriter.Create(HttpContext.Current.Server.MapPath("~/") + nombre + ".titan", settings);
 
                 writer.WriteStartDocument();
                 writer.WriteComment("Generado por Titan.");
@@ -119,22 +83,31 @@ namespace TitanWeb
 
         public void AbrirProyectoAutolider(string nombre, AutoliderContainer c)
         {
-            c = new AutoliderContainer();
             
-            XmlReader reader = XmlReader.Create("~/" + nombre + ".titan");
+            string origen = HttpContext.Current.Server.MapPath("~/") + nombre;
+            string destino = HttpContext.Current.Server.MapPath("~/UploadedImages");
+            string archivo = HttpContext.Current.Server.MapPath("~/") + nombre + ".titan";
+
+            //copio todo a la carpeta de trabajo "UploadedImages"
+            foreach (var file in new DirectoryInfo(origen).GetFiles())
+            {
+                file.CopyTo(Path.Combine(destino, file.Name), true);
+            }
+
+            XmlReader reader = XmlReader.Create(archivo);
 
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Element
                 && reader.Name == "Producto")
                 {
-                    c.SFoto1 = new Uri(reader.GetAttribute(0));
-                    c.SFoto2 = new Uri(reader.GetAttribute(1));
-                    c.SFoto3 = new Uri(reader.GetAttribute(2));
-                    c.SFoto4 = new Uri(reader.GetAttribute(3));
-                    c.SLogo = new Uri(reader.GetAttribute(4));
-                    c.SFondoPrecio = new Uri(reader.GetAttribute(5));
-                    c.SFondoPlantilla = new Uri(reader.GetAttribute(6));
+                    c.SFoto1 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(0)));
+                    c.SFoto2 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(1)));
+                    c.SFoto3 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(2)));
+                    c.SFoto4 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(3)));
+                    c.SLogo = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(4)));
+                    c.SFondoPrecio = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(5)));
+                    c.SFondoPlantilla = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(6)));
                     c.SCilindrada = reader.GetAttribute(7);
                     c.SModelo = reader.GetAttribute(8);
                     c.SMotor = reader.GetAttribute(9);
@@ -142,7 +115,6 @@ namespace TitanWeb
                     c.SPrecio = reader.GetAttribute(11);
                     c.SMarca = reader.GetAttribute(12);
                 } //end if
-
             } //end while
         }
     }

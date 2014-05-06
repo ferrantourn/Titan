@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<%--<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Pragma-directive: no-cache"/>
+<meta http-equiv="Cache-directive: no-cache"/>--%>
     <title></title>
     <!--magia negra para hacer que el fondo sea gris en un div:-->
     <style>
@@ -29,12 +34,10 @@
     
     <script type="text/javascript" >
 
-
-
+ 
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
         function validate(sender, args) {
-
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
             var ext = getExt(filename);
             if (ext == "jpg" || ext == "jpeg" || ext == "png")
@@ -125,7 +128,8 @@
 
             var image = document.getElementById("<%= imgFoto1.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
-            image.src = "../UploadedImages/Foto1"  + "." + getExt(filename);
+            image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            
         }
         //ASIGNAR IMAGEN 2
         //---------------------------------------------------------------------------
@@ -133,23 +137,26 @@
 
             var image = document.getElementById("<%= imgFoto2.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload2_ctl02").value;
-            image.src = "../UploadedImages/Foto2" + "." + getExt(filename);
+            image.src = "../UploadedImages/Foto2" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            
         }
         //ASIGNAR IMAGEN 3
         //---------------------------------------------------------------------------
         function AsignarImagen3() {
 
             var image = document.getElementById("<%= imgFoto3.ClientID %>");
-                    var filename = document.getElementById("AsyncFileUpload3_ctl02").value;
-                    image.src = "../UploadedImages/Foto3" + "." + getExt(filename);
+            var filename = document.getElementById("AsyncFileUpload3_ctl02").value;
+            image.src = "../UploadedImages/Foto3" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            
         }
         //ASIGNAR IMAGEN 4
         //---------------------------------------------------------------------------
         function AsignarImagen4() {
 
             var image = document.getElementById("<%= imgFoto4.ClientID %>");
-                    var filename = document.getElementById("AsyncFileUpload4_ctl02").value;
-                    image.src = "../UploadedImages/Foto4" + "." + getExt(filename);
+            var filename = document.getElementById("AsyncFileUpload4_ctl02").value;
+            image.src = "../UploadedImages/Foto4" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            
         }
         //ASIGNAR IMAGEN FONDO
         //---------------------------------------------------------------------------
@@ -204,14 +211,16 @@
 <asp:TextBox ID="txtDescripcion" runat="server" Height="246px" Width="413px" TextMode="MultiLine" BackColor="#585858" ForeColor="White" Wrap="False" style = "resize:none">Descripción</asp:TextBox>
     </div>
 
-       <%-----------------------------------Foto3 ------------------------------------%>
+       <%-----------------------------------Foto1 ------------------------------------%>
 
 <div style="position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px" id="foto1">
     <asp:Image ID="imgFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif">
         <img src="../Images/018.gif" alt="Subiendo" id="imgUploader" />
     </div>
+    
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen1" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload1_UploadedComplete" ID="AsyncFileUpload1" runat="server" ThrobberID="uploaderGif" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
+
 </div>
     <%-----------------------------------Foto2 ------------------------------------%>
 <div style="position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 26px" id="foto2">
@@ -267,18 +276,18 @@
 
      <%-----------------------------------Otros-----------------------------------%>
 <div style="position: absolute; width: 160px; height: 119px; z-index: 1; left: 743px; top: 800px" id="Div1">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+<%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>--%>
             <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar JPG" />
             <br />
-            <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg">___</asp:HyperLink>
+            <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
             <br />
             <br />
             <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="121px" OnClick="btnGuardarProyecto_Click" />
             <br />
             
-        </ContentTemplate>
-    </asp:UpdatePanel>
+<%--        </ContentTemplate>
+    </asp:UpdatePanel>--%>
     <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" />
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">

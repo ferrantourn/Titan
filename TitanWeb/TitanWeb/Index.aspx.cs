@@ -6,12 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Collections;
 
 namespace TitanWeb
 {
     public partial class Index : System.Web.UI.Page
     {
+ 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -69,7 +70,10 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload1.SaveAs(SaveFileTo);
-                            imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "BorrarImagen1", "Borrar1()", true);
+                            Random random = new Random();
+                            int randomNumber = random.Next(0, 1000);
+                            imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')) + "?" + randomNumber.ToString();
 
                             ((AutoliderContainer)Session["Container"]).SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
                             
@@ -104,6 +108,7 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload2.SaveAs(SaveFileTo);
+                            imgFoto1.ImageUrl = "";
                             imgFoto2.ImageUrl = "~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'));
 
                             ((AutoliderContainer)Session["Container"]).SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'))));
@@ -138,6 +143,7 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload3.SaveAs(SaveFileTo);
+                            imgFoto1.ImageUrl = "";
                             imgFoto3.ImageUrl = "~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'));
                             ((AutoliderContainer)Session["Container"]).SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'))));
                         }
@@ -313,6 +319,11 @@ namespace TitanWeb
         {
             Persistencia P = new Persistencia();
             AutoliderContainer c = (AutoliderContainer)Session["Container"];
+            c.SModelo = txtModelo.Text;
+            c.SMotor = txtMotor.Text;
+            c.SDescripcionMultiLine = txtDescripcion.Text;
+            c.SCilindrada = txtCilindrada.Text;
+            c.SPrecio = txtPrecio.Text;
             P.GuardarProyectoAutolider("proyecto", c);
         }
 
@@ -321,9 +332,21 @@ namespace TitanWeb
             Persistencia P = new Persistencia();
             AutoliderContainer c = (AutoliderContainer)Session["Container"];
             P.AbrirProyectoAutolider("proyecto", c);
-
+            imgFoto1.ImageUrl = "";
+            imgFoto2.ImageUrl = "";
+            imgFoto3.ImageUrl = "";
+            imgFoto4.ImageUrl = "";
+                        
+            //cargo en la página los valores obtenidos del nuevo c
+            imgFoto1.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c.SFoto1.ToString()));
+            imgFoto2.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c.SFoto2.ToString()));
+            imgFoto3.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c.SFoto3.ToString()));
+            imgFoto4.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c.SFoto4.ToString()));
+            txtCilindrada.Text = c.SCilindrada;
+            txtDescripcion.Text = c.SDescripcionMultiLine;
+            txtModelo.Text = c.SModelo;
+            txtMotor.Text = c.SMotor;
+            txtPrecio.Text = c.SPrecio;
         }
-
-
     }
 }
