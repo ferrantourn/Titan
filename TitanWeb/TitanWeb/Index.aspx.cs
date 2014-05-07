@@ -46,6 +46,8 @@ namespace TitanWeb
                     Persistencia p = new Persistencia();
                     GridVListaTitan.DataSource = p.ListadoArchivosTitan();
                     GridVListaTitan.DataBind();
+                    GridVAbrir.DataSource = p.ListadoArchivosTitan();
+                    GridVAbrir.DataBind();
 
                 }
             }
@@ -369,6 +371,8 @@ namespace TitanWeb
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
             GridVListaTitan.DataSource = P.ListadoArchivosTitan();
             GridVListaTitan.DataBind();
+            GridVAbrir.DataSource = P.ListadoArchivosTitan();
+            GridVAbrir.DataBind(); 
         }
     }
 }
