@@ -316,20 +316,23 @@
 <div style="position: absolute; width: 446px; height: 99px; z-index: 1; left: 743px; top: 800px" id="Div1">
     <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>--%>
-            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar JPG" />
+            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar en JPG el trabajo actual" Width="207px" />
             <br />
             <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
             <br />
             <br />
             
-            <button type="button" id="btnGuardar" value="Login" class="btn">
+            <button type="button" id="btnGuardar" value="guardar" class="btn">
                     Guardar Archivo
             </button>
             <%--<asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="130px" OnClick="btnGuardarProyecto_Click" />--%>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
 <%--        </ContentTemplate>
-    </asp:UpdatePanel>--%>
-    <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
+            </asp:UpdatePanel>--%>
+            <button type="button" id="Button2" value="abrir" class="btn">
+  Abrir Archivo
+            </button>
+            <%--<asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />--%>
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
@@ -337,7 +340,7 @@
     </div>
 </div>
 
-<div style="display: none; overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
+<div style="/*display: none;*/ overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
 
         <asp:Label ID="Label2" runat="server" Text="Nombre del Proyecto:"></asp:Label>
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
@@ -345,7 +348,8 @@
         <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" OnClick="btnGuardarArchivo_Click" />
         <br />
         <br />
-        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server">
+        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server" Caption="Lista de archivos actuales:" CaptionAlign="Left">
+            <PagerStyle CssClass="pgr" />
         </asp:GridView>
         
     </div>

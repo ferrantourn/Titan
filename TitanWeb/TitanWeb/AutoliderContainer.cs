@@ -5,6 +5,7 @@ using System.Web;
 
 namespace TitanWeb
 {
+    [Serializable]
     public class AutoliderContainer
     {
         string sMarca;
