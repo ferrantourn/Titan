@@ -16,6 +16,7 @@
         body { float:left; } 
         .success { background-color: #dddddd;}
     </style>
+    <%--fin magia negra--%>
 
     <style type="text/css">
             .mGrid {   
@@ -70,6 +71,14 @@
         $(function () {
             $('#btnGuardar').click(function () {
                 $('#GuardarArchivo').show();
+                $('#AbrirArchivo').hide();
+            });
+        });
+
+        $(function () {
+            $('#btnAbrir').click(function () {
+                $('#GuardarArchivo').hide();
+                $('#AbrirArchivo').show();
             });
         });
  
@@ -325,14 +334,13 @@
             <button type="button" id="btnGuardar" value="guardar" class="btn">
                     Guardar Archivo
             </button>
-            <%--<asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="130px" OnClick="btnGuardarProyecto_Click" />--%>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+    <%--<asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="130px" OnClick="btnGuardarProyecto_Click" />--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
 <%--        </ContentTemplate>
             </asp:UpdatePanel>--%>
-            <button type="button" id="Button2" value="abrir" class="btn">
-  Abrir Archivo
+            <button type="button" id="btnAbrir" value="abrir" class="btn">
+                Abrir Archivo
             </button>
-            <%--<asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />--%>
+    <%--<asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />--%>
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
@@ -340,7 +348,7 @@
     </div>
 </div>
 
-<div style="/*display: none;*/ overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
+<div style="display: none; overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
 
         <asp:Label ID="Label2" runat="server" Text="Nombre del Proyecto:"></asp:Label>
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
@@ -348,10 +356,23 @@
         <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" OnClick="btnGuardarArchivo_Click" />
         <br />
         <br />
-        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server" Caption="Lista de archivos actuales:" CaptionAlign="Left">
+        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server">
             <PagerStyle CssClass="pgr" />
         </asp:GridView>
         
+    </div>
+
+<div style="/*display: none;*/ overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="AbrirArchivo">
+
+        <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto:"></asp:Label>
+&nbsp;  <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
+        <br />
+        <br />
+        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVAbrir" runat="server">
+            <PagerStyle CssClass="pgr" />
+        </asp:GridView>
     </div>
 </form>
 </body>
