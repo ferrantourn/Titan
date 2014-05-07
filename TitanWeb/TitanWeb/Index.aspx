@@ -19,6 +19,10 @@
     <%--fin magia negra--%>
 
     <style type="text/css">
+    .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #E1EEF4; overflow: hidden; border: 4px solid #006699; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; }.datagrid table td, .datagrid table th { padding: 8px 20px; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
+    </style>
+
+    <style type="text/css">
             .mGrid {   
         width: 100%;   
         background-color: #fff;   
@@ -63,6 +67,10 @@
         #form1
         {
             text-align: center;
+        }
+        #btnAbrir
+        {
+            width: 142px;
         }
     </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -332,13 +340,11 @@
             <br />
             
             <button type="button" id="btnGuardar" value="guardar" class="btn">
-                    Guardar Archivo
+                    Guardar Proyecto
             </button>
-    <%--<asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="130px" OnClick="btnGuardarProyecto_Click" />--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
-<%--        </ContentTemplate>
-            </asp:UpdatePanel>--%>
+    &nbsp;
             <button type="button" id="btnAbrir" value="abrir" class="btn">
-                Abrir Archivo
+                Abrir Proyecto
             </button>
     <%--<asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />--%>
     </div>
@@ -348,32 +354,50 @@
     </div>
 </div>
 
-<div style="display: none; overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
-
+<div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="GuardarArchivo">
+    <table>
+        <tbody>
+            <tr>
+                <td>
         <asp:Label ID="Label2" runat="server" Text="Nombre del Proyecto:"></asp:Label>
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
 &nbsp;
         <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" OnClick="btnGuardarArchivo_Click" />
         <br />
         <br />
+        <div style="overflow: scroll; height: 250px;">
         <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server">
             <PagerStyle CssClass="pgr" />
         </asp:GridView>
-        
-    </div>
+        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-<div style="/*display: none;*/ overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="AbrirArchivo">
-
+<div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="AbrirArchivo">
+    <table>
+        <tbody>
+            <tr>
+                <td>
         <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto:"></asp:Label>
 &nbsp;  <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;
         <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
         <br />
         <br />
+        
+        <div style="overflow: scroll; height: 250px;">
         <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVAbrir" runat="server">
             <PagerStyle CssClass="pgr" />
         </asp:GridView>
-    </div>
+        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </form>
 </body>
 </html>
