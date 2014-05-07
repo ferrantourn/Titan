@@ -31,17 +31,17 @@ namespace TitanWeb
                     File.Copy(Server.MapPath("~/Images/trans.png"), Server.MapPath("~/UploadedImages/Foto3.png"));
                     File.Copy(Server.MapPath("~/Images/trans.png"), Server.MapPath("~/UploadedImages/Foto4.png"));
                     File.Copy(Server.MapPath("~/Images/trans.png"), Server.MapPath("~/UploadedImages/FondoLogo.png"));
-                    AutoliderContainer c = new AutoliderContainer();
-
-                    c.SFondoPlantilla = new Uri(Server.MapPath("~/UploadedImages/Fondo.png"));
-                    c.SFondoPrecio = new Uri(Server.MapPath("~/UploadedImages/FondoPrecio.png"));
-                    c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1.png"));
-                    c.SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2.png"));
-                    c.SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3.png"));
-                    c.SFoto4 = new Uri(Server.MapPath("~/UploadedImages/Foto4.png"));
-                    c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FondoLogo.png"));
+                
+                AutoliderContainer c = new AutoliderContainer();
+                c.SFondoPlantilla = new Uri(Server.MapPath("~/UploadedImages/Fondo.png"));
+                c.SFondoPrecio = new Uri(Server.MapPath("~/UploadedImages/FondoPrecio.png"));
+                c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1.png"));
+                c.SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2.png"));
+                c.SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3.png"));
+                c.SFoto4 = new Uri(Server.MapPath("~/UploadedImages/Foto4.png"));
+                c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FondoLogo.png"));
                     
-                    ViewState["Container"] = c;
+                ViewState["Container"] = c;
 
                     Persistencia p = new Persistencia();
                     GridVListaTitan.DataSource = p.ListadoArchivosTitan();
@@ -341,7 +341,7 @@ namespace TitanWeb
         {
             Persistencia P = new Persistencia();
             AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
-            P.AbrirProyectoAutolider("proyecto", c);
+            P.AbrirProyectoAutolider(txtAbrirProyecto.Text, c);
             imgFoto1.ImageUrl = "";
             imgFoto2.ImageUrl = "";
             imgFoto3.ImageUrl = "";
@@ -374,5 +374,21 @@ namespace TitanWeb
             GridVAbrir.DataSource = P.ListadoArchivosTitan();
             GridVAbrir.DataBind(); 
         }
+        public void CustomersGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtAbrirProyecto.Text = GridVAbrir.SelectedRow.Cells[1].Text;
+            //Persistencia P = new Persistencia();
+            //AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
+            //c.SModelo = txtModelo.Text;
+            //c.SMotor = txtMotor.Text;
+            //c.SDescripcionMultiLine = txtDescripcion.Text;
+            //c.SCilindrada = txtCilindrada.Text;
+            //c.SPrecio = txtPrecio.Text;
+            //P.GuardarProyectoAutolider(GridVAbrir.SelectedRow.Cells[1].Text, c);
+            //GridVListaTitan.DataSource = P.ListadoArchivosTitan();
+            //GridVListaTitan.DataBind();
+            //GridVAbrir.DataSource = P.ListadoArchivosTitan();
+            //GridVAbrir.DataBind();
+         }
     }
 }

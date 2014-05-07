@@ -99,9 +99,9 @@ namespace TitanWeb
         public void AbrirProyectoAutolider(string nombre, AutoliderContainer c)
         {
             
-            string origen = HttpContext.Current.Server.MapPath("~/") + nombre;
+            string origen = HttpContext.Current.Server.MapPath("~/") + Path.GetFileNameWithoutExtension(nombre);
             string destino = HttpContext.Current.Server.MapPath("~/UploadedImages");
-            string archivo = HttpContext.Current.Server.MapPath("~/") + nombre + ".titan";
+            string archivo = HttpContext.Current.Server.MapPath("~/") + nombre;
 
             //copio todo a la carpeta de trabajo "UploadedImages"
             foreach (var file in new DirectoryInfo(origen).GetFiles())

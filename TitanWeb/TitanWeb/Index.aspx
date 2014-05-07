@@ -342,11 +342,10 @@
             <button type="button" id="btnGuardar" value="guardar" class="btn">
                     Guardar Proyecto
             </button>
-    &nbsp;
+            &nbsp;
             <button type="button" id="btnAbrir" value="abrir" class="btn">
-                Abrir Proyecto
+      Abrir Proyecto
             </button>
-    <%--<asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />--%>
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
@@ -359,10 +358,10 @@
         <tbody>
             <tr>
                 <td>
-        <asp:Label ID="Label2" runat="server" Text="Nombre del Proyecto:"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Nombre del proyecto a guardar:"></asp:Label>
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
 &nbsp;
-        <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" OnClick="btnGuardarArchivo_Click" />
+        <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar Proyecto" OnClick="btnGuardarArchivo_Click" Width="130px"/>
         <br />
         <br />
         <div style="overflow: scroll; height: 250px;">
@@ -381,18 +380,29 @@
         <tbody>
             <tr>
                 <td>
-        <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto:"></asp:Label>
-&nbsp;  <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-&nbsp;
-        <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
-        <br />
-        <br />
+        <div style="width: 130px; position: absolute; top: 8px; left: 351px;">
+            <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
+        </div>
+
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto a cargar:"></asp:Label>
+
+                &nbsp;<asp:TextBox ID="txtAbrirProyecto" runat="server"></asp:TextBox>
+                &nbsp;  
+                &nbsp;<br />
+                      <br />
         
         <div style="overflow: scroll; height: 250px;">
-        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVAbrir" runat="server">
+
+        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVAbrir" runat="server" onselectedindexchanged="CustomersGridView_SelectedIndexChanged" selectedindex="1" autogenerateselectbutton="True"> <selectedrowstyle backcolor="LightCyan" forecolor="DarkBlue" font-bold="true"/>
             <PagerStyle CssClass="pgr" />
         </asp:GridView>
+        
         </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        
                 </td>
             </tr>
         </tbody>
