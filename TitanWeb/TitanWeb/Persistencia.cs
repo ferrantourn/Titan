@@ -7,6 +7,7 @@ using System.Xml;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace TitanWeb
 {
@@ -80,6 +81,20 @@ namespace TitanWeb
                 
             }
         }
+
+        public ArrayList ListadoArchivosTitan() 
+        //devuelve un arraylist con todos los archivos titan en la raiz de la página
+        {
+            ArrayList a = new ArrayList();
+            DirectoryInfo d = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/"));
+            FileInfo[] fileArray = d.GetFiles("*.titan",SearchOption.TopDirectoryOnly);
+            foreach(FileInfo f in fileArray)
+            {
+                a.Add(f.Name.ToString());
+            }
+            return a;
+        }
+
 
         public void AbrirProyectoAutolider(string nombre, AutoliderContainer c)
         {

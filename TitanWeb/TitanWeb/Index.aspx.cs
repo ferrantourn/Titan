@@ -41,11 +41,17 @@ namespace TitanWeb
                     c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FondoLogo.png"));
                     Session["Container"] = c;
 
+                    Persistencia p = new Persistencia();
+                    GridVListaTitan.DataSource = p.ListadoArchivosTitan();
+                    GridVListaTitan.DataBind();
+
                 }
             }
             catch
             {
             }
+
+
         }
 
 
@@ -347,6 +353,20 @@ namespace TitanWeb
             txtModelo.Text = c.SModelo;
             txtMotor.Text = c.SMotor;
             txtPrecio.Text = c.SPrecio;
+        }
+
+        protected void btnGuardarArchivo_Click(object sender, EventArgs e)
+        {
+            Persistencia P = new Persistencia();
+            AutoliderContainer c = (AutoliderContainer)Session["Container"];
+            c.SModelo = txtModelo.Text;
+            c.SMotor = txtMotor.Text;
+            c.SDescripcionMultiLine = txtDescripcion.Text;
+            c.SCilindrada = txtCilindrada.Text;
+            c.SPrecio = txtPrecio.Text;
+            P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
+            GridVListaTitan.DataSource = P.ListadoArchivosTitan();
+            GridVListaTitan.DataBind();
         }
     }
 }

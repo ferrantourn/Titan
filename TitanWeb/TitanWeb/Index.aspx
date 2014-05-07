@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<%--<meta http-equiv="Cache-Control" content="no-cache"/>
+    <%--<meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
 <meta http-equiv="Pragma-directive: no-cache"/>
@@ -17,12 +17,46 @@
         .success { background-color: #dddddd;}
     </style>
 
+    <style type="text/css">
+            .mGrid {   
+        width: 100%;   
+        background-color: #fff;   
+        margin: 5px 0 10px 0;   
+        border: solid 1px #525252;   
+        border-collapse:collapse;   
+    }  
+    .mGrid td {   
+        padding: 2px;   
+        border: solid 1px #c1c1c1;   
+        color: #717171;   
+    }  
+    .mGrid th {   
+        padding: 4px 2px;   
+        color: #fff;   
+        background: #424242 url(grd_head.png) repeat-x top;   
+        border-left: solid 1px #525252;   
+        font-size: 0.9em;   
+    }  
+    .mGrid .alt { background: #fcfcfc url(grd_alt.png) repeat-x top; }  
+    .mGrid .pgr { background: #424242 url(grd_pgr.png) repeat-x top; }  
+    .mGrid .pgr table { margin: 5px 0; }  
+    .mGrid .pgr td {   
+        border-width: 0;   
+        padding: 0 6px;   
+        border-left: solid 1px #666;   
+        font-weight: bold;   
+        color: #fff;   
+        line-height: 12px;   
+     }     
+    .mGrid .pgr a { color: #666; text-decoration: none; }  
+    .mGrid .pgr a:hover { color: #000; text-decoration: none; }  
+    </style>
 
     <style type="text/css"> 
         #capa1
         {
             height: 900px;
-            width: 1100px;
+            width: 1200px;
             text-align: center;
         }
         #form1
@@ -30,10 +64,14 @@
             text-align: center;
         }
     </style>
-    
-    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" >
 
+        $(function () {
+            $('#btnGuardar').click(function () {
+                $('#GuardarArchivo').show();
+            });
+        });
  
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
@@ -275,29 +313,42 @@
 </div>
 
      <%-----------------------------------Otros-----------------------------------%>
-<div style="position: absolute; width: 160px; height: 119px; z-index: 1; left: 743px; top: 800px" id="Div1">
-<%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<div style="position: absolute; width: 446px; height: 99px; z-index: 1; left: 743px; top: 800px" id="Div1">
+    <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>--%>
             <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar JPG" />
             <br />
             <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
             <br />
             <br />
-            <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="121px" OnClick="btnGuardarProyecto_Click" />
-            <br />
             
+            <button type="button" id="btnGuardar" value="Login" class="btn">
+                    Guardar Archivo
+            </button>
+            <%--<asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" Width="130px" OnClick="btnGuardarProyecto_Click" />--%>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
 <%--        </ContentTemplate>
     </asp:UpdatePanel>--%>
-    <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" />
+    <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
 <asp:TextBox ID="txtPrecio" runat="server" Width="63px" BackColor="#585858" ForeColor="White">0</asp:TextBox>
     </div>
-
-
-
 </div>
+
+<div style="display: none; overflow:scroll; position: absolute; width: 443px; height: 215px; z-index: 1; left: 744px; top: 918px; text-align: left;" id="GuardarArchivo">
+
+        <asp:Label ID="Label2" runat="server" Text="Nombre del Proyecto:"></asp:Label>
+&nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar" OnClick="btnGuardarArchivo_Click" />
+        <br />
+        <br />
+        <asp:GridView CssClass="mGrid" PagerStyle-CssClass="pgr" ID="GridVListaTitan" runat="server">
+        </asp:GridView>
+        
+    </div>
 </form>
 </body>
 </html>
