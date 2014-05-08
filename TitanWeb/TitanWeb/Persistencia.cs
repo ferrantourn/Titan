@@ -103,11 +103,19 @@ namespace TitanWeb
             string destino = HttpContext.Current.Server.MapPath("~/UploadedImages");
             string archivo = HttpContext.Current.Server.MapPath("~/") + nombre;
 
-            //copio todo a la carpeta de trabajo "UploadedImages"
-            foreach (var file in new DirectoryInfo(origen).GetFiles())
+            foreach (FileInfo f in new DirectoryInfo(HttpContext.Current.Server.MapPath("UploadedImages/")).GetFiles("*.*"))
             {
-                file.CopyTo(Path.Combine(destino, file.Name), true);
+                f.Delete();
             }
+            //copio todo desde la carpeta origen (nombre del proyecto) a la carpeta de trabajo "UploadedImages"
+            foreach (FileInfo f in new DirectoryInfo(HttpContext.Current.Server.MapPath("~/" + Path.GetFileNameWithoutExtension(nombre))).GetFiles("*.*"))
+            {
+                f.CopyTo(Path.Combine(destino, f.Name), true);//true para overwrite
+            }
+            //foreach (var file in new DirectoryInfo(origen).GetFiles())
+            //{
+            //    file.CopyTo(Path.Combine(destino, file.Name), true);
+            //}
 
             XmlReader reader = XmlReader.Create(archivo);
 

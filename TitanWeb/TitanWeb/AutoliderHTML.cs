@@ -13,7 +13,7 @@ namespace TitanWeb
             string text = "";
 
             //convierto el texto multiline de una caja de texto .net a un código multiline HTML
-            String TextoDescripcion = c.SDescripcionMultiLine.Replace(Environment.NewLine, "<br>");
+            string TextoDescripcion = c.SDescripcionMultiLine.Replace(Environment.NewLine, "<br>");
 
             try
             {

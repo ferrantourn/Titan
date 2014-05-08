@@ -331,13 +331,17 @@
 
      <%-----------------------------------Otros-----------------------------------%>
 <div style="position: absolute; width: 446px; height: 99px; z-index: 1; left: 743px; top: 800px" id="Div1">
-    <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>--%>
+    
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+
             <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar en JPG el trabajo actual" Width="207px" />
             <br />
             <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
             <br />
             <br />
+        </ContentTemplate>
+    </asp:UpdatePanel>
             
             <button type="button" id="btnGuardar" value="guardar" class="btn">
                     Guardar Proyecto
