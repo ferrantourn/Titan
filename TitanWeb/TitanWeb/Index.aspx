@@ -5,11 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <%--<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
 <meta http-equiv="Pragma-directive: no-cache"/>
-<meta http-equiv="Cache-directive: no-cache"/>--%>
+<meta http-equiv="Cache-directive: no-cache"/>
     <title></title>
     <!--magia negra para hacer que el fondo sea gris en un div:-->
     <style>
@@ -357,11 +357,13 @@
     </div>
 </div>
 
+        <%--Container invisible para abrir GUARDAR los proyectos de titan--%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="GuardarArchivo">
     <table>
         <tbody>
             <tr>
                 <td>
+
         <asp:Label ID="Label2" runat="server" Text="Nombre del proyecto a guardar:"></asp:Label>
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
 &nbsp;
@@ -379,15 +381,19 @@
     </table>
 </div>
 
+
+    <%--Container invisible para abrir archivos de proyecto titan--%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="AbrirArchivo">
     <table>
         <tbody>
             <tr>
                 <td>
+
         <div style="width: 130px; position: absolute; top: 8px; left: 351px;">
             <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
         </div>
 
+        <%--el gridview y el textbox quedan adentro de un update panel, el boton queda afuera del updatepanel--%>
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto a cargar:"></asp:Label>

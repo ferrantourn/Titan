@@ -12,15 +12,12 @@ namespace TitanWeb
 {
     public partial class Index : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 if (!Page.IsPostBack)
                 {
-
                     foreach (FileInfo f in new DirectoryInfo(Server.MapPath("UploadedImages/")).GetFiles("*.*"))
                     {
                         f.Delete();
@@ -71,11 +68,9 @@ namespace TitanWeb
                         txtModelo.Text = c2.SModelo;
                         txtMotor.Text = c2.SMotor;
                         txtPrecio.Text = c2.SPrecio;
-                        txtNombreGuardar.Text = Request.QueryString["abrir"];
+                        txtNombreGuardar.Text = Path.GetFileNameWithoutExtension(Request.QueryString["abrir"].ToString());
                     }
                 }
-
-
             }
             catch
             {
@@ -109,7 +104,6 @@ namespace TitanWeb
                             imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
                             AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
                             c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
-
                         }
                     }
                 }
@@ -362,7 +356,7 @@ namespace TitanWeb
             c.SDescripcionMultiLine = txtDescripcion.Text;
             c.SCilindrada = txtCilindrada.Text;
             c.SPrecio = txtPrecio.Text;
-            P.GuardarProyectoAutolider("proyecto", c);
+            P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
         }
 
         protected void btnAbrirProyecto_Click(object sender, EventArgs e)
@@ -379,6 +373,7 @@ namespace TitanWeb
             c.SDescripcionMultiLine = txtDescripcion.Text;
             c.SCilindrada = txtCilindrada.Text;
             c.SPrecio = txtPrecio.Text;
+
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
             GridVListaTitan.DataSource = P.ListadoArchivosTitan();
             GridVListaTitan.DataBind();
@@ -388,18 +383,8 @@ namespace TitanWeb
         public void CustomersGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtAbrirProyecto.Text = GridVAbrir.SelectedRow.Cells[1].Text;
-            //Persistencia P = new Persistencia();
-            //AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
-            //c.SModelo = txtModelo.Text;
-            //c.SMotor = txtMotor.Text;
-            //c.SDescripcionMultiLine = txtDescripcion.Text;
-            //c.SCilindrada = txtCilindrada.Text;
-            //c.SPrecio = txtPrecio.Text;
-            //P.GuardarProyectoAutolider(GridVAbrir.SelectedRow.Cells[1].Text, c);
-            //GridVListaTitan.DataSource = P.ListadoArchivosTitan();
-            //GridVListaTitan.DataBind();
-            //GridVAbrir.DataSource = P.ListadoArchivosTitan();
-            //GridVAbrir.DataBind();
+            //Response.Redirect("Index.aspx?abrir=" + txtAbrirProyecto.Text);
+            
         }
     }
 }
