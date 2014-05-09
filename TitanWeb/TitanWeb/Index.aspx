@@ -89,6 +89,31 @@
                 $('#AbrirArchivo').show();
             });
         });
+
+        $(function () {
+            $('#btnCerrar').click(function () {
+                $('#AbrirArchivo').hide();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#btnCerrar")
+                .text("")
+                .append("<img src=/Images/CANCEL.jpg width=25 height=25/>")
+                .button();
+            $("#btnCerrar2")
+                .text("")
+                .append("<img src=/Images/CANCEL.jpg width=25 height=25/>")
+                .button();
+        });
+
+        $(function () {
+            $('#btnCerrar2').click(function () {
+                $('#GuardarArchivo').hide();
+            });
+        });
+
+
  
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
@@ -330,6 +355,7 @@
 </div>
 
      <%-----------------------------------Otros-----------------------------------%>
+     <%----------------------------------------------------------------------%>
 <div style="position: absolute; width: 446px; height: 99px; z-index: 1; left: 743px; top: 800px" id="Div1">
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -347,8 +373,7 @@
                     Guardar Proyecto
             </button>
             &nbsp;
-            <button type="button" id="btnAbrir" value="abrir" class="btn">
-      Abrir Proyecto
+            <button type="button" id="btnAbrir" value="abrir" class="btn"> Abrir Proyecto
             </button>
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
@@ -357,7 +382,8 @@
     </div>
 </div>
 
-        <%--Container invisible para abrir GUARDAR los proyectos de titan--%>
+        <%------------------------VENTANA GUARDAR PROYECTO-----------------------------------%>
+        <%---------Container invisible para abrir GUARDAR los proyectos de titan--------------%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="GuardarArchivo">
     <table>
         <tbody>
@@ -368,6 +394,14 @@
 &nbsp;  <asp:TextBox ID="txtNombreGuardar" runat="server"></asp:TextBox>
 &nbsp;
         <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar Proyecto" OnClick="btnGuardarArchivo_Click" Width="130px"/>
+        
+        <%-------------------BOTON CERRAR-----------------%>
+        <div style="width: 25px;height:25px; position: absolute; top: 8px; left: 532px;" id="Cerrar2">
+            <button type="button" id="btnCerrar2" value="cerrar" class="btn">
+                
+            </button>
+        </div>
+
         <br />
         <br />
         <div style="overflow: scroll; height: 250px;">
@@ -381,8 +415,8 @@
     </table>
 </div>
 
-
-    <%--Container invisible para abrir archivos de proyecto titan--%>
+    <%------------------------VENTANA ABRIR PROYECTO--------------------------%>
+    <%---------Container invisible para abrir archivos de proyecto titan-------%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="AbrirArchivo">
     <table>
         <tbody>
@@ -393,14 +427,20 @@
             <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
         </div>
 
+        <%-------------------BOTON CERRAR-----------------%>
+        <div style="width: 25px;height:25px; position: absolute; top: 8px; left: 532px;" id="Cerrar1">
+            <button type="button" id="btnCerrar" value="cerrar" class="btn">
+                
+            </button>
+        </div>
+
         <%--el gridview y el textbox quedan adentro de un update panel, el boton queda afuera del updatepanel--%>
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
                 <asp:Label ID="Label3" runat="server" Text="Nombre del Proyecto a cargar:"></asp:Label>
 
                 &nbsp;<asp:TextBox ID="txtAbrirProyecto" runat="server"></asp:TextBox>
-                &nbsp;  
-                &nbsp;<br />
+                <br />
                       <br />
         
         <div style="overflow: scroll; height: 250px;">
