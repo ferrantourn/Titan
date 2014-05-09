@@ -59,10 +59,10 @@ namespace TitanWeb
                         imgFoto4.ImageUrl = "";
 
                         //cargo en la página los valores obtenidos del nuevo c
-                        imgFoto1.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto1.ToString()));
-                        imgFoto2.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto2.ToString()));
-                        imgFoto3.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto3.ToString()));
-                        imgFoto4.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto4.ToString()));
+                        imgFoto1.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto1.ToString()) + "?" + DateTime.Now.Ticks.ToString());
+                        imgFoto2.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto2.ToString()) + "?" + DateTime.Now.Ticks.ToString());
+                        imgFoto3.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto3.ToString()) + "?" + DateTime.Now.Ticks.ToString());
+                        imgFoto4.ImageUrl = this.ResolveUrl("~/UploadedImages/" + Path.GetFileName(c2.SFoto4.ToString()) + "?" + DateTime.Now.Ticks.ToString());
                         txtCilindrada.Text = c2.SCilindrada;
                         txtDescripcion.Text = c2.SDescripcionMultiLine;
                         txtModelo.Text = c2.SModelo;
