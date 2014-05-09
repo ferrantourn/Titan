@@ -105,6 +105,10 @@
                 .text("")
                 .append("<img src=/Images/CANCEL.jpg width=25 height=25/>")
                 .button();
+            $("#btnGuardar")
+                .text("")
+                .append("<img src=/Images/hd.png width=25 height=25/>")
+                .button();
         });
 
         $(function () {
@@ -369,12 +373,16 @@
         </ContentTemplate>
     </asp:UpdatePanel>
             
-            <button type="button" id="btnGuardar" value="guardar" class="btn">
-                    Guardar Proyecto
+<%--            <div style="width: 25px;height:25px; position: absolute; top: 64px; left: 103px;" id="divBtnG">--%>
+<%--                <button type="button" id="btnGuardar" value="cerrar" class="btn">
+                
+                </button>--%>
+<%--            </div>--%>
+            <button type="button" id="btnGuardar" value="guardar" class="btn" style="background-image : url('Images/hd.png'); height: 28px; width: 33px;">
             </button>
             &nbsp;
-            <button type="button" id="btnAbrir" value="abrir" class="btn"> Abrir Proyecto
-            </button>
+            <button type="button" id="btnAbrir" value="abrir" class="btn"> 
+                    Abrir Proyecto</button>
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
@@ -397,7 +405,8 @@
         
         <%-------------------BOTON CERRAR-----------------%>
         <div style="width: 25px;height:25px; position: absolute; top: 8px; left: 532px;" id="Cerrar2">
-            <button type="button" id="btnCerrar2" value="cerrar" class="btn">
+            <button style="width:25px; height:25px; background-image:url(/CANCEL.jpg)" onclick="btnCerrar()"></button>
+        <button type="button" id="btnCerrar2" value="cerrar" class="btn">
                 
             </button>
         </div>
