@@ -72,7 +72,7 @@
         {
             width: 142px;
         }
-    </style>
+        </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" >
 
@@ -91,35 +91,20 @@
         });
 
         $(function () {
-            $('#btnCerrar').click(function () {
-                $('#AbrirArchivo').hide();
-            });
-        });
-
-        $(document).ready(function () {
-            $("#btnCerrar")
-                .text("")
-                .append("<img src=/Images/CANCEL.jpg width=25 height=25/>")
-                .button();
-            $("#btnCerrar2")
-                .text("")
-                .append("<img src=/Images/CANCEL.jpg width=25 height=25/>")
-                .button();
-            $("#btnGuardar")
-                .text("")
-                .append("<img src=/Images/hd.png width=25 height=25/>")
-                .button();
-        });
-
-        $(function () {
-            $('#btnCerrar2').click(function () {
+            $('#btnCerrarGuardar').click(function () {
                 $('#GuardarArchivo').hide();
             });
         });
 
-        function VerJPG() {
-            window.open("/index.jpg");
-        }
+        $(function () {
+            $('#btnCerrarAbrir').click(function () {
+                $('#AbrirArchivo').hide();
+            });
+        });
+
+        //function VerJPG() {
+        //    window.open("/index.jpg");
+        //}
  
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
@@ -362,16 +347,15 @@
 
      <%-----------------------------------Otros-----------------------------------%>
      <%----------------------------------------------------------------------%>
-<div style="position: absolute; width: 446px; height: 99px; z-index: 1; left: 743px; top: 800px" id="Div1">
+<div style="position: absolute; width: 446px; height: 112px; z-index: 1; left: 743px; top: 800px" id="Div1">
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" onclientclick="VerJPG()" Text="Guardar en JPG el trabajo actual" Width="207px" />
+            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Previsualizar JPG" Width="207px" />
+
             <br />
-            <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
-            <br />
-            <br />
+
         </ContentTemplate>
     </asp:UpdatePanel>
             
@@ -380,11 +364,13 @@
                 
                 </button>--%>
 <%--            </div>--%>
-            <button type="button" id="btnGuardar" value="guardar" class="btn" style="background-image : url('Images/hd.png'); height: 50px; width: 50px;">
+            <button type="button" id="btnGuardar" value="guardar" class="btn" style="border-style: hidden; background-image : url('Images/hd.png'); height: 50px; width: 150px; background-repeat: no-repeat; background-color: #DDDDDD;">
+                Guardar</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="btnAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/hd.png'); height: 50px; width: 150px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+                Abrir
             </button>
-            &nbsp;
-            <button type="button" id="btnAbrir" value="abrir" class="btn"> 
-                    Abrir Proyecto</button>
+
     </div>
 <div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
@@ -405,11 +391,10 @@
 &nbsp;
         <asp:Button ID="btnGuardarArchivo" runat="server" Text="Guardar Proyecto" OnClick="btnGuardarArchivo_Click" Width="130px"/>
         
-        <%-------------------BOTON CERRAR-----------------%>
-        <div style="width: 25px;height:25px; position: absolute; top: 8px; left: 532px;" id="Cerrar2">
-            <button style="width:25px; height:25px; background-image:url(/CANCEL.jpg)" onclick="btnCerrar()"></button>
-        <button type="button" id="btnCerrar2" value="cerrar" class="btn">
-                
+        <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
+        <div style="width: 34px;height:34px; position: absolute; top: 8px; left: 532px;" id="CerrarGuardar">
+            <button type="button" id="btnCerrarGuardar" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/CANCEL.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+
             </button>
         </div>
 
@@ -439,9 +424,10 @@
         </div>
 
         <%-------------------BOTON CERRAR-----------------%>
-        <div style="width: 25px;height:25px; position: absolute; top: 8px; left: 532px;" id="Cerrar1">
-            <button type="button" id="btnCerrar" value="cerrar" class="btn">
-                
+        <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
+        <div style="width: 34px;height:34px; position: absolute; top: 8px; left: 532px;" id="CerrarAbrir">
+            <button type="button" id="btnCerrarAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/CANCEL.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+
             </button>
         </div>
 

@@ -336,8 +336,10 @@ namespace TitanWeb
                 P.GuardarHTML(text, Server.MapPath("~/index.html"));
                 P.GuardarJPG(Server.MapPath("~/index.html"), Server.MapPath("~/index.jpg"));
 
-                VinculoJPG.NavigateUrl = "~/index.jpg";
-                VinculoJPG.Text = Server.MapPath("~/index.jpg").ToString();
+                //VinculoJPG.NavigateUrl = "~/index.jpg";
+                //VinculoJPG.Text = Server.MapPath("~/index.jpg").ToString();
+                string strUrl="/index.jpg";
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + strUrl + "','_blank')", true);
                 //Response.Redirect("/index.jpg");
 
 
