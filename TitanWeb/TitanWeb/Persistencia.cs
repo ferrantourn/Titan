@@ -95,6 +95,17 @@ namespace TitanWeb
             return a;
         }
 
+        public void AbrirProyectoVacio(AutoliderContainer c)
+        {
+            c.SFondoPlantilla = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/Fondo.png"));
+            c.SFondoPrecio = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/FondoPrecio.png"));
+            c.SFoto1 = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/Foto1.png"));
+            c.SFoto2 = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/Foto2.png"));
+            c.SFoto3 = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/Foto3.png"));
+            c.SFoto4 = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/Foto4.png"));
+            c.SLogo = new Uri(HttpContext.Current.Server.MapPath("~/UploadedImages/FondoLogo.png"));
+
+        }
 
         public void AbrirProyectoAutolider(string nombre, AutoliderContainer c)
         {
@@ -107,15 +118,11 @@ namespace TitanWeb
             {
                 f.Delete();
             }
-            //copio todo desde la carpeta origen (nombre del proyecto) a la carpeta de trabajo "UploadedImages"
+
             foreach (FileInfo f in new DirectoryInfo(HttpContext.Current.Server.MapPath("~/" + Path.GetFileNameWithoutExtension(nombre))).GetFiles("*.*"))
             {
                 f.CopyTo(Path.Combine(destino, f.Name), true);//true para overwrite
             }
-            //foreach (var file in new DirectoryInfo(origen).GetFiles())
-            //{
-            //    file.CopyTo(Path.Combine(destino, file.Name), true);
-            //}
 
             XmlReader reader = XmlReader.Create(archivo);
 

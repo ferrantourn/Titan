@@ -31,27 +31,22 @@ namespace TitanWeb
                     File.Copy(Server.MapPath("~/Images/trans.png"), Server.MapPath("~/UploadedImages/FondoLogo.png"));
 
                     AutoliderContainer c = new AutoliderContainer();
-                    c.SFondoPlantilla = new Uri(Server.MapPath("~/UploadedImages/Fondo.png"));
-                    c.SFondoPrecio = new Uri(Server.MapPath("~/UploadedImages/FondoPrecio.png"));
-                    c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1.png"));
-                    c.SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2.png"));
-                    c.SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3.png"));
-                    c.SFoto4 = new Uri(Server.MapPath("~/UploadedImages/Foto4.png"));
-                    c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FondoLogo.png"));
-
-                    ViewState["Container"] = c;
-
+                    HttpContext context = HttpContext.Current;
+                    context.Session["Container"] = c;
                     Persistencia p = new Persistencia();
+                    p.AbrirProyectoVacio(c);
+
                     GridVListaTitan.DataSource = p.ListadoArchivosTitan();
                     GridVListaTitan.DataBind();
                     GridVAbrir.DataSource = p.ListadoArchivosTitan();
                     GridVAbrir.DataBind();
 
 
+
                     if (Request.QueryString["abrir"] != null)
                     {
                         Persistencia P = new Persistencia();
-                        AutoliderContainer c2 = (AutoliderContainer)ViewState["Container"];
+                        AutoliderContainer c2 = (AutoliderContainer)context.Session["Container"];
                         P.AbrirProyectoAutolider(Request.QueryString["abrir"].ToString(), c2);
                         imgFoto1.ImageUrl = "";
                         imgFoto2.ImageUrl = "";
@@ -102,7 +97,8 @@ namespace TitanWeb
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload1.SaveAs(SaveFileTo);
                             imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
-                            AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
                         }
                     }
@@ -137,7 +133,8 @@ namespace TitanWeb
                             AsyncFileUpload2.SaveAs(SaveFileTo);
                             imgFoto2.ImageUrl = "";
                             imgFoto2.ImageUrl = "~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'));
-                            AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'))));
                         }
                     }
@@ -171,7 +168,8 @@ namespace TitanWeb
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload3.SaveAs(SaveFileTo);
                             imgFoto3.ImageUrl = "~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'));
-                            AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'))));
                         }
                     }
@@ -205,7 +203,8 @@ namespace TitanWeb
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUpload4.SaveAs(SaveFileTo);
                             imgFoto4.ImageUrl = ResolveUrl("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.')));
-                            AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SFoto4 = new Uri(Server.MapPath("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.'))));
                         }
                     }
@@ -237,7 +236,8 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Fondo" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUploadFondo.SaveAs(SaveFileTo);
-                            AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SFondoPlantilla = new Uri(Server.MapPath("~/UploadedImages/Fondo" + filename.Substring(filename.LastIndexOf('.'))));
                             //imgFotoFondo.ImageUrl = "~/UploadedImages/Fondo" + filename.Substring(filename.LastIndexOf('.'));
                         }
@@ -271,7 +271,8 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUploadLogo.SaveAs(SaveFileTo);
-                            AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'))));
                             //imgFotoLogo.ImageUrl = "~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'));
                         }
@@ -305,7 +306,8 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/FondoPrecio" + filename.Substring(filename.LastIndexOf('.')));
                             AsyncFileUploadFondoPrecio.SaveAs(SaveFileTo);
-                            AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                            HttpContext context = HttpContext.Current;
+                            AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SFondoPrecio = new Uri(Server.MapPath("~/UploadedImages/FondoPrecio" + filename.Substring(filename.LastIndexOf('.'))));
                             //imgFotoFondoPrecio.ImageUrl = "~/UploadedImages/FondoPrecio" + filename.Substring(filename.LastIndexOf('.'));
                         }
@@ -322,7 +324,8 @@ namespace TitanWeb
         {
             try
             {
-                AutoliderContainer c = ((AutoliderContainer)ViewState["Container"]);
+                HttpContext context = HttpContext.Current;
+                AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                 c.SCilindrada = txtCilindrada.Text;
                 c.SDescripcionMultiLine = txtDescripcion.Text;
                 c.SModelo = txtModelo.Text;
@@ -336,11 +339,8 @@ namespace TitanWeb
                 P.GuardarHTML(text, Server.MapPath("~/index.html"));
                 P.GuardarJPG(Server.MapPath("~/index.html"), Server.MapPath("~/index.jpg"));
 
-                //VinculoJPG.NavigateUrl = "~/index.jpg";
-                //VinculoJPG.Text = Server.MapPath("~/index.jpg").ToString();
                 string strUrl="/index.jpg";
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + strUrl + "','_blank')", true);
-                //Response.Redirect("/index.jpg");
 
 
             }
@@ -351,15 +351,22 @@ namespace TitanWeb
         }
 
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
-        {
+        {//en desuso
             Persistencia P = new Persistencia();
-            AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
+            HttpContext context = HttpContext.Current;
+            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
             c.SModelo = txtModelo.Text;
             c.SMotor = txtMotor.Text;
             c.SDescripcionMultiLine = txtDescripcion.Text;
             c.SCilindrada = txtCilindrada.Text;
             c.SPrecio = txtPrecio.Text;
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
+            
+            AutoliderHTML A = new AutoliderHTML();
+            string text = A.GenerateHTML(c);
+
+        //    P.GuardarHTML(text, Server.MapPath("~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".html"));
+        //    P.GuardarJPG(Server.MapPath("~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".html"), "~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".jpg");
         }
 
         protected void btnAbrirProyecto_Click(object sender, EventArgs e)
@@ -370,7 +377,8 @@ namespace TitanWeb
         protected void btnGuardarArchivo_Click(object sender, EventArgs e)
         {
             Persistencia P = new Persistencia();
-            AutoliderContainer c = (AutoliderContainer)ViewState["Container"];
+            HttpContext context = HttpContext.Current;
+            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
             c.SModelo = txtModelo.Text;
             c.SMotor = txtMotor.Text;
             c.SDescripcionMultiLine = txtDescripcion.Text;
@@ -378,6 +386,12 @@ namespace TitanWeb
             c.SPrecio = txtPrecio.Text;
 
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
+            AutoliderHTML A = new AutoliderHTML();
+            string text = A.GenerateHTML(c);
+
+            P.GuardarHTML(text, Server.MapPath("~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".html"));
+            P.GuardarJPG(Server.MapPath("~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".html"), Server.MapPath("~/" + Path.GetFileNameWithoutExtension(txtNombreGuardar.Text) + ".jpg"));
+
             GridVListaTitan.DataSource = P.ListadoArchivosTitan();
             GridVListaTitan.DataBind();
             GridVAbrir.DataSource = P.ListadoArchivosTitan();
@@ -386,8 +400,6 @@ namespace TitanWeb
         public void CustomersGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtAbrirProyecto.Text = GridVAbrir.SelectedRow.Cells[1].Text;
-            //Response.Redirect("Index.aspx?abrir=" + txtAbrirProyecto.Text);
-            
         }
     }
 }

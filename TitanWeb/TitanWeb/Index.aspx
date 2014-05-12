@@ -393,7 +393,7 @@
         
         <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
         <div style="width: 34px;height:34px; position: absolute; top: 8px; left: 532px;" id="CerrarGuardar">
-            <button type="button" id="btnCerrarGuardar" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/CANCEL.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+            <button type="button" id="btnCerrarGuardar" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/cerrar.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
 
             </button>
         </div>
@@ -426,7 +426,7 @@
         <%-------------------BOTON CERRAR-----------------%>
         <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
         <div style="width: 34px;height:34px; position: absolute; top: 8px; left: 532px;" id="CerrarAbrir">
-            <button type="button" id="btnCerrarAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/CANCEL.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+            <button type="button" id="btnCerrarAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/cerrar.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
 
             </button>
         </div>
