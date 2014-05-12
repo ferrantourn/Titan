@@ -117,7 +117,9 @@
             });
         });
 
-
+        function VerJPG() {
+            window.open("/index.jpg");
+        }
  
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
@@ -365,7 +367,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
-            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" Text="Guardar en JPG el trabajo actual" Width="207px" />
+            <asp:Button ID="GuardarJPG" runat="server" OnClick="GuardarJPG_Click" onclientclick="VerJPG()" Text="Guardar en JPG el trabajo actual" Width="207px" />
             <br />
             <asp:HyperLink ID="VinculoJPG" runat="server" NavigateUrl="~/index.jpg" Target="_blank">___</asp:HyperLink>
             <br />
@@ -378,7 +380,7 @@
                 
                 </button>--%>
 <%--            </div>--%>
-            <button type="button" id="btnGuardar" value="guardar" class="btn" style="background-image : url('Images/hd.png'); height: 28px; width: 33px;">
+            <button type="button" id="btnGuardar" value="guardar" class="btn" style="background-image : url('Images/hd.png'); height: 50px; width: 50px;">
             </button>
             &nbsp;
             <button type="button" id="btnAbrir" value="abrir" class="btn"> 

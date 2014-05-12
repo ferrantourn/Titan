@@ -338,6 +338,7 @@ namespace TitanWeb
 
                 VinculoJPG.NavigateUrl = "~/index.jpg";
                 VinculoJPG.Text = Server.MapPath("~/index.jpg").ToString();
+                //Response.Redirect("/index.jpg");
 
 
             }
