@@ -74,6 +74,10 @@
         }
         </style>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="script/jquery.Jcrop.pack.js"></script>
+    <link href="css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
+    <%--En teoría es más rápido si se descarga el Jquery desde este link:--%>
+<%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>--%>
     <script type="text/javascript" >
 
         $(function () {
@@ -101,10 +105,23 @@
                 $('#AbrirArchivo').hide();
             });
         });
+//----------------------------CROP-------------------------------
+        jQuery(document).ready(function() {
+            jQuery('#imgCrop').Jcrop({
+            onSelect: storeCoords
+            });
 
-        //function VerJPG() {
-        //    window.open("/index.jpg");
-        //}
+        });
+
+        function storeCoords(c) {
+
+            jQuery('#X').val(c.x);
+            jQuery('#Y').val(c.y);
+            jQuery('#W').val(c.w);
+            jQuery('#H').val(c.h);
+
+        };
+//--------------------------------FIN CROP--------------------------
  
         //VALIDAR IMAGEN 1
         //----------------------------------------------------------------------------
@@ -455,6 +472,24 @@
         </tbody>
     </table>
 </div>
+
+<%------------------------CROP-------------------------------%>
+<div>
+    <asp:Panel ID="pnlCrop" runat="server" Visible="false">
+      <asp:Image ID="imgCrop" runat="server" />
+      <br />
+      <asp:HiddenField ID="X" runat="server" />
+      <asp:HiddenField ID="Y" runat="server" />
+      <asp:HiddenField ID="W" runat="server" />
+      <asp:HiddenField ID="H" runat="server" />
+      <asp:Button ID="btnCrop" runat="server" Text="Cortar" OnClick="btnCrop_Click" />
+    </asp:Panel>
+    <asp:Panel ID="pnlCropped" runat="server" Visible="false">
+      <asp:Image ID="imgCropped" runat="server" />
+    </asp:Panel>
+</div> 
+<%----------------------FIN CROP-----------------------------%>
+
 </form>
 </body>
 </html>

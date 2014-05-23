@@ -100,6 +100,7 @@ namespace TitanWeb
                             HttpContext context = HttpContext.Current;
                             AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
+
                         }
                     }
                 }
@@ -318,6 +319,11 @@ namespace TitanWeb
             {
                 txtModelo.Text = "Error";
             }
+        }
+
+        protected void btnCrop_Click(object sender, EventArgs e)
+        {
+ 
         }
 
         protected void GuardarJPG_Click(object sender, EventArgs e)
