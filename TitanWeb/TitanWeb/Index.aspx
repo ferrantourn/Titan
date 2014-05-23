@@ -73,11 +73,19 @@
             width: 142px;
         }
         </style>
+    
+    <link href="css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="script/jquery.Jcrop.pack.js"></script>
-    <link href="css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
-    <%--En teoría es más rápido si se descarga el Jquery desde este link:--%>
-<%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="Scripts/jquery.Jcrop.min.js"></script>
+
+<%--    	<link href="http://edge1y.tapmodo.com/deepliq/global.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css" type="text/css" />
+	<link href="http://edge1u.tapmodo.com/deepliq/jcrop_demos.css" rel="stylesheet" type="text/css" />
+
+	<script src="http://edge1u.tapmodo.com/global/js/jquery.min.js"></script>
+  <script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
+	<script src="http://edge1v.tapmodo.com/deepliq/jcrop_demos.js"></script>--%>
+
     <script type="text/javascript" >
 
         $(function () {
@@ -106,11 +114,8 @@
             });
         });
 //----------------------------CROP-------------------------------
-        jQuery(document).ready(function() {
-            jQuery('#imgCrop').Jcrop({
+        jQuery('#imgCrop').Jcrop({
             onSelect: storeCoords
-            });
-
         });
 
         function storeCoords(c) {
@@ -217,7 +222,10 @@
             var image = document.getElementById("<%= imgFoto1.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
             image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
-            
+            var cropimg = document.getElementById("<%= imgCrop.ClientID %>");
+            cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            $('#CropDiv').show();
+            var jcrop_api = $.Jcrop('#<%= imgCrop.ClientID %>');
         }
         //ASIGNAR IMAGEN 2
         //---------------------------------------------------------------------------
@@ -474,9 +482,10 @@
 </div>
 
 <%------------------------CROP-------------------------------%>
-<div>
-    <asp:Panel ID="pnlCrop" runat="server" Visible="false">
-      <asp:Image ID="imgCrop" runat="server" />
+<div style="display: none; width: 800px; height:800px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
+<%--<div>--%>
+    <asp:Panel ID="pnlCrop" runat="server" Visible="true">
+      <asp:Image "ID=imgCrop" runat="server" ImageAlign="Left" />
       <br />
       <asp:HiddenField ID="X" runat="server" />
       <asp:HiddenField ID="Y" runat="server" />
@@ -484,10 +493,7 @@
       <asp:HiddenField ID="H" runat="server" />
       <asp:Button ID="btnCrop" runat="server" Text="Cortar" OnClick="btnCrop_Click" />
     </asp:Panel>
-    <asp:Panel ID="pnlCropped" runat="server" Visible="false">
-      <asp:Image ID="imgCropped" runat="server" />
-    </asp:Panel>
-</div> 
+ </div>
 <%----------------------FIN CROP-----------------------------%>
 
 </form>

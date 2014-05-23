@@ -364,6 +364,15 @@ namespace TitanWeb {
         protected global::System.Web.UI.WebControls.GridView GridVAbrir;
         
         /// <summary>
+        /// Control CropDiv.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CropDiv;
+        
+        /// <summary>
         /// Control pnlCrop.
         /// </summary>
         /// <remarks>
@@ -371,15 +380,6 @@ namespace TitanWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlCrop;
-        
-        /// <summary>
-        /// Control imgCrop.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgCrop;
         
         /// <summary>
         /// Control X.
@@ -425,23 +425,5 @@ namespace TitanWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCrop;
-        
-        /// <summary>
-        /// Control pnlCropped.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCropped;
-        
-        /// <summary>
-        /// Control imgCropped.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgCropped;
     }
 }

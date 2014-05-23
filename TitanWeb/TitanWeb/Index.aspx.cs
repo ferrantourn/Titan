@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using SD = System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace TitanWeb
 {
@@ -100,6 +103,10 @@ namespace TitanWeb
                             HttpContext context = HttpContext.Current;
                             AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
+                            
+                            Session["WorkingImage"] = imgFoto1.ImageUrl;
+                            //imgCrop.ImageUrl = imgFoto1.ImageUrl;
+                            //pnlCrop.Visible = true;
 
                         }
                     }
@@ -275,6 +282,7 @@ namespace TitanWeb
                             HttpContext context = HttpContext.Current;
                             AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'))));
+                            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri);
                             //imgFotoLogo.ImageUrl = "~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'));
                         }
                     }
@@ -323,7 +331,53 @@ namespace TitanWeb
 
         protected void btnCrop_Click(object sender, EventArgs e)
         {
- 
+            string ImageName = Session["WorkingImage"].ToString();
+            int w = Convert.ToInt32(W.Value);
+            int h = Convert.ToInt32(H.Value);
+            int x = Convert.ToInt32(X.Value);
+            int y = Convert.ToInt32(Y.Value);
+
+            byte[] CropImage = Crop(ImageName, w, h, x, y);
+
+            using (MemoryStream ms = new MemoryStream(CropImage, 0, CropImage.Length))
+            {
+                ms.Write(CropImage, 0, CropImage.Length);
+                using (SD.Image CroppedImage = SD.Image.FromStream(ms, true))
+                {
+                    string SaveTo = ImageName;
+                    CroppedImage.Save(SaveTo, CroppedImage.RawFormat);
+                    pnlCrop.Visible = false;
+                }
+            }
+        }
+
+        static byte[] Crop(string Img, int Width, int Height, int X, int Y)
+        {
+            try
+            {
+                using (SD.Image OriginalImage = SD.Image.FromFile(Img))
+                {
+                    using (SD.Bitmap bmp = new SD.Bitmap(Width, Height))
+                    {
+                        bmp.SetResolution(OriginalImage.HorizontalResolution, OriginalImage.VerticalResolution);
+                        using (SD.Graphics Graphic = SD.Graphics.FromImage(bmp))
+                        {
+                            Graphic.SmoothingMode = SmoothingMode.AntiAlias;
+                            Graphic.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                            Graphic.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                            Graphic.DrawImage(OriginalImage, new SD.Rectangle(0, 0, Width, Height), X, Y, Width, Height, SD.GraphicsUnit.Pixel);
+
+                            MemoryStream ms = new MemoryStream();
+                            bmp.Save(ms, OriginalImage.RawFormat);
+                            return ms.GetBuffer();
+                        }
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                throw (Ex);
+            }
         }
 
         protected void GuardarJPG_Click(object sender, EventArgs e)
@@ -356,8 +410,10 @@ namespace TitanWeb
             }
         }
 
+
+        //-----------------en desuso:-------------------------
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
-        {//en desuso
+        {
             Persistencia P = new Persistencia();
             HttpContext context = HttpContext.Current;
             AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
