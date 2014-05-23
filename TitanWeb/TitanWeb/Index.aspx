@@ -114,9 +114,12 @@
             });
         });
 //----------------------------CROP-------------------------------
-        jQuery('#imgCrop').Jcrop({
-            onSelect: storeCoords
-        });
+
+        //$(function () {
+        //    $('#<%= imgCrop.ClientID %>').Jcrop({
+        //        onSelect: storeCoords
+        //    });
+        //});
 
         function storeCoords(c) {
 
@@ -226,6 +229,8 @@
             cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
             $('#CropDiv').show();
             var jcrop_api = $.Jcrop('#<%= imgCrop.ClientID %>');
+            var jcrop_store = $('#<%= imgCrop.ClientID %>').Jcrop({ onSelect: storeCoords });
+            
         }
         //ASIGNAR IMAGEN 2
         //---------------------------------------------------------------------------
@@ -482,10 +487,10 @@
 </div>
 
 <%------------------------CROP-------------------------------%>
-<div style="display: none; width: 800px; height:800px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
-<%--<div>--%>
-    <asp:Panel ID="pnlCrop" runat="server" Visible="true">
-      <asp:Image "ID=imgCrop" runat="server" ImageAlign="Left" />
+<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
+    <asp:Panel ID="pnlCrop" runat="server" Visible="true" HorizontalAlign="Center">
+      <asp:Image ID="imgCrop" runat="server" style="width:800px; height:600px; text-align:center" />
+      <%--<asp:Image ID="Image1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />--%>
       <br />
       <asp:HiddenField ID="X" runat="server" />
       <asp:HiddenField ID="Y" runat="server" />
