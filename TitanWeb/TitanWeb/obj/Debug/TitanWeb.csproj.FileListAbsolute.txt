@@ -93,3 +93,14 @@ C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ko\System.Spatial.res
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ru\System.Spatial.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\obj\Debug\TitanWeb.csprojResolveAssemblyReference.cache
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Mvc.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.DiskCache.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.PrettyGifs.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.SimpleFilters.dll
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.xml
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Mvc.xml
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.DiskCache.xml
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.PrettyGifs.xml
+C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\ImageResizer.Plugins.SimpleFilters.xml

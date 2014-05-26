@@ -373,24 +373,6 @@ namespace TitanWeb {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl CropDiv;
         
         /// <summary>
-        /// Control pnlCrop.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlCrop;
-        
-        /// <summary>
-        /// Control imgCrop.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgCrop;
-        
-        /// <summary>
         /// Control X.
         /// </summary>
         /// <remarks>

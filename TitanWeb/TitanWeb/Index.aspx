@@ -225,12 +225,12 @@
             var image = document.getElementById("<%= imgFoto1.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
             image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
-            var cropimg = document.getElementById("<%= imgCrop.ClientID %>");
+            var cropimg = document.getElementById("imgCrop");
             cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
             $('#CropDiv').show();
-            var jcrop_api = $.Jcrop('#<%= imgCrop.ClientID %>');
-            var jcrop_store = $('#<%= imgCrop.ClientID %>').Jcrop({ onSelect: storeCoords });
-            
+            var jcrop_api = $.Jcrop('#imgCrop');
+            var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+ 
         }
         //ASIGNAR IMAGEN 2
         //---------------------------------------------------------------------------
@@ -284,11 +284,11 @@
            // image.src = "../UploadedImages/FotoLogo" + "." + getExt(filename);
         }
 
-
-
-        function uploadError() {
+        function uploadError() 
+        {
             alert("error al subir!");
-         }
+        }
+
 </script>
     
 </head>
@@ -487,16 +487,25 @@
 </div>
 
 <%------------------------CROP-------------------------------%>
+<%--<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">--%>
 <div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
-    <asp:Panel ID="pnlCrop" runat="server" Visible="true" HorizontalAlign="Center">
-      <asp:Image ID="imgCrop" runat="server" style="width:800px; height:600px; text-align:center" />
+<table>
+    <tr>
+        <td>
+             <%--<asp:Literal runat="server" ID="imgCrop"></asp:Literal>--%>
+             <img id="imgCrop" src="-" alt="Imagen a cortar"/>
+        </td>
+    </tr>
+</table>
+                
+
       <br />
       <asp:HiddenField ID="X" runat="server" />
       <asp:HiddenField ID="Y" runat="server" />
       <asp:HiddenField ID="W" runat="server" />
       <asp:HiddenField ID="H" runat="server" />
       <asp:Button ID="btnCrop" runat="server" Text="Cortar" OnClick="btnCrop_Click" />
-    </asp:Panel>
+
  </div>
 <%----------------------FIN CROP-----------------------------%>
 
