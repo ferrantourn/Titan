@@ -116,7 +116,7 @@
 //----------------------------CROP-------------------------------
 
         //$(function () {
-        //    $('#<%= imgCrop.ClientID %>').Jcrop({
+        //    $('#<= imgCrop.ClientID %>').Jcrop({
         //        onSelect: storeCoords
         //    });
         //});
@@ -287,7 +287,7 @@
 
 
         function uploadError() {
-            alert("error!");
+            alert("error al subir!");
          }
 </script>
     
@@ -490,7 +490,6 @@
 <div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
     <asp:Panel ID="pnlCrop" runat="server" Visible="true" HorizontalAlign="Center">
       <asp:Image ID="imgCrop" runat="server" style="width:800px; height:600px; text-align:center" />
-      <%--<asp:Image ID="Image1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />--%>
       <br />
       <asp:HiddenField ID="X" runat="server" />
       <asp:HiddenField ID="Y" runat="server" />

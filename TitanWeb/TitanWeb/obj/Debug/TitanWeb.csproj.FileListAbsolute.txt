@@ -1,4 +1,3 @@
-C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\obj\Debug\TitanWeb.csprojResolveAssemblyReference.cache
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\TitanWeb.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\TitanWeb.pdb
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb\TitanWeb\bin\Antlr3.Runtime.dll

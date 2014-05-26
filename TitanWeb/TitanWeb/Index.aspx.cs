@@ -19,6 +19,7 @@ namespace TitanWeb
         {
             try
             {
+                HttpContext context = HttpContext.Current;
                 if (!Page.IsPostBack)
                 {
                     foreach (FileInfo f in new DirectoryInfo(Server.MapPath("UploadedImages/")).GetFiles("*.*"))
@@ -34,7 +35,7 @@ namespace TitanWeb
                     File.Copy(Server.MapPath("~/Images/trans.png"), Server.MapPath("~/UploadedImages/FondoLogo.png"));
 
                     AutoliderContainer c = new AutoliderContainer();
-                    HttpContext context = HttpContext.Current;
+                    //HttpContext context = HttpContext.Current;
                     context.Session["Container"] = c;
                     Persistencia p = new Persistencia();
                     p.AbrirProyectoVacio(c);
@@ -69,6 +70,10 @@ namespace TitanWeb
                         txtNombreGuardar.Text = Path.GetFileNameWithoutExtension(Request.QueryString["abrir"].ToString());
                     }
                 }
+                else
+                {
+                    context.Session["cropped"] = false;
+                }
             }
             catch
             {
@@ -98,16 +103,21 @@ namespace TitanWeb
                             //SALVAMOS LA IMAGEN A UNA CARPETA
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')));
-                            AsyncFileUpload1.SaveAs(SaveFileTo);
-                            imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
                             HttpContext context = HttpContext.Current;
-                            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
-                            c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
-                            
-                            Session["WorkingImage"] = imgFoto1.ImageUrl;
-                            //imgCrop.ImageUrl = imgFoto1.ImageUrl;
-                            //pnlCrop.Visible = true;
+                            if (((Boolean)context.Session["cropped"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
+                            {
+                                AsyncFileUpload1.SaveAs(SaveFileTo);
+                            }
+                            else
+                            {
+                                context.Session["cropped"] = false;
+                            }
 
+                                imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
+                                AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
+                                c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
+                                context.Session["WorkingImage"] = Server.MapPath(imgFoto1.ImageUrl);
+                                context.Session["cropped"] = true;
                         }
                     }
                 }
@@ -331,7 +341,9 @@ namespace TitanWeb
 
         protected void btnCrop_Click(object sender, EventArgs e)
         {
-            string ImageName = Session["WorkingImage"].ToString();
+            HttpContext context = HttpContext.Current;
+            string ImageName = context.Session["WorkingImage"].ToString();
+            //string ImageName = imgCrop.ImageUrl;
             int w = Convert.ToInt32(W.Value);
             int h = Convert.ToInt32(H.Value);
             int x = Convert.ToInt32(X.Value);
@@ -345,8 +357,12 @@ namespace TitanWeb
                 using (SD.Image CroppedImage = SD.Image.FromStream(ms, true))
                 {
                     string SaveTo = ImageName;
+                    if (File.Exists(ImageName))
+                    {
+                        File.Delete(ImageName);
+                    }
                     CroppedImage.Save(SaveTo, CroppedImage.RawFormat);
-                    pnlCrop.Visible = false;
+                    context.Session["cropped"] = true;
                 }
             }
         }

@@ -13,7 +13,9 @@ namespace TitanWeb
             string text = "";
 
             //convierto el texto multiline de una caja de texto .net a un código multiline HTML
-            string TextoDescripcion = c.SDescripcionMultiLine.Replace(Environment.NewLine, "<br />");
+            string TextoDescripcion;
+            TextoDescripcion = c.SDescripcionMultiLine.Replace(Environment.NewLine, "<br />");
+            TextoDescripcion = c.SDescripcionMultiLine.Replace("\n", "<br />");
 
             try
             {
@@ -44,7 +46,7 @@ namespace TitanWeb
 <font color=""#FFFFFF"">"
 
                 + c.SMotor + @"</font></div>
-<div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 293px; top: 468px"" id=""Descripcion"">
+<div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 306px; top: 468px"" id=""Descripcion"">
 <font color=""#FFFFFF"">"
 
                 + TextoDescripcion + @"</font></div>
