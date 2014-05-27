@@ -44,6 +44,15 @@ namespace TitanWeb
             get { return sPrecio; }
             set { sPrecio = value; }
         }
+
+        string sFinanciacion;
+
+        public string SFinanciacion
+        {
+            get { return sFinanciacion; }
+            set { sFinanciacion = value; }
+        }
+
         string sDescripcionMultiLine;
 
         public string SDescripcionMultiLine
@@ -106,7 +115,7 @@ namespace TitanWeb
  
         }
         public AutoliderContainer(string sModelo, string sCilindrada, string sMotor,
-                                      string sPrecio, string sDescripcionMultiLine,
+                                      string sPrecio, string sDescripcionMultiLine, string sFinanciacion,
                                       Uri Foto1, Uri Foto2, Uri Foto3, Uri Foto4, Uri FondoPrecio,
                                       Uri FondoPlantilla,
                                       Uri Logo)
@@ -123,6 +132,7 @@ namespace TitanWeb
             this.Logo = Logo;
             this.sDescripcionMultiLine = sDescripcionMultiLine;
             this.sCilindrada = sCilindrada;
+            this.sFinanciacion = sFinanciacion;
 
         }
 

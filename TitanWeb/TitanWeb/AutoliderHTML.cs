@@ -74,6 +74,9 @@ namespace TitanWeb
 <font color=""#FFFFFF"" size=""4"">" + c.SPrecio
 + @"</font></div>
 
+<div style=""position: absolute; width: 468px; height: 23px; z-index: 2; left: 410px; top: 753px"" id=""financiacion""><font color=""#FFFFFF"" size=""4"">"
++ c.SFinanciacion + @"</font></div>
+
 <div style=""position: absolute; width: 584px; height: 95px; z-index: 1; left: 300px; top: 290px"" id=""Logo"">
 <img border=""0"" src=""" + c.SLogo + @""" width=""185"" height=""76""></div>
 

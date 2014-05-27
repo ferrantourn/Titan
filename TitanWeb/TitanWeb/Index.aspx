@@ -265,8 +265,8 @@
             //cropimg.removeAttr("height");
             //cropimg.removeAttr("width");
             cropimg.onload = function () {
-                alert(this.width);
-                alert(this.height);
+                //alert(this.width);
+                //alert(this.height);
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
                 var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
@@ -452,11 +452,10 @@
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
 <asp:TextBox ID="txtPrecio" runat="server" Width="63px" BackColor="#585858" ForeColor="White">0</asp:TextBox>
     </div>
-<div style="position: absolute; width: 352px; height: 47px; z-index: 4; left: 367px; top: 823px" id="Div2" class="auto-style2">
-    <asp:CheckBox ID="chkFinanciacion" runat="server" />
+<div style="position: absolute; width: 352px; height: 28px; z-index: 4; left: 367px; top: 823px" id="Div2" class="auto-style2">
 <asp:Label ID="Label4" runat="server" Text="Financiacion:" style="text-align: left"></asp:Label>
 &nbsp;
-<asp:TextBox ID="txtFinanciacion" runat="server" Width="245px" BackColor="#585858" ForeColor="White">Financiacion: contado 20% de descuento</asp:TextBox>
+        <asp:TextBox ID="txtFinanciacion" runat="server" Width="245px" BackColor="#585858" ForeColor="White">Financiacion: contado 20% de descuento</asp:TextBox>
 </div>
 </div>
 

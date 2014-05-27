@@ -68,6 +68,7 @@ namespace TitanWeb
                         txtModelo.Text = c2.SModelo;
                         txtMotor.Text = c2.SMotor;
                         txtPrecio.Text = c2.SPrecio;
+                        txtFinanciacion.Text = c2.SFinanciacion;
                         txtNombreGuardar.Text = Path.GetFileNameWithoutExtension(Request.QueryString["abrir"].ToString());
                     }
                 }
@@ -413,6 +414,7 @@ namespace TitanWeb
                 c.SModelo = txtModelo.Text;
                 c.SMotor = txtMotor.Text;
                 c.SPrecio = txtPrecio.Text;
+                c.SFinanciacion = txtFinanciacion.Text;
 
                 AutoliderHTML A = new AutoliderHTML();
                 Persistencia P = new Persistencia();
@@ -444,6 +446,7 @@ namespace TitanWeb
             c.SDescripcionMultiLine = txtDescripcion.Text;
             c.SCilindrada = txtCilindrada.Text;
             c.SPrecio = txtPrecio.Text;
+            c.SFinanciacion = txtFinanciacion.Text;
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
             
             AutoliderHTML A = new AutoliderHTML();
@@ -468,6 +471,7 @@ namespace TitanWeb
             c.SDescripcionMultiLine = txtDescripcion.Text;
             c.SCilindrada = txtCilindrada.Text;
             c.SPrecio = txtPrecio.Text;
+            c.SFinanciacion = txtFinanciacion.Text;
 
             P.GuardarProyectoAutolider(txtNombreGuardar.Text, c);
             AutoliderHTML A = new AutoliderHTML();
@@ -485,5 +489,7 @@ namespace TitanWeb
         {
             txtAbrirProyecto.Text = GridVAbrir.SelectedRow.Cells[1].Text;
         }
+
+
     }
 }
