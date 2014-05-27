@@ -137,8 +137,8 @@
         //    setTimeout(function () {
         //        var w = document.querySelector("#<= imgFoto1.ClientID %>").naturalWidth;
         //        alert("W="+w);
-        //        imgCrop.width = document.querySelector("#<%= imgFoto1.ClientID %>").naturalWidth;
-        //        imgCrop.height = document.querySelector("#<%= imgFoto1.ClientID %>").naturalHeight;
+        //        imgCrop.width = document.querySelector("#<= imgFoto1.ClientID %>").naturalWidth;
+        //        imgCrop.height = document.querySelector("#<= imgFoto1.ClientID %>").naturalHeight;
         //        
         //    }, 0);
         //});
@@ -256,23 +256,15 @@
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
             image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
 
-            var h = document.querySelector("#<%= imgFoto1.ClientID %>").naturalHeight;
-            var w = document.querySelector("#<%= imgFoto1.ClientID %>").naturalWidth;
-            //alert("w="+ w);
-
             var cropimg = document.getElementById("imgCrop");
             cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename);// + '?' + (new Date()).getTime();
-            //cropimg.removeAttr("height");
-            //cropimg.removeAttr("width");
+
             cropimg.onload = function () {
-                //alert(this.width);
-                //alert(this.height);
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
                 var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
             }
 
- 
         }
         //ASIGNAR IMAGEN 2
         //---------------------------------------------------------------------------
@@ -281,6 +273,15 @@
             var image = document.getElementById("<%= imgFoto2.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload2_ctl02").value;
             image.src = "../UploadedImages/Foto2" + "." + getExt(filename) + '?' + (new Date()).getTime();
+
+            var cropimg = document.getElementById("imgCrop");
+            cropimg.src = "../UploadedImages/Foto2" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+
+            cropimg.onload = function () {
+                $('#CropDiv').show();
+                var jcrop_api = $.Jcrop('#imgCrop');
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+            }
             
         }
         //ASIGNAR IMAGEN 3
@@ -290,6 +291,15 @@
             var image = document.getElementById("<%= imgFoto3.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload3_ctl02").value;
             image.src = "../UploadedImages/Foto3" + "." + getExt(filename) + '?' + (new Date()).getTime();
+
+            var cropimg = document.getElementById("imgCrop");
+            cropimg.src = "../UploadedImages/Foto3" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+
+            cropimg.onload = function () {
+                $('#CropDiv').show();
+                var jcrop_api = $.Jcrop('#imgCrop');
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+            }
             
         }
         //ASIGNAR IMAGEN 4
@@ -299,6 +309,15 @@
             var image = document.getElementById("<%= imgFoto4.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload4_ctl02").value;
             image.src = "../UploadedImages/Foto4" + "." + getExt(filename) + '?' + (new Date()).getTime();
+
+            var cropimg = document.getElementById("imgCrop");
+            cropimg.src = "../UploadedImages/Foto4" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+
+            cropimg.onload = function () {
+                $('#CropDiv').show();
+                var jcrop_api = $.Jcrop('#imgCrop');
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+            }
             
         }
         //ASIGNAR IMAGEN FONDO

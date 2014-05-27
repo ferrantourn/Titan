@@ -74,7 +74,10 @@ namespace TitanWeb
                 }
                 else
                 {
-                    context.Session["cropped"] = false;
+                    context.Session["cropped1"] = false;
+                    context.Session["cropped2"] = false;
+                    context.Session["cropped3"] = false;
+                    context.Session["cropped4"] = false;
                 }
             }
             catch
@@ -106,25 +109,20 @@ namespace TitanWeb
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.')));
                             HttpContext context = HttpContext.Current;
-                            if (((Boolean)context.Session["cropped"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
+                            if (((Boolean)context.Session["cropped1"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
                             {
                                 AsyncFileUpload1.SaveAs(SaveFileTo);
-                                //TheResize r = new TheResize();
-                                //Bitmap bmp = new Bitmap(SaveFileTo);
-                                //File.Delete(SaveFileTo);
-                                
-                                //r.Save(bmp, 800, 600, 100, SaveFileTo);
                             }
                             else
                             {
-                                context.Session["cropped"] = false;
+                                context.Session["cropped1"] = false;
                             }
 
                                 imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
                                 AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                                 c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
                                 context.Session["WorkingImage"] = Server.MapPath(imgFoto1.ImageUrl);
-                                context.Session["cropped"] = true;
+                                context.Session["cropped1"] = true;
                         }
                     }
                 }
@@ -155,12 +153,21 @@ namespace TitanWeb
                             //SALVAMOS LA IMAGEN A UNA CARPETA
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.')));
-                            AsyncFileUpload2.SaveAs(SaveFileTo);
-                            imgFoto2.ImageUrl = "";
-                            imgFoto2.ImageUrl = "~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'));
                             HttpContext context = HttpContext.Current;
+                            if (((Boolean)context.Session["cropped2"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
+                            {
+                                AsyncFileUpload2.SaveAs(SaveFileTo);
+                            }
+                            else
+                            {
+                                context.Session["cropped2"] = false;
+                            }
+
+                            imgFoto2.ImageUrl = "~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'));
                             AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto2 = new Uri(Server.MapPath("~/UploadedImages/Foto2" + filename.Substring(filename.LastIndexOf('.'))));
+                            context.Session["WorkingImage"] = Server.MapPath(imgFoto2.ImageUrl);
+                            context.Session["cropped2"] = true;
                         }
                     }
                 }
@@ -191,11 +198,21 @@ namespace TitanWeb
                             //SALVAMOS LA IMAGEN A UNA CARPETA
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.')));
-                            AsyncFileUpload3.SaveAs(SaveFileTo);
-                            imgFoto3.ImageUrl = "~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'));
                             HttpContext context = HttpContext.Current;
+                            if (((Boolean)context.Session["cropped3"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
+                            {
+                                AsyncFileUpload3.SaveAs(SaveFileTo);
+                            }
+                            else
+                            {
+                                context.Session["cropped3"] = false;
+                            }
+
+                            imgFoto3.ImageUrl = "~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'));
                             AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto3 = new Uri(Server.MapPath("~/UploadedImages/Foto3" + filename.Substring(filename.LastIndexOf('.'))));
+                            context.Session["WorkingImage"] = Server.MapPath(imgFoto3.ImageUrl);
+                            context.Session["cropped3"] = true;
                         }
                     }
                 }
@@ -226,11 +243,21 @@ namespace TitanWeb
                             //SALVAMOS LA IMAGEN A UNA CARPETA
                             //-------------------------------
                             string SaveFileTo = Server.MapPath("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.')));
-                            AsyncFileUpload4.SaveAs(SaveFileTo);
-                            imgFoto4.ImageUrl = ResolveUrl("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.')));
                             HttpContext context = HttpContext.Current;
-                            AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
+                            if (((Boolean)context.Session["cropped4"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
+                            {
+                                AsyncFileUpload4.SaveAs(SaveFileTo);
+                            }
+                            else
+                            {
+                                context.Session["cropped4"] = false;
+                            }
+
+                            imgFoto4.ImageUrl = "~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.'));
+                            AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                             c.SFoto4 = new Uri(Server.MapPath("~/UploadedImages/Foto4" + filename.Substring(filename.LastIndexOf('.'))));
+                            context.Session["WorkingImage"] = Server.MapPath(imgFoto4.ImageUrl);
+                            context.Session["cropped4"] = true;
                         }
                     }
                 }
@@ -369,7 +396,10 @@ namespace TitanWeb
                         File.Delete(ImageName);
                     }
                     CroppedImage.Save(SaveTo, CroppedImage.RawFormat);
-                    context.Session["cropped"] = true;
+                    context.Session["cropped1"] = true;
+                    context.Session["cropped2"] = true;
+                    context.Session["cropped3"] = true;
+                    context.Session["cropped4"] = true;
                 }
             }
         }
