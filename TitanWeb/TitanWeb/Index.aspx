@@ -72,6 +72,14 @@
         {
             width: 142px;
         }
+        .auto-style1
+        {
+            text-align: right;
+        }
+        .auto-style2
+        {
+            text-align: left;
+        }
         </style>
     
     <link href="css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
@@ -113,6 +121,28 @@
                 $('#AbrirArchivo').hide();
             });
         });
+
+        //$(window).load(function () {
+        //    var pic = $('#imgCrop');
+
+        //    pic.removeAttr("width");
+        //    pic.removeAttr("height");
+
+        //    alert(pic.width());
+        //    alert(pic.height());
+        //});
+
+        //$("#imgCrop").one("load", function () {
+        //    var img = this;
+        //    setTimeout(function () {
+        //        var w = document.querySelector("#<= imgFoto1.ClientID %>").naturalWidth;
+        //        alert("W="+w);
+        //        imgCrop.width = document.querySelector("#<%= imgFoto1.ClientID %>").naturalWidth;
+        //        imgCrop.height = document.querySelector("#<%= imgFoto1.ClientID %>").naturalHeight;
+        //        
+        //    }, 0);
+        //});
+
 //----------------------------CROP-------------------------------
 
         //$(function () {
@@ -225,11 +255,23 @@
             var image = document.getElementById("<%= imgFoto1.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
             image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
+
+            var h = document.querySelector("#<%= imgFoto1.ClientID %>").naturalHeight;
+            var w = document.querySelector("#<%= imgFoto1.ClientID %>").naturalWidth;
+            //alert("w="+ w);
+
             var cropimg = document.getElementById("imgCrop");
-            cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
-            $('#CropDiv').show();
-            var jcrop_api = $.Jcrop('#imgCrop');
-            var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+            cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+            //cropimg.removeAttr("height");
+            //cropimg.removeAttr("width");
+            cropimg.onload = function () {
+                alert(this.width);
+                alert(this.height);
+                $('#CropDiv').show();
+                var jcrop_api = $.Jcrop('#imgCrop');
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+            }
+
  
         }
         //ASIGNAR IMAGEN 2
@@ -375,9 +417,8 @@
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validateLogo" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagenLogo" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUploadLogo_UploadedComplete" ID="AsyncFileUploadLogo" runat="server" ThrobberID="uploaderGifLogo" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
 </div>
 
-     <%-----------------------------------Otros-----------------------------------%>
-     <%----------------------------------------------------------------------%>
-<div style="position: absolute; width: 446px; height: 112px; z-index: 1; left: 743px; top: 800px" id="Div1">
+     <%-----------------------------------Otros-----------------------------------%>     <%----------------------------------------------------------------------%>
+<div style="position: absolute; width: 446px; height: 126px; z-index: 1; left: 743px; top: 791px" id="Div1">
     
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -386,30 +427,40 @@
 
             <br />
 
+            <br />
+
         </ContentTemplate>
     </asp:UpdatePanel>
             
-<%--            <div style="width: 25px;height:25px; position: absolute; top: 64px; left: 103px;" id="divBtnG">--%>
-<%--                <button type="button" id="btnGuardar" value="cerrar" class="btn">
+<%--            <div style="width: 25px;height:25px; position: absolute; top: 64px; left: 103px;" id="divBtnG">--%><%--                <button type="button" id="btnGuardar" value="cerrar" class="btn">
                 
-                </button>--%>
-<%--            </div>--%>
-            <button type="button" id="btnGuardar" value="guardar" class="btn" style="border-style: hidden; background-image : url('Images/hd.png'); height: 50px; width: 150px; background-repeat: no-repeat; background-color: #DDDDDD;">
-                Guardar</button>
+                </button>--%><%--            </div>--%>
+            <button type="button" id="btnGuardar" value="guardar" class="btn" style="border-width: 1px; border-style: solid; background-image : url('Images/guardar.png'); height: 62px; width: 120px; background-repeat: no-repeat; background-color: #DDDDDD;">
+                <div class="auto-style1">
+                    Guardar
+                </div>
+            </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" id="btnAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/hd.png'); height: 50px; width: 150px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+            <button type="button" id="btnAbrir" value="abrir" class="btn" style="border-width: 1px; border-style: solid; background-image : url('Images/abrir.png'); height: 62px; width: 115px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
+                <div class="auto-style1">
                 Abrir
+                </div>
             </button>
 
     </div>
-<div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio">
+<div style="position: absolute; width: 138px; height: 24px; z-index: 4; left: 367px; top: 790px" id="precio" class="auto-style2">
 <asp:Label ID="Label1" runat="server" Text="Precio:"></asp:Label>
 <asp:TextBox ID="txtPrecio" runat="server" Width="63px" BackColor="#585858" ForeColor="White">0</asp:TextBox>
     </div>
+<div style="position: absolute; width: 352px; height: 47px; z-index: 4; left: 367px; top: 823px" id="Div2" class="auto-style2">
+    <asp:CheckBox ID="chkFinanciacion" runat="server" />
+<asp:Label ID="Label4" runat="server" Text="Financiacion:" style="text-align: left"></asp:Label>
+&nbsp;
+<asp:TextBox ID="txtFinanciacion" runat="server" Width="245px" BackColor="#585858" ForeColor="White">Financiacion: contado 20% de descuento</asp:TextBox>
+</div>
 </div>
 
-        <%------------------------VENTANA GUARDAR PROYECTO-----------------------------------%>
-        <%---------Container invisible para abrir GUARDAR los proyectos de titan--------------%>
+        <%------------------------VENTANA GUARDAR PROYECTO-----------------------------------%>        <%---------Container invisible para abrir GUARDAR los proyectos de titan--------------%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="GuardarArchivo">
     <table>
         <tbody>
@@ -441,8 +492,7 @@
     </table>
 </div>
 
-    <%------------------------VENTANA ABRIR PROYECTO--------------------------%>
-    <%---------Container invisible para abrir archivos de proyecto titan-------%>
+    <%------------------------VENTANA ABRIR PROYECTO--------------------------%>    <%---------Container invisible para abrir archivos de proyecto titan-------%>
 <div class="datagrid" style="display: none; position: absolute; width: 600px; height: 315px; z-index: 1; left: 600px; top: 918px; text-align: left;" id="AbrirArchivo">
     <table>
         <tbody>
@@ -453,8 +503,7 @@
             <asp:Button ID="btnAbrirProyecto" runat="server" Text="Abrir Proyecto" OnClick="btnAbrirProyecto_Click" Width="130px" />
         </div>
 
-        <%-------------------BOTON CERRAR-----------------%>
-        <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
+        <%-------------------BOTON CERRAR-----------------%>        <%-------------------BOTON CERRAR Cierra el "Guardar Archivo"-----------------%>
         <div style="width: 34px;height:34px; position: absolute; top: 8px; left: 532px;" id="CerrarAbrir">
             <button type="button" id="btnCerrarAbrir" value="abrir" class="btn" style="border-style: hidden; background-image : url('Images/cerrar.jpg'); height: 34px; width: 34px; background-repeat: no-repeat; background-color: #DDDDDD;"> 
 
@@ -486,28 +535,25 @@
     </table>
 </div>
 
-<%------------------------CROP-------------------------------%>
-<%--<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">--%>
-<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
+<%------------------------CROP-------------------------------%><%--<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:768px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">--%>
+<div class="datagrid" style="text-align:center; display: none; width: 1024px; height:600px; position: absolute; top: 0px; left: 0px; z-index: 5;" id="CropDiv" runat="server">
 <table>
     <tr>
         <td>
-             <%--<asp:Literal runat="server" ID="imgCrop"></asp:Literal>--%>
-             <img id="imgCrop" src="-" alt="Imagen a cortar"/>
-        </td>
-    </tr>
-</table>
-                
-
+            <div style="overflow: scroll; width:1000px; height:550px">
+             <img id="imgCrop" src="../Images/trans.png" alt="Imagen a cortar"/>
+            </div>
       <br />
       <asp:HiddenField ID="X" runat="server" />
       <asp:HiddenField ID="Y" runat="server" />
       <asp:HiddenField ID="W" runat="server" />
       <asp:HiddenField ID="H" runat="server" />
       <asp:Button ID="btnCrop" runat="server" Text="Cortar" OnClick="btnCrop_Click" />
-
+       </td>
+    </tr>
+</table>
  </div>
-<%----------------------FIN CROP-----------------------------%>
+    <%----------------------FIN CROP-----------------------------%>
 
 </form>
 </body>

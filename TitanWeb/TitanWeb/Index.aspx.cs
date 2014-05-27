@@ -10,6 +10,7 @@ using System.Collections;
 using SD = System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace TitanWeb
 {
@@ -107,6 +108,11 @@ namespace TitanWeb
                             if (((Boolean)context.Session["cropped"]) == false)//bandera anti overwrite - impide que el async borre la imagen croppeada.
                             {
                                 AsyncFileUpload1.SaveAs(SaveFileTo);
+                                //TheResize r = new TheResize();
+                                //Bitmap bmp = new Bitmap(SaveFileTo);
+                                //File.Delete(SaveFileTo);
+                                
+                                //r.Save(bmp, 800, 600, 100, SaveFileTo);
                             }
                             else
                             {
@@ -114,7 +120,6 @@ namespace TitanWeb
                             }
 
                                 imgFoto1.ImageUrl = "~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'));
-                                //imgCrop.Text = string.Format("<img src='{0}' id='imgCrop' alt='Cropped image' width='{1}' height='{2}'>", Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))),imgFoto1.Width,imgFoto1.Height);
                                 AutoliderContainer c = (AutoliderContainer)context.Session["Container"];
                                 c.SFoto1 = new Uri(Server.MapPath("~/UploadedImages/Foto1" + filename.Substring(filename.LastIndexOf('.'))));
                                 context.Session["WorkingImage"] = Server.MapPath(imgFoto1.ImageUrl);
