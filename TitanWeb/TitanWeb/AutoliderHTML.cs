@@ -19,35 +19,43 @@ namespace TitanWeb
 
             try
             {
-                
 
+                string Fuente = "~/NeutraDispMedium.eot";
+                //string Fuente = HttpContext.Current.Server.MapPath("~/NeutraDispMedium.eot");
                 text = @"<html>
 
 <head>
 <meta http-equiv=""Content-Language"" content=""es-uy"">
 <meta http-equiv=""Content-Type"" content=""text/html; charset=UTF-8"">
-<title>Test</title>
+<title>Autolider</title>
+<style> 
+@font-face
+{
+font-family: verdana;
+}
+
+</style>
 </head>
+
 
 <body>
 
 <div style=""position: absolute; width: 900px; height: 800px; z-index: 2; left: 0px; top: 0px"" id=""capa1"">
-
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 382px"" id=""Modelo"">
-<font color=""#FFFFFF"">"
+<font color=""#FFFFFF"" face = ""NeutraDisp"">"
 
                 + c.SModelo + @"</font></div>
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 399px"" id=""Cilindrada"">
-<font color=""#FFFFFF"">"
+<font color=""#FFFFFF"" face = ""NeutraDisp"">"
 
                 + c.SCilindrada + @"</font></div>
 
 <div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 417px"" id=""Motor"">
-<font color=""#FFFFFF"">"
+<font color=""#FFFFFF"" face = ""NeutraDisp"">"
 
                 + c.SMotor + @"</font></div>
 <div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 306px; top: 468px"" id=""Descripcion"">
-<font color=""#FFFFFF"">"
+<font color=""#FFFFFF"" face = ""NeutraDisp"">"
 
                 + TextoDescripcion + @"</font></div>
 

@@ -514,6 +514,8 @@ namespace TitanWeb
             GridVListaTitan.DataBind();
             GridVAbrir.DataSource = P.ListadoArchivosTitan();
             GridVAbrir.DataBind();
+            Response.Redirect("Index.aspx");
+
         }
         public void CustomersGridView_SelectedIndexChanged(object sender, EventArgs e)
         {

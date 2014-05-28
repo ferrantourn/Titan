@@ -33,7 +33,7 @@ namespace TitanWeb
                 Directory.CreateDirectory(destino);
                 foreach (var file in new DirectoryInfo(origen).GetFiles())
                 {
-                    file.CopyTo(Path.Combine(destino, file.Name));
+                    file.CopyTo(Path.Combine(destino, file.Name),true);
                 }
 
                 string sMarca = c.SMarca;
@@ -42,6 +42,7 @@ namespace TitanWeb
                 string sMotor = c.SMotor;
                 string sPrecio = c.SPrecio;
                 string sDescripcionMultiLine = c.SDescripcionMultiLine;
+                string sFinanciacion = c.SFinanciacion;
                 Uri Foto1 = new Uri(destino + "/" + Path.GetFileName(c.SFoto1.ToString()));
                 Uri Foto2 = new Uri(destino + "/" + Path.GetFileName(c.SFoto2.ToString()));
                 Uri Foto3 = new Uri(destino + "/" + Path.GetFileName(c.SFoto3.ToString()));
@@ -52,6 +53,11 @@ namespace TitanWeb
                 
                 XmlWriterSettings settings = new XmlWriterSettings();
                 settings.Indent = true;
+
+                if (File.Exists(HttpContext.Current.Server.MapPath("~/") + nombre + ".titan"))
+                {
+                    File.Delete(HttpContext.Current.Server.MapPath("~/") + nombre + ".titan");
+                }
 
                 XmlWriter writer = XmlWriter.Create(HttpContext.Current.Server.MapPath("~/") + nombre + ".titan", settings);
 
@@ -71,6 +77,7 @@ namespace TitanWeb
                 writer.WriteAttributeString("Descripcion", sDescripcionMultiLine);
                 writer.WriteAttributeString("Precio", sPrecio);
                 writer.WriteAttributeString("Marca", sMarca);
+                writer.WriteAttributeString("Financiacion", sFinanciacion);
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
                 writer.Flush();
@@ -125,27 +132,36 @@ namespace TitanWeb
             }
 
             XmlReader reader = XmlReader.Create(archivo);
-
-            while (reader.Read())
+            try
             {
-                if (reader.NodeType == XmlNodeType.Element
-                && reader.Name == "Producto")
+                while (reader.Read())
                 {
-                    c.SFoto1 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(0)));
-                    c.SFoto2 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(1)));
-                    c.SFoto3 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(2)));
-                    c.SFoto4 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(3)));
-                    c.SLogo = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(4)));
-                    c.SFondoPrecio = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(5)));
-                    c.SFondoPlantilla = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(6)));
-                    c.SCilindrada = reader.GetAttribute(7);
-                    c.SModelo = reader.GetAttribute(8);
-                    c.SMotor = reader.GetAttribute(9);
-                    c.SDescripcionMultiLine = reader.GetAttribute(10);
-                    c.SPrecio = reader.GetAttribute(11);
-                    c.SMarca = reader.GetAttribute(12);
-                } //end if
-            } //end while
+
+                    if (reader.NodeType == XmlNodeType.Element
+                    && reader.Name == "Producto")
+                    {
+                        c.SFoto1 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(0)));
+                        c.SFoto2 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(1)));
+                        c.SFoto3 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(2)));
+                        c.SFoto4 = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(3)));
+                        c.SLogo = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(4)));
+                        c.SFondoPrecio = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(5)));
+                        c.SFondoPlantilla = new Uri(destino + "/" + Path.GetFileName(reader.GetAttribute(6)));
+                        c.SCilindrada = reader.GetAttribute(7);
+                        c.SModelo = reader.GetAttribute(8);
+                        c.SMotor = reader.GetAttribute(9);
+                        c.SDescripcionMultiLine = reader.GetAttribute(10);
+                        c.SPrecio = reader.GetAttribute(11);
+                        c.SMarca = reader.GetAttribute(12);
+                        c.SFinanciacion = reader.GetAttribute(13);
+                    } //end if
+                } //end while
+            }
+            catch
+            {
+ 
+            }
+            
         }
     }
 }
