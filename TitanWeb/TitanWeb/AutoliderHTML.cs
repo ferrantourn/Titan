@@ -42,20 +42,20 @@ font-family: verdana;
 
 <div style=""position: absolute; width: 900px; height: 800px; z-index: 2; left: 0px; top: 0px"" id=""capa1"">
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 382px"" id=""Modelo"">
-<font color=""#FFFFFF"" face = ""NeutraDisp"">"
+<font color=""#FFFFFF"" face = ""Neutra Display"">"
 
                 + c.SModelo + @"</font></div>
 <div style=""position: absolute; width: 281px; height: 17px; z-index: 4; left: 429px; top: 399px"" id=""Cilindrada"">
-<font color=""#FFFFFF"" face = ""NeutraDisp"">"
+<font color=""#FFFFFF"" face = ""Neutra Display"">"
 
                 + c.SCilindrada + @"</font></div>
 
 <div style=""position: absolute; width: 280px; height: 37px; z-index: 4; left: 429px; top: 417px"" id=""Motor"">
-<font color=""#FFFFFF"" face = ""NeutraDisp"">"
+<font color=""#FFFFFF"" face = ""Neutra Display"">"
 
                 + c.SMotor + @"</font></div>
 <div style=""position: absolute; width: 417px; height: 284px; z-index: 4; left: 306px; top: 468px"" id=""Descripcion"">
-<font color=""#FFFFFF"" face = ""NeutraDisp"">"
+<font color=""#FFFFFF"" face = ""Neutra Display"">"
 
                 + TextoDescripcion + @"</font></div>
 

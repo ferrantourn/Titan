@@ -326,7 +326,7 @@ namespace TitanWeb
                             HttpContext context = HttpContext.Current;
                             AutoliderContainer c = ((AutoliderContainer)context.Session["Container"]);
                             c.SLogo = new Uri(Server.MapPath("~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'))));
-                            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri);
+                            //Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri);
                             //imgFotoLogo.ImageUrl = "~/UploadedImages/FotoLogo" + filename.Substring(filename.LastIndexOf('.'));
                         }
                     }
