@@ -12,32 +12,35 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="About.aspx">
       <publishTime>04/25/2014 16:35:14</publishTime>
     </File>
+    <File Include="AgregarUsuario.aspx">
+      <publishTime>06/17/2014 16:34:26</publishTime>
+    </File>
     <File Include="bin/AjaxControlToolkit.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:09</publishTime>
     </File>
     <File Include="bin/AjaxMin.dll">
-      <publishTime>04/06/2014 16:38:44</publishTime>
+      <publishTime>06/16/2014 14:49:03</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>04/25/2014 16:35:22</publishTime>
     </File>
     <File Include="bin/ar/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:09</publishTime>
     </File>
     <File Include="bin/cs/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:09</publishTime>
     </File>
     <File Include="bin/de/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:09</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/de/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/de/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/DotNetOpenAuth.AspNet.dll">
       <publishTime>04/25/2014 16:35:30</publishTime>
@@ -61,22 +64,22 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/25/2014 16:35:31</publishTime>
     </File>
     <File Include="bin/es/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:09</publishTime>
     </File>
     <File Include="bin/es/EntityFramework.resources.dll">
       <publishTime>04/25/2014 16:35:35</publishTime>
     </File>
     <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/es/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/es/System.Net.Http.resources.dll">
-      <publishTime>10/07/2012 23:31:06</publishTime>
+      <publishTime>07/10/2012 23:31:06</publishTime>
     </File>
     <File Include="bin/es/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/es/System.Web.Optimization.resources.dll">
       <publishTime>04/25/2014 16:35:34</publishTime>
@@ -85,25 +88,25 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/25/2014 16:35:34</publishTime>
     </File>
     <File Include="bin/fr/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/fr/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/he/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/hi/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/HtmlAgilityPack.dll">
-      <publishTime>04/06/2014 16:38:44</publishTime>
+      <publishTime>06/16/2014 14:49:03</publishTime>
     </File>
     <File Include="bin/ImageResizer.dll">
       <publishTime>05/26/2014 17:44:20</publishTime>
@@ -121,85 +124,85 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/26/2014 17:45:08</publishTime>
     </File>
     <File Include="bin/it/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/it/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/it/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/ja/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/ja/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/ko/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:48</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/ko/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Web.Optimization.WebForms.dll">
       <publishTime>04/25/2014 16:35:32</publishTime>
     </File>
     <File Include="bin/Microsoft.Data.Edm.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/Microsoft.Data.OData.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/25/2014 16:35:27</publishTime>
     </File>
     <File Include="bin/Microsoft.WindowsAzure.Configuration.dll">
-      <publishTime>04/06/2014 16:38:47</publishTime>
+      <publishTime>06/16/2014 14:49:06</publishTime>
     </File>
     <File Include="bin/Microsoft.WindowsAzure.Storage.dll">
-      <publishTime>04/06/2014 16:38:47</publishTime>
+      <publishTime>06/16/2014 14:49:06</publishTime>
     </File>
     <File Include="bin/nl/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/pl/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/ru/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/ru/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
-      <publishTime>10/07/2012 21:52:12</publishTime>
+      <publishTime>07/10/2012 21:52:12</publishTime>
     </File>
     <File Include="bin/System.Spatial.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>04/25/2014 16:35:24</publishTime>
@@ -208,37 +211,37 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/25/2014 16:35:23</publishTime>
     </File>
     <File Include="bin/TitanWeb.dll">
-      <publishTime>06/05/2014 14:43:33</publishTime>
+      <publishTime>06/17/2014 18:21:24</publishTime>
     </File>
     <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>04/25/2014 16:35:22</publishTime>
     </File>
     <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
-      <publishTime>04/06/2014 16:38:49</publishTime>
+      <publishTime>06/16/2014 14:49:10</publishTime>
     </File>
     <File Include="bin/zh-Hans/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/zh-Hans/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
-      <publishTime>04/06/2014 16:38:46</publishTime>
+      <publishTime>06/16/2014 14:49:05</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Spatial.resources.dll">
-      <publishTime>04/06/2014 16:38:45</publishTime>
+      <publishTime>06/16/2014 14:49:04</publishTime>
     </File>
     <File Include="Bundle.config">
       <publishTime>04/25/2014 16:35:14</publishTime>
@@ -318,8 +321,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Index.aspx">
       <publishTime>06/05/2014 15:15:05</publishTime>
     </File>
+    <File Include="Login.aspx">
+      <publishTime>06/17/2014 17:28:35</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>04/06/2014 16:38:58</publishTime>
+      <publishTime>06/16/2014 14:49:18</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>04/25/2014 16:35:22</publishTime>
@@ -388,13 +394,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/25/2014 16:35:27</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/25/2014 16:35:14</publishTime>
+      <publishTime>06/17/2014 18:20:07</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>04/25/2014 16:35:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/06/2014 17:13:50</publishTime>
+      <publishTime>06/17/2014 17:49:09</publishTime>
     </File>
   </ItemGroup>
 </Project>

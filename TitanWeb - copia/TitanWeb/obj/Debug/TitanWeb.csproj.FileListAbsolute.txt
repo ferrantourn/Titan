@@ -132,7 +132,6 @@ C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\System.Spatia
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\System.Web.Optimization.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\System.Web.Providers.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\WebGrease.dll
-C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\System.Net.Http.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\HtmlAgilityPack.pdb
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\HtmlAgilityPack.xml
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\ImageResizer.xml
@@ -152,7 +151,6 @@ C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\DotNetOpenAut
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\DotNetOpenAuth.AspNet.xml
-C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\System.Net.Http.xml
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\ar\AjaxControlToolkit.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\cs\AjaxControlToolkit.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\de\AjaxControlToolkit.resources.dll
@@ -200,7 +198,6 @@ C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\zh-Hant\Syste
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\es\EntityFramework.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\es\System.Web.Providers.resources.dll
-C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\bin\es\System.Net.Http.resources.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\obj\Debug\TitanWeb.dll
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\obj\Debug\TitanWeb.pdb
 C:\Users\Core\Documents\GitHub\Titan\TitanWeb - copia\TitanWeb\obj\Debug\TitanWeb.csprojResolveAssemblyReference.cache

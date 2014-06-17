@@ -8,11 +8,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Collections;
+using System.Web.Security;
+using System.Text;
 
 namespace TitanWeb
 {
     public class Persistencia
     {
+        string Llave = "Titan"; //esta es la llave para unprotect y protect, cambiar de tanto en tanto
+
         public void GuardarHTML(string HTMLText, string rutaArchivo)
         {
                 File.WriteAllText(rutaArchivo, HTMLText);
@@ -22,6 +26,72 @@ namespace TitanWeb
         {
             WebJPG websiteToImage = new WebJPG(rutaArchivoHTML, rutaArchivoJPG);
             websiteToImage.Generate();
+        }
+
+        public void GuardarUsuario(string NombreUsuario, string Password)
+        {
+            var NombrePlano = Encoding.UTF8.GetBytes(NombreUsuario);
+            var NombreEncryptado = Convert.ToBase64String(MachineKey.Protect(NombrePlano, Llave));
+            var PasswordPlano = Encoding.UTF8.GetBytes(Password);
+            var PasswordEncryptado = Convert.ToBase64String(MachineKey.Protect(PasswordPlano, Llave));
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            XmlWriter writer = XmlWriter.Create(HttpContext.Current.Server.MapPath("~/") + "data.data", settings);
+
+            writer.WriteStartDocument();
+            writer.WriteComment("Generado por Titan.");
+            writer.WriteStartElement("Usuario");
+            writer.WriteAttributeString("Nombre", NombreEncryptado);
+            writer.WriteAttributeString("Pass", PasswordEncryptado);
+            writer.WriteEndElement();
+            writer.WriteEndDocument();
+            writer.Flush();
+            writer.Close();
+ 
+        }
+
+        public bool LoginUsuario(string NombreUsuario, string Password)
+        {
+            try
+            {
+                XmlReader reader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/data.data"));
+                while (reader.Read())
+                {
+
+                    if (reader.NodeType == XmlNodeType.Element
+                    && reader.Name == "Usuario")
+                    {
+                        string NombreEncriptado = reader.GetAttribute(0);
+                        var NombreBytes = Convert.FromBase64String(NombreEncriptado);
+                        var NombrePlano = MachineKey.Unprotect(NombreBytes, Llave);
+                        string NombreStr = Encoding.UTF8.GetString(NombrePlano);
+
+                        if (NombreStr == NombreUsuario) //Nos combiene desencriptar el password solo si encontramos nombre de usuario
+                        {
+                            string PasswordEncriptado = reader.GetAttribute(1);
+                            var PasswordBytes = Convert.FromBase64String(PasswordEncriptado);
+                            var PasswordPlano = MachineKey.Unprotect(PasswordBytes, Llave);
+                            string PasswordStr = Encoding.UTF8.GetString(PasswordPlano);
+
+                            if (PasswordStr == Password)
+                            {
+                                return true; //login true, nombre y pass correctos
+                            }
+
+                            return false; //aqui el usuario coincide pero el password que ingresó no es correcto
+                        }
+                    } //end if
+                } //end while
+
+                return false;//si no se encontró ningun usuario que coincida con Nombre
+            }
+            catch
+            {
+
+            }
+            return false;
+ 
         }
 
         public void GuardarProyectoAutolider(string nombre, AutoliderContainer c)

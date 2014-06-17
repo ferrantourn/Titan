@@ -21,6 +21,11 @@ namespace TitanWeb
             try
             {
                 HttpContext context = HttpContext.Current;
+                if (context.Session["Logueado"] == null || (bool)context.Session["Logueado"] == false)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+
                 if (!Page.IsPostBack)
                 {
                     foreach (FileInfo f in new DirectoryInfo(Server.MapPath("UploadedImages/")).GetFiles("*.*"))
@@ -450,10 +455,10 @@ namespace TitanWeb
                 Persistencia P = new Persistencia();
                 string text = A.GenerateHTML(c);
 
-                P.GuardarHTML(text, Server.MapPath("~/index.html"));
-                P.GuardarJPG(Server.MapPath("~/index.html"), Server.MapPath("~/index.jpg"));
+                P.GuardarHTML(text, Server.MapPath("~/preview.html"));
+                P.GuardarJPG(Server.MapPath("~/preview.html"), Server.MapPath("~/preview.jpg"));
 
-                string strUrl="/index.jpg";
+                string strUrl = "preview.jpg";
                 ScriptManager.RegisterStartupScript(Page, Page.GetType(), "popup", "window.open('" + strUrl + "','_blank')", true);
 
 
