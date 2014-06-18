@@ -17,7 +17,7 @@ namespace TitanWeb
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             Persistencia p = new Persistencia();
-            bool logueado = p.LoginUsuario(txtNombreUsuario.Text, txtPassword.Text);
+            bool logueado = p.LoginUsuarioNew(txtNombreUsuario.Text, txtPassword.Text);
             HttpContext context = HttpContext.Current;
             context.Session["Logueado"] = logueado;
 

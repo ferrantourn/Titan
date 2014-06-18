@@ -1,3 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--Generado por Titan.-->
-<Usuario Nombre="qaGBkpsLQGfulAWlS29EQT8nj8tbYtaEnwfo7bFQAby0C1Kaa92fVOtOpzBgjzACuBsJaCmKYzlQOqNu3f7exg==" Pass="QuyRr9gfSHwGZWl0J6JK4Cj+xB2LInc0myR8jWYN0CgX5MsDxEsDbOqEqMJwAG3rm/YiFs9M5fjMM/EqdTWy1w==" />
+<Usuarios>
+  <Usuario>
+    <Nombre>4WD8BilKCeq3hoyP4cgsT3Y2Qc/DeE06dx2TxcJilKMX6KOTuqlc/9UFL6eNiHCuaMkDN0k5q9x69mkWnlrkYg==</Nombre>
+    <Password>tUA44+6w6Ymfzf33/DOceiIddtJ5aKBYE4oMg1dCcfyAsQUTZJoBHO51GuFLEJG1O4vD5Q7nblDDbuWqBdNCtg==</Password>
+  </Usuario>
+  <Usuario>
+    <Nombre>C28ESjbfZjQOHcPwEEP7eIAdu3hE9VO9+4xX3yHJAAjwkRgyQ1F1UYdN2P5QKNqniy//kbfoReGMRVjoql7iRQ==</Nombre>
+    <Password>MAXh8gqqd03zDhi60ywlPCEbpPhyzxN/TuAdJwREm/6iO16p5ddUPXNBjD2Rb9tAjd3EO+4XQcFuFS3ab5Klsw==</Password>
+  </Usuario>
+  <Usuario>
+    <Nombre>ZA//5AEcvVh99lkRxrvktsJ0j98Z8xxD1iZwCP1oGbj5wWPrYy1bluJmBYF6XAWgeDZJTIwmiJpd4pjvRpfGBA==</Nombre>
+    <Password>r7SPm8E+jiE2m1eOTGy6oh25X+YPAKmFnpz6FqTQZZLBhpOd8+E9gNpY7IJrM28SeooL+zQHYp/pnoA1qo14WQ==</Password>
+  </Usuario>
+  <Usuario>
+    <Nombre>W9fRvnX3IP+luLkDoPmBRebPIk7ZmNscZyKEZwDQfEJZyZ9vWMbu74tGBF9553YedR3aL7XN2NHaM4T85cJlQg==</Nombre>
+    <Password>d/eD7VFAHI+/LIo4PMVyTNByD70CtDqq2jlwdLDYVGZO+p2keCbdyJjKJell7tol7WMsLo+W5+DWi8+VlwkU9g==</Password>
+  </Usuario>
+</Usuarios>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Web.Security;
 using System.Text;
+using System.Xml.Linq;
 
 namespace TitanWeb
 {
@@ -34,10 +35,11 @@ namespace TitanWeb
             var NombreEncryptado = Convert.ToBase64String(MachineKey.Protect(NombrePlano, Llave));
             var PasswordPlano = Encoding.UTF8.GetBytes(Password);
             var PasswordEncryptado = Convert.ToBase64String(MachineKey.Protect(PasswordPlano, Llave));
+
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
 
-            XmlWriter writer = XmlWriter.Create(HttpContext.Current.Server.MapPath("~/") + "data.data", settings);
+            XmlWriter writer = XmlWriter.Create(HttpContext.Current.Server.MapPath("~/data.data"), settings);
 
             writer.WriteStartDocument();
             writer.WriteComment("Generado por Titan.");
@@ -49,6 +51,38 @@ namespace TitanWeb
             writer.Flush();
             writer.Close();
  
+        }
+
+        public void GuardarUsuarioNew(string NombreUsuario, string Password)
+        {
+            var NombrePlano = Encoding.UTF8.GetBytes(NombreUsuario);
+            var NombreEncryptado = Convert.ToBase64String(MachineKey.Protect(NombrePlano, Llave));
+            var PasswordPlano = Encoding.UTF8.GetBytes(Password);
+            var PasswordEncryptado = Convert.ToBase64String(MachineKey.Protect(PasswordPlano, Llave));
+
+            if (!File.Exists(HttpContext.Current.Server.MapPath("~/data.data")))
+            {
+            XDocument xDoc = new XDocument(
+            new XElement("Usuarios",
+                new XElement("Usuario",
+                    new XElement("Nombre", NombreEncryptado),
+                    new XElement("Password", PasswordEncryptado))));
+
+            StringWriter sw = new StringWriter();
+            XmlWriter xWrite = XmlWriter.Create(sw);
+            xDoc.Save(xWrite);
+            xWrite.Close();
+            xDoc.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+
+            }
+            else
+            {
+                XElement xEle = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                xEle.Add(new XElement("Usuario",
+                        new XElement("Nombre", NombreEncryptado),
+                        new XElement("Password", PasswordEncryptado)));
+                xEle.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+            }
         }
 
         public bool LoginUsuario(string NombreUsuario, string Password)
@@ -91,7 +125,45 @@ namespace TitanWeb
 
             }
             return false;
- 
+        }
+
+        public bool LoginUsuarioNew(string NombreUsuario, string Password)
+        {
+            try
+            {
+                XElement xelement = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                IEnumerable<XElement> usuarios = xelement.Elements();
+                foreach (var usuario in usuarios)
+                {
+                    string NombreEncriptado = usuario.Element("Nombre").Value;
+                    var NombreBytes = Convert.FromBase64String(NombreEncriptado);
+                    var NombrePlano = MachineKey.Unprotect(NombreBytes, Llave);
+                    string NombreStr = Encoding.UTF8.GetString(NombrePlano);
+
+                    if (NombreStr == NombreUsuario)
+                    {
+                        string PasswordEncriptado = usuario.Element("Password").Value;
+                        var PasswordBytes = Convert.FromBase64String(PasswordEncriptado);
+                        var PasswordPlano = MachineKey.Unprotect(PasswordBytes, Llave);
+                        string PasswordStr = Encoding.UTF8.GetString(PasswordPlano);
+
+                        if (Password == PasswordStr)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch
+            {
+
+            }
+            return false;
         }
 
         public void GuardarProyectoAutolider(string nombre, AutoliderContainer c)
