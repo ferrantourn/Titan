@@ -53,35 +53,53 @@ namespace TitanWeb
  
         }
 
-        public void GuardarUsuarioNew(string NombreUsuario, string Password)
+        public bool GuardarUsuarioNew(string NombreUsuario, string Password)
         {
             var NombrePlano = Encoding.UTF8.GetBytes(NombreUsuario);
-            var NombreEncryptado = Convert.ToBase64String(MachineKey.Protect(NombrePlano, Llave));
+            var NombreEncriptado = Convert.ToBase64String(MachineKey.Protect(NombrePlano, Llave));
             var PasswordPlano = Encoding.UTF8.GetBytes(Password);
-            var PasswordEncryptado = Convert.ToBase64String(MachineKey.Protect(PasswordPlano, Llave));
+            var PasswordEncriptado = Convert.ToBase64String(MachineKey.Protect(PasswordPlano, Llave));
 
             if (!File.Exists(HttpContext.Current.Server.MapPath("~/data.data")))
             {
             XDocument xDoc = new XDocument(
             new XElement("Usuarios",
                 new XElement("Usuario",
-                    new XElement("Nombre", NombreEncryptado),
-                    new XElement("Password", PasswordEncryptado))));
+                    new XElement("Nombre", NombreEncriptado),
+                    new XElement("Password", PasswordEncriptado))));
 
             StringWriter sw = new StringWriter();
             XmlWriter xWrite = XmlWriter.Create(sw);
             xDoc.Save(xWrite);
             xWrite.Close();
             xDoc.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+            return true;
 
             }
-            else
+            else //si existe el archivo, busco en él si ya existe el usuario, y si no existe lo agrego
             {
+                XElement xelement = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                IEnumerable<XElement> usuarios = xelement.Elements();
+                foreach (var usuario in usuarios)
+                {
+                    string NombreActualEncriptado = usuario.Element("Nombre").Value;
+                    var NombreActualBytes = Convert.FromBase64String(NombreActualEncriptado);
+                    var NombreActualPlano = MachineKey.Unprotect(NombreActualBytes, Llave);
+                    string NombreActualStr = Encoding.UTF8.GetString(NombreActualPlano);
+
+                    if (NombreActualStr == NombreUsuario)
+                    {
+                        return false;
+                    }
+
+                }
+                
                 XElement xEle = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
                 xEle.Add(new XElement("Usuario",
-                        new XElement("Nombre", NombreEncryptado),
-                        new XElement("Password", PasswordEncryptado)));
-                xEle.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+                    new XElement("Nombre", NombreEncriptado),
+                    new XElement("Password", PasswordEncriptado)));
+                    xEle.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+                return true;
             }
         }
 

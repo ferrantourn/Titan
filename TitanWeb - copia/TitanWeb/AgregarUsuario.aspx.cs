@@ -11,6 +11,11 @@ namespace TitanWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpContext context = HttpContext.Current;
+            if (context.Session["Logueado"] == null || (bool)context.Session["Logueado"] == false)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
         }
 
@@ -20,8 +25,15 @@ namespace TitanWeb
             if ((txtPassword.Text == txtPassword2.Text) && (txtNombreUsuario.Text!="") && (txtPassword.Text!=""))
             {
                 Persistencia p = new Persistencia();
-                p.GuardarUsuarioNew(txtNombreUsuario.Text, txtPassword.Text);
-                txtError.Text = "Se ha agregado el usuario";
+                bool agregado = p.GuardarUsuarioNew(txtNombreUsuario.Text, txtPassword.Text);
+                if (agregado)
+                {
+                    txtError.Text = "Se ha agregado el usuario";
+                }
+                else
+                {
+                    txtError.Text = "Error, el usuario ya existe";
+                }
             }
             else
             {

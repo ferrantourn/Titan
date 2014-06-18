@@ -15,30 +15,44 @@
     <div class="datagrid" style="width: 600px; height: 315px; z-index: 1; text-align: left;" id="GuardarUsuario">
 
     
-        <br />
-        <asp:Label ID="Label1" runat="server" style="text-align: center" Text="AGREGAR USUARIO"></asp:Label>
-        <br />
-        <br />
+<table border="0" width="100%" cellspacing="4" cellpadding="3">
+	<tr>
+		<td colspan="2"><p align="center">
+        <asp:Label ID="Label5" runat="server" style="text-align: center" Text="AGREGAR USUARIO"></asp:Label>
+        </td>
+	</tr>
+	<tr>
+		<td align="right">
         <asp:Label ID="Label2" runat="server" Text="NOMBRE DE USUARIO:"></asp:Label>
+        </td>
+		<td align="left">
         <asp:TextBox ID="txtNombreUsuario" runat="server"></asp:TextBox>
-        <br />
-        <br />
+        </td>
+	</tr>
+	<tr>
+		<td align="right">
         <asp:Label ID="Label3" runat="server" Text="PASSWORD:"></asp:Label>
-        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
-        <br />
-        <br />
+        </td>
+		<td align="left">
+        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+        </td>
+	</tr>
+	<tr>
+		<td align="right">
+
         <asp:Label ID="Label4" runat="server" Text="REPETIR PASSWORD:"></asp:Label>
-        <asp:TextBox ID="txtPassword2" runat="server"></asp:TextBox>
-        <br />
-        <br />
+        </td>
+		<td align="left">
+        <asp:TextBox ID="txtPassword2" runat="server" TextMode="Password"></asp:TextBox>
+        </td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">
         <asp:Button ID="btnAgregar" runat="server" OnClick="btnAgregar_Click" Text="AGREGAR" />
-        <br />
-
-    
-        <br />
-        <asp:Label ID="txtError" runat="server" Text="___"></asp:Label>
-
-    
+        </td>
+	</tr>
+</table>
+        <asp:Label ID="txtError" runat="server" Text="___" style="text-align: center"></asp:Label>
     </div>
     </form>
 </body>
