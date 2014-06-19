@@ -53,6 +53,9 @@
 	</tr>
 </table>
         <asp:Label ID="txtError" runat="server" Text="___" style="text-align: center"></asp:Label>
+        <div class="datagrid" style="position: absolute; width: 114px; z-index: 1; text-align: center; top: 272px; left: 482px;" id="AgregarUsuario">
+        <asp:LinkButton ID="lnkAgregarUsuario" runat="server" PostBackUrl="Index.aspx" style="text-align: center">Ir a Página Principal</asp:LinkButton>
+        </div>
     </div>
     </form>
 </body>

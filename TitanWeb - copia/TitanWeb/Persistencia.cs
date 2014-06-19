@@ -102,6 +102,47 @@ namespace TitanWeb
                 return true;
             }
         }
+        public bool GuardarUsuarioNewNoEnc(string NombreUsuario, string Password)
+        {
+            if (!File.Exists(HttpContext.Current.Server.MapPath("~/data.data")))
+            {
+                XDocument xDoc = new XDocument(
+                new XElement("Usuarios",
+                    new XElement("Usuario",
+                        new XElement("Nombre", NombreUsuario),
+                        new XElement("Password", Password))));
+
+                StringWriter sw = new StringWriter();
+                XmlWriter xWrite = XmlWriter.Create(sw);
+                xDoc.Save(xWrite);
+                xWrite.Close();
+                xDoc.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+                return true;
+
+            }
+            else //si existe el archivo, busco en él si ya existe el usuario, y si no existe lo agrego
+            {
+                XElement xelement = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                IEnumerable<XElement> usuarios = xelement.Elements();
+                foreach (var usuario in usuarios)
+                {
+                    string NombreActual = usuario.Element("Nombre").Value;
+
+                    if (NombreActual == NombreUsuario)
+                    {
+                        return false;
+                    }
+
+                }
+
+                XElement xEle = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                xEle.Add(new XElement("Usuario",
+                    new XElement("Nombre", NombreUsuario),
+                    new XElement("Password", Password)));
+                xEle.Save(HttpContext.Current.Server.MapPath("~/data.data"));
+                return true;
+            }
+        }
 
         public bool LoginUsuario(string NombreUsuario, string Password)
         {
@@ -140,8 +181,9 @@ namespace TitanWeb
             }
             catch
             {
-
+                
             }
+
             return false;
         }
 
@@ -175,12 +217,49 @@ namespace TitanWeb
                         }
                     }
                 }
+                LogicaErrores.GuardarError("Error, no se encontró usuario", DateTime.Now);
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
-
+                LogicaErrores.GuardarError(ex.Message, DateTime.Now);
             }
+            LogicaErrores.GuardarError("Error, no se encontró usuario", DateTime.Now);
+            return false;
+        }
+
+        public bool LoginUsuarioNewNoEnc(string NombreUsuario, string Password)
+        {
+            try
+            {
+                XElement xelement = XElement.Load(HttpContext.Current.Server.MapPath("~/data.data"));
+                IEnumerable<XElement> usuarios = xelement.Elements();
+                foreach (var usuario in usuarios)
+                {
+                    string NombreActual = usuario.Element("Nombre").Value;
+
+                    if (NombreActual == NombreUsuario)
+                    {
+                        string PasswordActual = usuario.Element("Password").Value;
+
+                        if (Password == PasswordActual)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                LogicaErrores.GuardarError("Error, no se encontró usuario", DateTime.Now);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                LogicaErrores.GuardarError(ex.Message, DateTime.Now);
+            }
+            LogicaErrores.GuardarError("Error, no se encontró usuario", DateTime.Now);
             return false;
         }
 

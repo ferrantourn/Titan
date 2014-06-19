@@ -25,7 +25,7 @@ namespace TitanWeb
             if ((txtPassword.Text == txtPassword2.Text) && (txtNombreUsuario.Text!="") && (txtPassword.Text!=""))
             {
                 Persistencia p = new Persistencia();
-                bool agregado = p.GuardarUsuarioNew(txtNombreUsuario.Text, txtPassword.Text);
+                bool agregado = p.GuardarUsuarioNewNoEnc(txtNombreUsuario.Text, txtPassword.Text);
                 if (agregado)
                 {
                     txtError.Text = "Se ha agregado el usuario";

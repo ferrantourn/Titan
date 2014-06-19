@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="datagrid" style="width: 600px; height: 315px; z-index: 1; text-align: left;" id="GuardarUsuario">
+    <div class="datagrid" style="width: 600px; height: 315px; z-index: 1; text-align: right;" id="LoginUsuario">
 
     <table border="0" width="100%" cellspacing="4" cellpadding="3">
 	<tr>
@@ -49,6 +49,14 @@
 
 
         <asp:Label ID="txtError" runat="server" Text="___"></asp:Label>
+
+    
+        <br />
+        <div class="datagrid" style="position: absolute; width: 114px; z-index: 1; text-align: center; top: 272px; left: 482px;" id="AgregarUsuario">
+        <asp:LinkButton ID="lnkAgregarUsuario" runat="server" PostBackUrl="AgregarUsuario.aspx" style="text-align: center">Agregar Usuario</asp:LinkButton>
+        </div>
+        <br />
+        <br />
 
     
     </div>
