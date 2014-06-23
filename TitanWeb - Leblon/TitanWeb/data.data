@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Usuarios>
+  <Usuario>
+    <Nombre>leblon</Nombre>
+    <Password>leblon2112</Password>
+  </Usuario>
+  <Usuario>
+    <Nombre>capicua</Nombre>
+    <Password>capicua2112</Password>
+  </Usuario>
+</Usuarios>
