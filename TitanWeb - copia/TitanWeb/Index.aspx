@@ -156,6 +156,13 @@
 
     <script type="text/javascript" >
 
+    function enableForm()
+    {
+        document.getElementById("form1").disabled = false;
+    }
+    window.onload = enableForm;
+ 
+
         $(function () {
             $('#btnGuardar').click(function () {
                 $('#GuardarArchivo').show();
@@ -414,7 +421,7 @@
     
 </head>
 <body>
-<form id="form1" runat="server">
+<form id="form1" runat="server" disabled="true">
 <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" EnablePartialRendering="true" EnablePageMethods="true" CombineScripts="true" EnableScriptGlobalization="true" runat="server"></ajaxToolkit:ToolkitScriptManager>
 <div class="datagrid" style="width: 1150px; height: 1016px; z-index: 2; top: 15px; left: 20px;" id="capa1">
 
