@@ -146,13 +146,21 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.Jcrop.min.js"></script>
 
-<%--    	<link href="http://edge1y.tapmodo.com/deepliq/global.css" rel="stylesheet" type="text/css" />
+<%--<link href="http://edge1y.tapmodo.com/deepliq/global.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css" type="text/css" />
 	<link href="http://edge1u.tapmodo.com/deepliq/jcrop_demos.css" rel="stylesheet" type="text/css" />
 
 	<script src="http://edge1u.tapmodo.com/global/js/jquery.min.js"></script>
   <script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
 	<script src="http://edge1v.tapmodo.com/deepliq/jcrop_demos.js"></script>--%>
+
+    <script type="text/javascript" >
+    function enableForm()
+    {
+        document.getElementById("form1").disabled = false;
+    }
+    window.onLoad = enableForm();
+    </script>
 
     <script type="text/javascript" >
 
@@ -182,35 +190,7 @@
             });
         });
 
-        //$(window).load(function () {
-        //    var pic = $('#imgCrop');
-
-        //    pic.removeAttr("width");
-        //    pic.removeAttr("height");
-
-        //    alert(pic.width());
-        //    alert(pic.height());
-        //});
-
-        //$("#imgCrop").one("load", function () {
-        //    var img = this;
-        //    setTimeout(function () {
-        //        var w = document.querySelector("#<= imgFoto1.ClientID %>").naturalWidth;
-        //        alert("W="+w);
-        //        imgCrop.width = document.querySelector("#<= imgFoto1.ClientID %>").naturalWidth;
-        //        imgCrop.height = document.querySelector("#<= imgFoto1.ClientID %>").naturalHeight;
-        //        
-        //    }, 0);
-        //});
-
-//----------------------------CROP-------------------------------
-
-        //$(function () {
-        //    $('#<= imgCrop.ClientID %>').Jcrop({
-        //        onSelect: storeCoords
-        //    });
-        //});
-
+ 
         function storeCoords(c) {
 
             jQuery('#X').val(c.x);
@@ -314,15 +294,15 @@
 
             var image = document.getElementById("<%= imgFoto1.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload1_ctl02").value;
-            image.src = "../UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            image.src = "UploadedImages/Foto1" + "." + getExt(filename) + '?' + (new Date()).getTime();
 
             var cropimg = document.getElementById("imgCrop");
-            cropimg.src = "../UploadedImages/Foto1" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+            cropimg.src = "UploadedImages/Foto1" + "." + getExt(filename);// + '?' + (new Date()).getTime();
 
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
 
         }
@@ -332,15 +312,15 @@
 
             var image = document.getElementById("<%= imgFoto2.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload2_ctl02").value;
-            image.src = "../UploadedImages/Foto2" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            image.src = "UploadedImages/Foto2" + "." + getExt(filename) + '?' + (new Date()).getTime();
 
             var cropimg = document.getElementById("imgCrop");
-            cropimg.src = "../UploadedImages/Foto2" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+            cropimg.src = "UploadedImages/Foto2" + "." + getExt(filename);// + '?' + (new Date()).getTime();
 
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 42/24 });
             }
             
         }
@@ -350,15 +330,15 @@
 
             var image = document.getElementById("<%= imgFoto3.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload3_ctl02").value;
-            image.src = "../UploadedImages/Foto3" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            image.src = "UploadedImages/Foto3" + "." + getExt(filename) + '?' + (new Date()).getTime();
 
             var cropimg = document.getElementById("imgCrop");
-            cropimg.src = "../UploadedImages/Foto3" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+            cropimg.src = "UploadedImages/Foto3" + "." + getExt(filename);// + '?' + (new Date()).getTime();
 
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
             
         }
@@ -368,15 +348,15 @@
 
             var image = document.getElementById("<%= imgFoto4.ClientID %>");
             var filename = document.getElementById("AsyncFileUpload4_ctl02").value;
-            image.src = "../UploadedImages/Foto4" + "." + getExt(filename) + '?' + (new Date()).getTime();
+            image.src = "UploadedImages/Foto4" + "." + getExt(filename) + '?' + (new Date()).getTime();
 
             var cropimg = document.getElementById("imgCrop");
-            cropimg.src = "../UploadedImages/Foto4" + "." + getExt(filename);// + '?' + (new Date()).getTime();
+            cropimg.src = "UploadedImages/Foto4" + "." + getExt(filename);// + '?' + (new Date()).getTime();
 
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
             
         }
@@ -414,7 +394,7 @@
     
 </head>
 <body>
-<form id="form1" runat="server">
+<form id="form1" runat="server" disabled="true">
 <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" EnablePartialRendering="true" EnablePageMethods="true" CombineScripts="true" EnableScriptGlobalization="true" runat="server"></ajaxToolkit:ToolkitScriptManager>
 <div class="datagrid" style="width: 1150px; height: 1016px; z-index: 2; top: 15px; left: 20px;" id="capa1">
 
@@ -438,7 +418,7 @@
 <div style="position: absolute; width: 240px; height: 240px; z-index: 3; left: 26px; top: 26px" id="foto1">
     <asp:Image ID="imgFoto1" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploader" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploader" />
     </div>
     
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen1" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload1_UploadedComplete" ID="AsyncFileUpload1" runat="server" ThrobberID="uploaderGif" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
@@ -448,7 +428,7 @@
 <div style="position: absolute; width: 420px; height: 240px; z-index: 2; left: 292px; top: 26px" id="foto2">
     <asp:Image  ID="imgFoto2" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen2.jpg" Width="422px" />
         <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 147px; top: 204px" runat="server" id="uploaderGif2">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploader2" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploader2" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate2" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen2" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload2_UploadedComplete" ID="AsyncFileUpload2" runat="server" ThrobberID="uploaderGif2" Width="420" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD"/>
     </div>
@@ -456,7 +436,7 @@
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 298px; margin-left: 0px;" id="foto3">
     <asp:Image ID="imgFoto3" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif3">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploader3" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploader3" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate3" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen3" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload3_UploadedComplete" ID="AsyncFileUpload3" runat="server" ThrobberID="uploaderGif3" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD"/>
 </div>
@@ -464,7 +444,7 @@
 <div style="position: absolute; width: 240px; height: 240px; z-index: 1; left: 26px; top: 573px" id="foto4">
     <asp:Image ID="imgFoto4" runat="server" Height="240px" ImageUrl="~/Images/cargarimagen1.jpg" Width="240px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 57px; top: 204px" runat="server" id="uploaderGif4">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploader4" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploader4" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validate4" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagen4" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUpload4_UploadedComplete" ID="AsyncFileUpload4" runat="server" ThrobberID="uploaderGif4" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD"/>
 </div>
@@ -473,7 +453,7 @@
 <div style="position: absolute; width: 153px; height: 150px; z-index: 1; left: 743px; top: 71px" id="Fondo">
     <asp:Image ID="imgFotoFondo" runat="server" Height="150px" ImageUrl="~/Images/cargarfondo.jpg" Width="153px" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 20px; top: 129px" runat="server" id="uploaderGifFondo">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploaderFondo" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploaderFondo" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validateFondo" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagenFondo" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUploadFondo_UploadedComplete" ID="AsyncFileUploadFondo" runat="server" ThrobberID="uploaderGifFondo" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
 </div>
@@ -482,7 +462,7 @@
 <div style="position: absolute; width: 153px; height: 150px; z-index: 1; left: 743px; top: 600px" id="FondoPrecio">
     <asp:Image ID="imgFotoFondoPrecio" runat="server" ImageUrl="~/Images/cargarfondo.jpg" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: 20px; top: 129px" runat="server" id="uploaderGifFondoPrecio">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploaderFondoPrecio" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploaderFondoPrecio" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validateFondoPrecio" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagenFondoPrecio" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUploadFondoPrecio_UploadedComplete" ID="AsyncFileUploadFondoPrecio" runat="server" ThrobberID="uploaderGifFondoPrecio" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
     </div>
@@ -491,7 +471,7 @@
 <div style="position: absolute; width: 121px; height: 80px; z-index: 1; left: 292px; top: 298px" id="Logo">
     <asp:Image ID="imgFotoLogo" runat="server" ImageUrl="~/Images/cargarlogo.jpg" />
     <div style="position: absolute; width: 126px; height: 22px; z-index: 4; left: -3px; top: 53px" runat="server" id="uploaderGifLogo">
-        <img src="../Images/018.gif" alt="Subiendo" id="imgUploaderLogo" />
+        <img src="Images/018.gif" alt="Subiendo" id="imgUploaderLogo" />
     </div>
     <ajaxToolkit:AsyncFileUpload OnClientUploadStarted="validateLogo" UploaderStyle="Traditional" OnClientUploadComplete="AsignarImagenLogo" OnClientUploadError="uploadError" OnUploadedComplete="AsyncFileUploadLogo_UploadedComplete" ID="AsyncFileUploadLogo" runat="server" ThrobberID="uploaderGifLogo" Width="240" BackColor="#DDDDDD" CompleteBackColor="#DDDDDD" ForeColor="#585858" UploadingBackColor="#DDDDDD" />
 </div>

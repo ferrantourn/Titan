@@ -23,6 +23,14 @@ namespace TitanWeb
                 HttpContext context = HttpContext.Current;
                 if (context.Session["Logueado"] == null || (bool)context.Session["Logueado"] == false)
                 {
+                    if (context.Session["Logueado"] == null)
+                    {
+                        LogicaErrores.GuardarError("Error, context.Session es null", DateTime.Now);
+                    }
+                    else
+                    {
+                        LogicaErrores.GuardarError("Error, context.Session es false", DateTime.Now);
+                    }
                     Response.Redirect("Login.aspx");
                 }
 
@@ -383,6 +391,26 @@ namespace TitanWeb
             HttpContext context = HttpContext.Current;
             string ImageName = context.Session["WorkingImage"].ToString();
             //string ImageName = imgCrop.ImageUrl;
+
+            int index;
+
+            index = W.Value.IndexOf(".");
+            if (index > 0)
+                W.Value = W.Value.Substring(0, index);
+
+            index = H.Value.IndexOf(".");
+            if (index > 0)
+                H.Value = H.Value.Substring(0, index);
+
+            index = X.Value.IndexOf(".");
+            if (index > 0)
+                X.Value = X.Value.Substring(0, index);
+
+            index = Y.Value.IndexOf(".");
+            if (index > 0)
+                Y.Value = Y.Value.Substring(0, index);
+
+
             int w = Convert.ToInt32(W.Value);
             int h = Convert.ToInt32(H.Value);
             int x = Convert.ToInt32(X.Value);

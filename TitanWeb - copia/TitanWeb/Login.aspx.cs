@@ -20,13 +20,16 @@ namespace TitanWeb
             bool logueado = p.LoginUsuarioNewNoEnc(txtNombreUsuario.Text, txtPassword.Text);
             HttpContext context = HttpContext.Current;
             context.Session["Logueado"] = logueado;
+            
 
             if (logueado == true)
             {
+                LogicaErrores.GuardarError("Usuario " + txtNombreUsuario.Text + " logueado con éxito" , DateTime.Now);
                 Response.Redirect("Index.aspx");
             }
             else
             {
+                LogicaErrores.GuardarError("Error Login: " + txtNombreUsuario.Text, DateTime.Now);
                 txtError.Text = "Error";
             }
 

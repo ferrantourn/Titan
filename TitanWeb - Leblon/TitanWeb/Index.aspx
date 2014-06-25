@@ -156,6 +156,11 @@
 
     <script type="text/javascript" >
 
+        function enableForm() {
+            document.getElementById("form1").disabled = false;
+        }
+        window.onLoad = enableForm();
+
         $(function () {
             $('#btnGuardar').click(function () {
                 $('#GuardarArchivo').show();
@@ -270,7 +275,7 @@
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
 
         }
@@ -288,7 +293,7 @@
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 42/24 });
             }
             
         }
@@ -306,7 +311,7 @@
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
             
         }
@@ -324,7 +329,7 @@
             cropimg.onload = function () {
                 $('#CropDiv').show();
                 var jcrop_api = $.Jcrop('#imgCrop');
-                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords });
+                var jcrop_store = $('#imgCrop').Jcrop({ onSelect: storeCoords, aspectRatio: 1 });
             }
             
         }
