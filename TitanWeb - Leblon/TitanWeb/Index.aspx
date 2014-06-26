@@ -160,7 +160,9 @@
             document.getElementById("form1").disabled = false;
         }
         window.onLoad = enableForm();
+    </script>
 
+    <script type="text/javascript" >
         $(function () {
             $('#btnGuardar').click(function () {
                 $('#GuardarArchivo').show();
